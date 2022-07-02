@@ -15,6 +15,14 @@
 - Heroku Connect for synchronizing data between Heroku and Salesforce Platform
 - Apex scripts and Lightning Web Components to privide rich UIs for desktop
 
+## Architecture
+
+```
+[Mobile app]---REST---[REST API service]---Heroku Connect---[APEX backend scripts]---[LWC frontend]
+  React                SpringBoot/Heroku                     Salesforce Platform      Web components
+
+```
+
 ## Projects
 - [spring-myphotos](https://github.com/araobp/spring-myphotos)
 - [react-myphotos](https://github.com/araobp/react-myphotos)
