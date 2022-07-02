@@ -18,6 +18,7 @@
 ## Architecture
 
 ```
+                            Table <- - - - - in sync - - - - -> Custom object
 [Mobile app]---REST---[REST API service]---Heroku Connect---[APEX backend scripts]---[LWC frontend]
   React                SpringBoot/Heroku                     Salesforce Platform      Web components
 
