@@ -1,4 +1,4 @@
-# My photos
+# My Photos
 
 (Work in progress)
 
