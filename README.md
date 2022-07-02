@@ -1,5 +1,22 @@
-# myphotos
- 
+# My photos
+
+(Work in progress)
+
+## Goals
+
+- Mobile photo app based on React and SpringBoot/Heroku for my weekend cycling
+- Integration with Salesforce by Heroku Connect to privide rich UIs for desktop
+
+## Components
+
+- A custom object on Salesforce Platform
+- React-based mobile app (frontend)
+- SpringBoot-based REST API service with PostgreSQL (backend)
+- Heroku Connect for synchronizing data between Heroku and Salesforce Platform
+- Apex scripts and Lightning Web Components to privide rich UIs for desktop
+
 ## Projects
 - [spring-myphotos](https://github.com/araobp/spring-myphotos)
 - [react-myphotos](https://github.com/araobp/react-myphotos)
+- [sfdc-myphotos]()
+
