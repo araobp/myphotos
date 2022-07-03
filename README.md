@@ -25,7 +25,7 @@
 ```
 
 ## Projects
-- [spring-myphotos](https://github.com/araobp/spring-myphotos/tree/heroku-connect)
-- [react-myphotos](https://github.com/araobp/react-myphotos/tree/heroku-connect)
+- [spring-myphotos](https://github.com/araobp/spring-myphotos/tree/heroku-connect) on "heroku-connect" branch
+- [react-myphotos](https://github.com/araobp/react-myphotos/tree/heroku-connect) on "heroku-connect" branch
 - [sfdc-myphotos](https://github.com/araobp/sfdc-myphotos) (this project has just started)
 
