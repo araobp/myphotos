@@ -26,6 +26,6 @@
 
 ## Projects
 - [spring-myphotos](https://github.com/araobp/spring-myphotos/tree/heroku-connect)
-- [react-myphotos](https://github.com/araobp/react-myphotos)
+- [react-myphotos](https://github.com/araobp/react-myphotos/tree/heroku-connect)
 - [sfdc-myphotos](https://github.com/araobp/sfdc-myphotos) (this project has just started)
 
