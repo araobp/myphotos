@@ -2,7 +2,15 @@
   <lightning-card title="Photo Viewer" icon-name="standard:photo">
     <div class="slds-m-around_medium">
       <p>UUID: {uuid}</p>
-      <lightning-input label="UUID" value={uuid} onchange={onUuidChanged}></lightning-input>
     </div>
-  </lightning-card>    
+    <template if:false={credExists}>
+      <div class="slds-p-around_medium lgc-bg">
+        <lightning-input type="text" data-name="username" label="Username: "></lightning-input>
+        <lightning-input type="text" data-name="password" label="Password: "></lightning-input>
+        <lightning-input type="text" data-name="url" label="URL: "></lightning-input>
+        <lightning-button class="slds-button slds-m-top_x-small" label="Save" onclick={saveCred}>
+        </lightning-button>
+      </div>
+    </template>
+  </lightning-card>
 </template>

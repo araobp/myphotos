@@ -1,6 +1,6 @@
 import { LightningElement, api, wire } from 'lwc';
-import { loadScript, loadStyle } from 'lightning/platformResourceLoader';
 import { getRecord, getFieldValue } from 'lightning/uiRecordApi';
+import { loadScript, loadStyle } from 'lightning/platformResourceLoader';
 import LEAFLET from '@salesforce/resourceUrl/leaflet';
 
 const NAME_FIELD = 'Record__c.Name';
@@ -15,6 +15,8 @@ const recordFields = [
 export default class PictureMap extends LightningElement {
   @api recordId;
   @api height = 400;
+  name;
+  position = [35.54236976, 139.64190659];
 
   renderedCallback() {
     this.template.querySelector('div').style.height = `${this.height}px`;
@@ -29,8 +31,6 @@ export default class PictureMap extends LightningElement {
     });
   }
 
-  position = [35.54236976, 139.64190659];
-
   draw() {
     const container = this.template.querySelector('div');
     const map = L.map(container, { scrollWheelZoom: false }).setView(this.position, 10);
@@ -39,13 +39,11 @@ export default class PictureMap extends LightningElement {
       attribution: '&copy; <a href="<https://www.openstreetmap.org/copyright>">OpenStreetMap</a> contributors',
     }).addTo(map);
 
-    let marker = L.marker(this.position).addTo(map);
-    let featureGroup = L.featureGroup([marker]).addTo(map);
+    const marker = L.marker(this.position).addTo(map);
+    const featureGroup = L.featureGroup([marker]).addTo(map);
     map.fitBounds(featureGroup.getBounds());
   }
 
-  name;
-  mapMarkers = [];
   @wire(getRecord, { recordId: '$recordId', fields: recordFields })
   loadRecord({ error, data }) {
     if (error) {
@@ -55,6 +53,7 @@ export default class PictureMap extends LightningElement {
       const latitude = getFieldValue(data, LOCATION_LATITUDE_FIELD);
       const longitude = getFieldValue(data, LOCATION_LONGITUDE_FIELD);
       this.position = [latitude, longitude];
+      console.log(this.position);
     }
 
   }
