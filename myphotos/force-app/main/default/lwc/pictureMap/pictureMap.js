@@ -1,6 +1,16 @@
-import { LightningElement, api } from 'lwc';
+import { LightningElement, api, wire } from 'lwc';
 import { loadScript, loadStyle } from 'lightning/platformResourceLoader';
+import { getRecord, getFieldValue } from 'lightning/uiRecordApi';
 import LEAFLET from '@salesforce/resourceUrl/leaflet';
+
+const NAME_FIELD = 'Record__c.Name';
+const LOCATION_LATITUDE_FIELD = 'Record__c.Geolocation__Latitude__s';
+const LOCATION_LONGITUDE_FIELD = 'Record__c.Geolocation__Longitude__s';
+const recordFields = [
+  NAME_FIELD,
+  LOCATION_LATITUDE_FIELD,
+  LOCATION_LONGITUDE_FIELD
+];
 
 export default class PictureMap extends LightningElement {
   @api recordId;
@@ -19,17 +29,34 @@ export default class PictureMap extends LightningElement {
     });
   }
 
+  position = [35.54236976, 139.64190659];
+
   draw() {
-    let container = this.template.querySelector('div');
-    let position = [35.54236976, 139.64190659];
-    let map = L.map(container, { scrollWheelZoom: false }).setView(position, 10);
+    const container = this.template.querySelector('div');
+    const map = L.map(container, { scrollWheelZoom: false }).setView(this.position, 10);
 
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       attribution: '&copy; <a href="<https://www.openstreetmap.org/copyright>">OpenStreetMap</a> contributors',
     }).addTo(map);
 
-    let marker = L.marker(position).addTo(map);
+    let marker = L.marker(this.position).addTo(map);
     let featureGroup = L.featureGroup([marker]).addTo(map);
     map.fitBounds(featureGroup.getBounds());
   }
+
+  name;
+  mapMarkers = [];
+  @wire(getRecord, { recordId: '$recordId', fields: recordFields })
+  loadRecord({ error, data }) {
+    if (error) {
+      console.log(error);
+    } else if (data) {
+      this.name = getFieldValue(data, NAME_FIELD);
+      const latitude = getFieldValue(data, LOCATION_LATITUDE_FIELD);
+      const longitude = getFieldValue(data, LOCATION_LONGITUDE_FIELD);
+      this.position = [latitude, longitude];
+    }
+
+  }
+
 }
