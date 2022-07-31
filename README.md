@@ -30,4 +30,4 @@
 - [react-myphotos](https://github.com/araobp/react-myphotos/tree/heroku-connect) on "heroku-connect" branch
 
 ## References
-- [Using Leaflet](https://sonneiltech.com/2021/01/using-leaflet-to-show-maps-in-your-lwc-components/)
+- [Using Leaflet to show maps in your LWC components](https://sonneiltech.com/2021/01/using-leaflet-to-show-maps-in-your-lwc-components/)
