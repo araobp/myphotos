@@ -37,6 +37,10 @@ CSP setting is required for such as access:
 
 <img src="./doc/CSP.png" width="900px">
 
+## Panorama support (work in progress)
+
+[react-myphotos](https://github.com/araobp/react-myphotos/tree/heroku-connect) supports 360 degree photos with help from panolens.js and three.js. The "[PhotoViewer](./myphotos/force-app/main/default/lwc/photoViewer)" LWC component also needs to support 360 degree photos.
+
 ## References
 - [Using Leaflet to show maps in your LWC components](https://sonneiltech.com/2021/01/using-leaflet-to-show-maps-in-your-lwc-components/)
 - [panolens-three](https://www.npmjs.com/package/panolens-three)
