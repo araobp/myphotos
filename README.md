@@ -29,5 +29,13 @@
 - [spring-myphotos](https://github.com/araobp/spring-myphotos/tree/heroku-connect) on "heroku-connect" branch
 - [react-myphotos](https://github.com/araobp/react-myphotos/tree/heroku-connect) on "heroku-connect" branch
 
+## CSP setting
+
+The "[PhotoViewer](./myphotos/force-app/main/default/lwc/photoViewer)" LWC component issues a HTTP GET from JavaScript to MyPhotos REST API service hosted by the Heroku instance.
+
+CSP setting is required for such as access:
+
+<img src="./doc/CSP.png" width="900px">
+
 ## References
 - [Using Leaflet to show maps in your LWC components](https://sonneiltech.com/2021/01/using-leaflet-to-show-maps-in-your-lwc-components/)
