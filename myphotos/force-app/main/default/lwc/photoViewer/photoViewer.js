@@ -1,5 +1,6 @@
 import { LightningElement, api, wire } from 'lwc';
 import { getRecord, getFieldValue } from 'lightning/uiRecordApi';
+import { getImage } from './myphotos';
 
 import RECORD_NAME_FIELD from '@salesforce/schema/Record__c.Name';
 import RECORD_UUID_FIELD from '@salesforce/schema/Record__c.uuid__c';
@@ -11,6 +12,7 @@ export default class PhotoViewer extends LightningElement {
   name;
   uuid;
   show = false;
+  imageURL = null;
 
   username;
   password;
@@ -32,6 +34,11 @@ export default class PhotoViewer extends LightningElement {
       if (this.url !== null) {
         this.template.querySelector('lightning-input[data-name="url"]').value = this.url;
       }
+    }
+
+    if (this.username !== null && this.password !== null && this.url !== null && this.uuid != null) {
+      getImage(this.url, this.username, this.password, this.uuid)
+      .then(imageURL => this.imageURL = imageURL);
     }
   }
 
