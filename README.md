@@ -44,3 +44,4 @@ CSP setting is required for such as access:
 ## References
 - [Using Leaflet to show maps in your LWC components](https://sonneiltech.com/2021/01/using-leaflet-to-show-maps-in-your-lwc-components/)
 - [panolens-three](https://www.npmjs.com/package/panolens-three)
+- [最新版で学ぶwebpack 5入門 JavaScriptのモジュールバンドラ](https://ics.media/entry/12140/)
