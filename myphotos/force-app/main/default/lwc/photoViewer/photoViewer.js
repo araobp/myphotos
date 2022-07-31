@@ -4,13 +4,13 @@ import { getRecord, getFieldValue } from 'lightning/uiRecordApi';
 import RECORD_NAME_FIELD from '@salesforce/schema/Record__c.Name';
 import RECORD_UUID_FIELD from '@salesforce/schema/Record__c.uuid__c';
 
-const recordFields = [ RECORD_NAME_FIELD, RECORD_UUID_FIELD ];
+const recordFields = [RECORD_NAME_FIELD, RECORD_UUID_FIELD];
 
 export default class PhotoViewer extends LightningElement {
   @api recordId;
   name;
   uuid;
-  credExists = false;
+  show = false;
 
   username;
   password;
@@ -21,15 +21,17 @@ export default class PhotoViewer extends LightningElement {
     this.password = localStorage.getItem("myphotos:password");
     this.url = localStorage.getItem("myphotos:url");
     console.log(this.username);
-    
-    if (this.username !== null) {
-      this.template.querySelector('lightning-input[data-name="username"]').value = this.username;
-    }
-    if (this.password !== null) {
-      this.template.querySelector('lightning-input[data-name="password"]').value = this.password;
-    }
-    if (this.url !== null) {
-      this.template.querySelector('lightning-input[data-name="url"]').value = this.url;  
+
+    if (this.show) {
+      if (this.username !== null) {
+        this.template.querySelector('lightning-input[data-name="username"]').value = this.username;
+      }
+      if (this.password !== null) {
+        this.template.querySelector('lightning-input[data-name="password"]').value = this.password;
+      }
+      if (this.url !== null) {
+        this.template.querySelector('lightning-input[data-name="url"]').value = this.url;
+      }
     }
   }
 
@@ -49,7 +51,7 @@ export default class PhotoViewer extends LightningElement {
     console.log(this.name + ',' + this.uuid);
   }
 
-  saveCred(event) {
+  onSave() {
     console.log("on click");
     this.username = this.template.querySelector('lightning-input[data-name="username"]').value;
     this.password = this.template.querySelector('lightning-input[data-name="password"]').value;
@@ -58,5 +60,14 @@ export default class PhotoViewer extends LightningElement {
     localStorage.setItem("myphotos:username", this.username);
     localStorage.setItem("myphotos:password", this.password);
     localStorage.setItem("myphotos:url", this.url);
+    this.show = false;
+  }
+
+  onCancel() {
+    this.show = false;
+  }
+
+  showSettings() {
+    this.show = !this.show;
   }
 }
