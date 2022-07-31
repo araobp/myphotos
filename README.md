@@ -25,9 +25,9 @@
 ```
 
 ## Projects
+- [myphotos](./myphotos) (this project)
 - [spring-myphotos](https://github.com/araobp/spring-myphotos/tree/heroku-connect) on "heroku-connect" branch
 - [react-myphotos](https://github.com/araobp/react-myphotos/tree/heroku-connect) on "heroku-connect" branch
-- [sfdx project](./myphotos) (this project has just started)
 
 ## References
 - [Using Leaflet](https://sonneiltech.com/2021/01/using-leaflet-to-show-maps-in-your-lwc-components/)
