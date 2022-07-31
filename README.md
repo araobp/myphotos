@@ -31,7 +31,7 @@
 
 ## CSP setting
 
-The "PhotoViewer" LWC component issues a HTTP GET from JavaScript to MyPhotos REST API service hosted by the Heroku instance.
+The "[PhotoViewer](./myphotos/force-app/main/default/lwc/photoViewer)" LWC component issues a HTTP GET from JavaScript to MyPhotos REST API service hosted by the Heroku instance.
 
 CSP setting is required for such as access:
 
