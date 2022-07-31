@@ -1,25 +1,31 @@
 import { LightningElement, api, wire } from 'lwc';
 import { getRecord, getFieldValue } from 'lightning/uiRecordApi';
+import RECORD_NAME_FIELD from '@salesforce/schema/Record__c.Name';
+import RECORD_ADDRESS_FIELD from '@salesforce/schema/Record__c.Address__c';
+
 import { loadScript, loadStyle } from 'lightning/platformResourceLoader';
 import LEAFLET from '@salesforce/resourceUrl/leaflet';
 
-const NAME_FIELD = 'Record__c.Name';
-const LOCATION_LATITUDE_FIELD = 'Record__c.Geolocation__Latitude__s';
-const LOCATION_LONGITUDE_FIELD = 'Record__c.Geolocation__Longitude__s';
+const RECORD_GEOLOCATION_LATITUDE_FIELD = 'Record__c.Geolocation__Latitude__s';
+const RECORD_GEOLOCATION_LONGITUDE_FIELD = 'Record__c.Geolocation__Longitude__s';
+
 const recordFields = [
-  NAME_FIELD,
-  LOCATION_LATITUDE_FIELD,
-  LOCATION_LONGITUDE_FIELD
+  RECORD_NAME_FIELD,
+  RECORD_ADDRESS_FIELD,
+  RECORD_GEOLOCATION_LATITUDE_FIELD,
+  RECORD_GEOLOCATION_LONGITUDE_FIELD
 ];
 
 export default class PictureMap extends LightningElement {
   @api recordId;
   @api height = 400;
   name;
-  position = [35.54236976, 139.64190659];
+  position = [35.54236976, 139.64190659];  // Default: Apita Yokohama Tsunashima
+  address = "<Unknown>";
 
   renderedCallback() {
-    this.template.querySelector('div').style.height = `${this.height}px`;
+    this.template.querySelector('[data-id="map"]').style.height = `${this.height}px`;
+    console.log(RECORD_GEOLOCATION_LONGITUDE_FIELD);
   }
 
   connectedCallback() {
@@ -32,7 +38,7 @@ export default class PictureMap extends LightningElement {
   }
 
   draw() {
-    const container = this.template.querySelector('div');
+    const container = this.template.querySelector('[data-id="map"]');
     const map = L.map(container, { scrollWheelZoom: false }).setView(this.position, 10);
 
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -49,9 +55,12 @@ export default class PictureMap extends LightningElement {
     if (error) {
       console.log(error);
     } else if (data) {
-      this.name = getFieldValue(data, NAME_FIELD);
-      const latitude = getFieldValue(data, LOCATION_LATITUDE_FIELD);
-      const longitude = getFieldValue(data, LOCATION_LONGITUDE_FIELD);
+      console.log(data);
+      this.name = getFieldValue(data, RECORD_NAME_FIELD);
+      this.address = getFieldValue(data, RECORD_ADDRESS_FIELD);
+      console.log(this.address);
+      const latitude = getFieldValue(data, RECORD_GEOLOCATION_LATITUDE_FIELD);
+      const longitude = getFieldValue(data, RECORD_GEOLOCATION_LONGITUDE_FIELD);
       this.position = [latitude, longitude];
       console.log(this.position);
     }
