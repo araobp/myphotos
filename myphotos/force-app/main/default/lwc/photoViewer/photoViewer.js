@@ -19,11 +19,6 @@ export default class PhotoViewer extends LightningElement {
   url;
 
   renderedCallback() {
-    this.username = localStorage.getItem("myphotos:username");
-    this.password = localStorage.getItem("myphotos:password");
-    this.url = localStorage.getItem("myphotos:url");
-    console.log(this.username);
-
     if (this.show) {
       if (this.username !== null) {
         this.template.querySelector('lightning-input[data-name="username"]').value = this.username;
@@ -36,10 +31,18 @@ export default class PhotoViewer extends LightningElement {
       }
     }
 
-    if (this.username !== null && this.password !== null && this.url !== null && this.uuid != null) {
+    if (this.imageURL === null && this.username !== null && this.password !== null && this.url !== null && this.uuid != null) {
       getImage(this.url, this.username, this.password, this.uuid)
       .then(imageURL => this.imageURL = imageURL);
     }
+
+  }
+
+  connectedCallback() {
+    this.username = localStorage.getItem("myphotos:username");
+    this.password = localStorage.getItem("myphotos:password");
+    this.url = localStorage.getItem("myphotos:url");
+    console.log(this.username);
   }
 
   @wire(getRecord, { recordId: '$recordId', fields: recordFields })
