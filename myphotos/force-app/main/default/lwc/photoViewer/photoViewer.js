@@ -5,6 +5,10 @@ import { getImage } from './myphotos';
 import RECORD_NAME_FIELD from '@salesforce/schema/Record__c.Name';
 import RECORD_UUID_FIELD from '@salesforce/schema/Record__c.uuid__c';
 
+import PANOLENS_THREE from '@salesforce/resourceUrl/panolensthree';
+
+import { loadScript } from 'lightning/platformResourceLoader';
+
 const recordFields = [RECORD_NAME_FIELD, RECORD_UUID_FIELD];
 
 export default class PhotoViewer extends LightningElement {
@@ -39,6 +43,13 @@ export default class PhotoViewer extends LightningElement {
   }
 
   connectedCallback() {
+    Promise.all([
+      loadScript(this, PANOLENS_THREE + '/panolens-three.js'),
+    ]).then(() => {
+      const panorama = new ImagePanorama("");
+      console.log(panorama);
+    });
+
     this.username = localStorage.getItem("myphotos:username");
     this.password = localStorage.getItem("myphotos:password");
     this.url = localStorage.getItem("myphotos:url");
