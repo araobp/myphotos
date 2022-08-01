@@ -19,13 +19,12 @@ const recordFields = [
 export default class PictureMap extends LightningElement {
   @api recordId;
   @api height = 400;
-  name;
+  name = null;
   position = [35.54236976, 139.64190659];  // Default: Apita Yokohama Tsunashima
   address = "<Unknown>";
 
   renderedCallback() {
     this.template.querySelector('[data-id="map"]').style.height = `${this.height}px`;
-    console.log(RECORD_GEOLOCATION_LONGITUDE_FIELD);
   }
 
   connectedCallback() {
@@ -38,16 +37,23 @@ export default class PictureMap extends LightningElement {
   }
 
   draw() {
-    const container = this.template.querySelector('[data-id="map"]');
-    const map = L.map(container, { scrollWheelZoom: false }).setView(this.position, 10);
+    setTimeout(() => {
+      if (this.name !== null) {
+        const container = this.template.querySelector('[data-id="map"]');
+        container.style.height = `${this.height}px`;
+        const map = L.map(container, { scrollWheelZoom: false }).setView(this.position, 13);
 
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      attribution: '&copy; <a href="<https://www.openstreetmap.org/copyright>">OpenStreetMap</a> contributors',
-    }).addTo(map);
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+          attribution: '&copy; <a href="<https://www.openstreetmap.org/copyright>">OpenStreetMap</a> contributors',
+        }).addTo(map);
 
-    const marker = L.marker(this.position).addTo(map);
-    const featureGroup = L.featureGroup([marker]).addTo(map);
-    map.fitBounds(featureGroup.getBounds());
+        const marker = L.marker(this.position).addTo(map);
+        const featureGroup = L.featureGroup([marker]).addTo(map);
+        map.fitBounds(featureGroup.getBounds());
+      } else {
+        this.draw();
+      }
+    }, 500);
   }
 
   @wire(getRecord, { recordId: '$recordId', fields: recordFields })
@@ -55,16 +61,12 @@ export default class PictureMap extends LightningElement {
     if (error) {
       console.log(error);
     } else if (data) {
-      console.log(data);
       this.name = getFieldValue(data, RECORD_NAME_FIELD);
       this.address = getFieldValue(data, RECORD_ADDRESS_FIELD);
-      console.log(this.address);
       const latitude = getFieldValue(data, RECORD_GEOLOCATION_LATITUDE_FIELD);
       const longitude = getFieldValue(data, RECORD_GEOLOCATION_LONGITUDE_FIELD);
       this.position = [latitude, longitude];
-      console.log(this.position);
     }
-
   }
 
 }
