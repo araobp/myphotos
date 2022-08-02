@@ -4,7 +4,6 @@ import { getImage } from './myphotos';
 
 import RECORD_NAME_FIELD from '@salesforce/schema/Record__c.Name';
 import RECORD_UUID_FIELD from '@salesforce/schema/Record__c.uuid__c';
-import { loadScript } from 'lightning/platformResourceLoader';
 
 const recordFields = [RECORD_NAME_FIELD, RECORD_UUID_FIELD];
 
@@ -67,7 +66,6 @@ export default class PhotoViewer extends LightningElement {
     this.username = this.template.querySelector('lightning-input[data-name="username"]').value;
     this.password = this.template.querySelector('lightning-input[data-name="password"]').value;
     this.url = this.template.querySelector('lightning-input[data-name="url"]').value;
-    console.log(this.username);
     localStorage.setItem("myphotos:username", this.username);
     localStorage.setItem("myphotos:password", this.password);
     localStorage.setItem("myphotos:url", this.url);
