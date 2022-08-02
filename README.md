@@ -5,7 +5,7 @@
 ## Goals
 
 - Mobile photo app based on React and SpringBoot/Heroku for my weekend cycling
-- Integration with Salesforce by Heroku Connect to privide rich UIs for desktop
+- Integration with Salesforce via Heroku Connect to privide rich UIs for desktop
 
 ## Components
 
