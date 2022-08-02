@@ -29,6 +29,11 @@
 - [spring-myphotos](https://github.com/araobp/spring-myphotos/tree/heroku-connect) on "heroku-connect" branch
 - [react-myphotos](https://github.com/araobp/react-myphotos/tree/heroku-connect) on "heroku-connect" branch
 
+## Original LWC components in this project
+
+- [pictureMap](./myphotos/force-app/main/default/lwc/pictureMap) -- I prefer using leaflet rather than Google Map (lightning-map).
+- [photoViewer](./myphotos/force-app/main/default/lwc/photoViewer)
+
 ## CSP setting
 
 The "[PhotoViewer](./myphotos/force-app/main/default/lwc/photoViewer)" LWC component issues a HTTP GET from JavaScript to MyPhotos REST API service hosted by the Heroku instance.
