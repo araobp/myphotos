@@ -5,7 +5,7 @@
 ## Goals
 
 - Mobile photo app based on React and SpringBoot/Heroku for my weekend cycling
-- Integration with Salesforce by Heroku Connect to privide rich UIs for desktop
+- Integration with Salesforce via Heroku Connect to privide rich UIs for desktop
 
 ## Components
 
@@ -26,8 +26,13 @@
 
 ## Projects
 - [myphotos](./myphotos) (this project)
-- [spring-myphotos](https://github.com/araobp/spring-myphotos/tree/heroku-connect) on "heroku-connect" branch
-- [react-myphotos](https://github.com/araobp/react-myphotos/tree/heroku-connect) on "heroku-connect" branch
+- [spring-myphotos](https://github.com/araobp/spring-myphotos) on "heroku-connect" branch
+- [react-myphotos](https://github.com/araobp/react-myphotos) on "heroku-connect" branch
+
+## Original LWC components in this project
+
+- [pictureMap](./myphotos/force-app/main/default/lwc/pictureMap) -- I prefer using leaflet rather than Google Map (lightning-map).
+- [photoViewer](./myphotos/force-app/main/default/lwc/photoViewer)
 
 ## CSP setting
 
