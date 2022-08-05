@@ -26,8 +26,8 @@
 
 ## Projects
 - [myphotos](./myphotos) (this project)
-- [spring-myphotos](https://github.com/araobp/spring-myphotos/tree/heroku-connect) on "heroku-connect" branch
-- [react-myphotos](https://github.com/araobp/react-myphotos/tree/heroku-connect) on "heroku-connect" branch
+- [spring-myphotos](https://github.com/araobp/spring-myphotos) on "heroku-connect" branch
+- [react-myphotos](https://github.com/araobp/react-myphotos) on "heroku-connect" branch
 
 ## Original LWC components in this project
 
