@@ -2,6 +2,8 @@
 
 (Work in progress)
 
+<img src="./doc/RecordPage.png" width="600px">
+
 ## Goals
 
 - Mobile photo app based on React and SpringBoot/Heroku for my weekend cycling
