@@ -9,7 +9,7 @@
 
 ## Components
 
-- A custom object on Salesforce Platform
+- A custom object "record__c" on Salesforce Platform
 - React-based mobile app (frontend)
 - SpringBoot-based REST API service with PostgreSQL (backend)
 - Heroku Connect for synchronizing data between Heroku and Salesforce Platform
