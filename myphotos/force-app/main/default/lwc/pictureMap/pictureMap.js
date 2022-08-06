@@ -41,7 +41,7 @@ export default class PictureMap extends LightningElement {
       if (this.name !== null) {
         const container = this.template.querySelector('[data-id="map"]');
         container.style.height = `${this.height}px`;
-        const map = L.map(container, { scrollWheelZoom: false }).setView(this.position, 13);
+        const map = L.map(container, { scrollWheelZoom: false }).setView(this.position, 17);
 
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
           attribution: '&copy; <a href="<https://www.openstreetmap.org/copyright>">OpenStreetMap</a> contributors',
@@ -49,7 +49,7 @@ export default class PictureMap extends LightningElement {
 
         const marker = L.marker(this.position).addTo(map);
         const featureGroup = L.featureGroup([marker]).addTo(map);
-        map.fitBounds(featureGroup.getBounds());
+        //map.fitBounds(featureGroup.getBounds());
       } else {
         this.draw();
       }
