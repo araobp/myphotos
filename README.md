@@ -13,7 +13,7 @@
 - React-based mobile app (frontend)
 - SpringBoot-based REST API service with PostgreSQL (backend)
 - Heroku Connect for synchronizing data between Heroku and Salesforce Platform
-- Apex scripts and Lightning Web Components to privide rich UIs for desktop
+- Lightning Web Components to privide rich UIs for desktop
 
 ## Architecture
 
