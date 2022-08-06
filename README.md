@@ -1,7 +1,5 @@
 # My Photos
 
-(Work in progress)
-
 <img src="./doc/RecordPage.png" width="600px">
 
 ## Goals
