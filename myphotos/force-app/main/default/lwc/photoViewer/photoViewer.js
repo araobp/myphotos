@@ -12,6 +12,7 @@ export default class PhotoViewer extends LightningElement {
   name;
   uuid;
   show = false;
+  showModal = false;
   imageURL = null;
 
   username;
@@ -70,6 +71,14 @@ export default class PhotoViewer extends LightningElement {
     localStorage.setItem("myphotos:password", this.password);
     localStorage.setItem("myphotos:url", this.url);
     this.show = false;
+  }
+
+  enableModal() {
+    this.showModal = true;
+  }
+
+  disableModal() {
+    this.showModal = false;
   }
 
   onCancel() {
