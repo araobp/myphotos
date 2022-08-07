@@ -1,6 +1,6 @@
 # My Photos
 
-(Work in progress)
+<img src="./doc/RecordPage.png" width="600px">
 
 ## Goals
 
@@ -9,11 +9,11 @@
 
 ## Components
 
-- A custom object on Salesforce Platform
+- A custom object "record__c" on Salesforce Platform
 - React-based mobile app (frontend)
 - SpringBoot-based REST API service with PostgreSQL (backend)
 - Heroku Connect for synchronizing data between Heroku and Salesforce Platform
-- Apex scripts and Lightning Web Components to privide rich UIs for desktop
+- Lightning Web Components to privide rich UIs for desktop
 
 ## Architecture
 
@@ -25,16 +25,17 @@
 ```
 
 ## Projects
-- [myphotos](./myphotos) (this project)
-- [spring-myphotos](https://github.com/araobp/spring-myphotos) on "heroku-connect" branch
-- [react-myphotos](https://github.com/araobp/react-myphotos) on "heroku-connect" branch
 
-## Original LWC components in this project
+- Salesforce: [myphotos](./myphotos) (LWC components in this project)
+- SpringBoot: [spring-myphotos](https://github.com/araobp/spring-myphotos) on "heroku-connect" branch
+- React: [react-myphotos](https://github.com/araobp/react-myphotos) on "heroku-connect" branch
+
+#### Original LWC components in this project
 
 - [pictureMap](./myphotos/force-app/main/default/lwc/pictureMap) -- I prefer using leaflet rather than Google Map (lightning-map).
 - [photoViewer](./myphotos/force-app/main/default/lwc/photoViewer)
 
-## CSP setting
+#### CSP setting
 
 The "[PhotoViewer](./myphotos/force-app/main/default/lwc/photoViewer)" LWC component issues a HTTP GET from JavaScript to MyPhotos REST API service hosted by the Heroku instance.
 
