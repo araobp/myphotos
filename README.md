@@ -1,4 +1,4 @@
-# My Photos
+# My Photos: React-SpringBoot-Salesforce integration
 
 <table>
   <tr>
