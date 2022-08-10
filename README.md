@@ -1,6 +1,6 @@
 # My Photos
 
-<img src="./doc/RecordPage.png" width="600px">
+<img src="./doc/RecordPage.png" width="500px">
 
 <img src="./doc/Bunmeido.png" width="500px">
 
