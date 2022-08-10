@@ -1,7 +1,5 @@
 # My Photos
 
-<img src="./doc/RecordPage.png" width="500px">
-
 <img src="./doc/Bunmeido.png" width="500px">
 
 <img src="./doc/Bunmeido2.png" width="500px">
@@ -38,6 +36,8 @@
 
 - [pictureMap](./myphotos/force-app/main/default/lwc/pictureMap) -- I prefer using leaflet rather than Google Map (lightning-map).
 - [photoViewer](./myphotos/force-app/main/default/lwc/photoViewer)
+
+<img src="./doc/RecordPage.png" width="500px">
 
 #### CSP setting
 
