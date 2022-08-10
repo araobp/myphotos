@@ -1,8 +1,11 @@
 # My Photos
 
-<img src="./doc/Bunmeido.png" width="500px">
-
-<img src="./doc/Bunmeido2.png" width="500px">
+<table>
+  <tr>
+    <td valign="top"><img src="./doc/Bunmeido.png"/></td>
+    <td valign="top"><img src="./doc/Bunmeido2.png"/></td>
+  </tr>
+</table>
 
 ## Goals
 
