@@ -1,6 +1,11 @@
-# My Photos
+# My Photos: React-SpringBoot-Salesforce integration
 
-<img src="./doc/RecordPage.png" width="600px">
+<table>
+  <tr>
+    <td valign="top"><img src="./doc/Bunmeido.png"/></td>
+    <td valign="top"><img src="./doc/Bunmeido2.png"/></td>
+  </tr>
+</table>
 
 ## Goals
 
@@ -34,6 +39,8 @@
 
 - [pictureMap](./myphotos/force-app/main/default/lwc/pictureMap) -- I prefer using leaflet rather than Google Map (lightning-map).
 - [photoViewer](./myphotos/force-app/main/default/lwc/photoViewer)
+
+<img src="./doc/RecordPage.png" width="600px">
 
 #### CSP setting
 
