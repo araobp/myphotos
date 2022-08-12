@@ -42,10 +42,13 @@
 
 #### Original LWC components in this project
 
-- [pictureMap](./myphotos/force-app/main/default/lwc/pictureMap) -- I prefer using leaflet rather than Google Map (lightning-map).
+- [pictureMap](./myphotos/force-app/main/default/lwc/pictureMap)
+- [picturesMap](./myphotos/force-app/main/default/lwc/picturesMap)
 - [photoViewer](./myphotos/force-app/main/default/lwc/photoViewer)
 
-<img src="./doc/RecordPage.png" width="600px">
+<img src="./doc/RecordPage.png" width="700px">
+
+<img src="./doc/Tressa.png" width="700px">
 
 #### CSP setting
 
