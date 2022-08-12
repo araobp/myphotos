@@ -1,20 +1,30 @@
 import { LightningElement, api } from 'lwc';
-
 import { loadScript, loadStyle } from 'lightning/platformResourceLoader';
 import LEAFLET from '@salesforce/resourceUrl/leaflet';
-
 import selectRecordsByDistance from '@salesforce/apex/SelectRecords.selectRecordsByDistance';
-
-const RADIUS = 3.0;
+import icons from '@salesforce/resourceUrl/icons'
 
 export default class PicturesMap extends LightningElement {
-  @api height = 600;
-  name = null;
+  @api height = 500;
   position = [35.54236976, 139.64190659];  // Default: Apita Yokohama Tsunashima
-  address = "<Unknown>";
+  
+  radius;
+  show = false;
+  map;
+  centerIcon;
+  centerMarker;
+  featureGroup;
+  markers = [];
+  circle;
 
   renderedCallback() {
     this.template.querySelector('[data-id="map"]').style.height = `${this.height}px`;
+
+    if (this.show) {
+      if (this.radius !== null) {
+        this.template.querySelector('input[data-name="radius"]').value = this.radius;
+      }
+    }
   }
 
   connectedCallback() {
@@ -22,47 +32,72 @@ export default class PicturesMap extends LightningElement {
       loadStyle(this, LEAFLET + '/leaflet.css'),
       loadScript(this, LEAFLET + '/leaflet.js'),
     ]).then(() => {
+      this.centerIcon = L.icon({
+        iconUrl: icons + '/center.png',
+        iconSize: [24, 24]
+      });      
       this.draw();
     });
-  }
 
-  map;
+    this.radius = localStorage.getItem("myphotos:radius") || 3.0;
+  }
 
   draw() {
     const container = this.template.querySelector('[data-id="map"]');
     container.style.height = `${this.height}px`;
     this.map = L.map(container, { scrollWheelZoom: false }).setView(this.position, 15);
-
+    
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       attribution: '&copy; <a href="<https://www.openstreetmap.org/copyright>">OpenStreetMap</a> contributors',
     }).addTo(this.map);
 
+    this.centerMarker = L.marker(this.position, {icon: this.centerIcon}).addTo(this.map);
+
     this.map.on('click', this.onclick);
-
-    //const marker = L.marker(this.position).addTo(map);
-    //const featureGroup = L.featureGroup([marker]).addTo(map);
-    //map.fitBounds(featureGroup.getBounds());
-
   }
 
-  featureGroup;
-  markers = [];
-
   onclick = (e) => {
-    selectRecordsByDistance({ latitude: e.latlng.lat, longitude: e.latlng.lng, radius: RADIUS })
+    selectRecordsByDistance({ latitude: e.latlng.lat, longitude: e.latlng.lng, radius: this.radius })
       .then(records => {
-        this.markers.forEach( marker => {
+
+        // Clear all existing markers
+        this.markers.forEach(marker => {
           this.map.removeLayer(marker);
         });
         this.markers.length = 0;
+        if (this.circle != null) {
+          this.map.removeLayer(this.circle);
+        }
+        if (this.centerMarker != null) {
+          this.map.removeLayer(this.centerMarker);
+        }
+
         records.forEach(record => {
-          console.log(record);
+          //console.log(record);
           const marker = L.marker([record.Geolocation__Latitude__s, record.Geolocation__Longitude__s]).addTo(this.map);
           this.markers.push(marker);
         });
         this.featureGroup = L.featureGroup(this.markers).addTo(this.map);
-        this.map.fitBounds(this.featureGroup.getBounds()); 
+        this.map.fitBounds(this.featureGroup.getBounds());
+        this.circle = L.circle(e.latlng, {
+          radius: this.radius * 1000,  // in meters
+          color: '#FF8888',
+          fillColor: '#FFFFFF',
+          fillOpacity: 0
+        }).addTo(this.map);
+        this.centerMarker = L.marker(e.latlng, {icon: this.centerIcon}).addTo(this.map);
       });
+  }
+
+  showSettings() {
+    this.show = !this.show;
+  }
+
+  onChange = () => {
+    const text = this.template.querySelector('input[data-name="radius"]').value;
+    this.radius = Number(text) || this.radius;
+    localStorage.setItem("myphotos:radius", this.radius);
+    this.show = false;
   }
 
 }
