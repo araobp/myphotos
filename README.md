@@ -12,6 +12,11 @@
 - Mobile photo app based on React and SpringBoot/Heroku for my weekend cycling
 - Integration with Salesforce via Heroku Connect to privide rich UIs for desktop
 
+#### TODO
+
+- Pubsub among LWC components 
+- OAuth2.0 support
+
 ## Components
 
 - A custom object "record__c" on Salesforce Platform
