@@ -1,11 +1,22 @@
-import { LightningElement, api } from 'lwc';
+import { LightningElement, api, wire } from 'lwc';
 import { loadScript, loadStyle } from 'lightning/platformResourceLoader';
 import LEAFLET from '@salesforce/resourceUrl/leaflet';
 import selectRecordsByDistance from '@salesforce/apex/SelectRecords.selectRecordsByDistance';
 import icons from '@salesforce/resourceUrl/icons'
 
+import { publish, MessageContext } from 'lightning/messageService';
+import RECORD_ID_UPDATE_MESSAGE from '@salesforce/messageChannel/RecordId__c';
+
+
+const LOCALE = 'ja-JP';
+const toLocalTime = (utcWithoutTZ) => {
+    const date = new Date(utcWithoutTZ);
+    return date.toLocaleString(LOCALE);
+}
+
 export default class PicturesMap extends LightningElement {
   @api height = 500;
+  recordId = null;
   position = [35.54236976, 139.64190659];  // Default: Apita Yokohama Tsunashima
   
   radius;
@@ -16,6 +27,9 @@ export default class PicturesMap extends LightningElement {
   featureGroup;
   markers = [];
   circle;
+
+  @wire(MessageContext)
+  messageContext;
 
   renderedCallback() {
     this.template.querySelector('[data-id="map"]').style.height = `${this.height}px`;
@@ -74,7 +88,11 @@ export default class PicturesMap extends LightningElement {
 
         records.forEach(record => {
           //console.log(record);
-          const marker = L.marker([record.Geolocation__Latitude__s, record.Geolocation__Longitude__s]).addTo(this.map);
+          const marker = L.marker([record.Geolocation__Latitude__s, record.Geolocation__Longitude__s])
+            .addTo(this.map)
+            .on('click', this.onClick)
+            .bindTooltip(record.Id, {opacity: 0})
+            .bindPopup('<div>[' + record.Name +']</div><div>' + toLocalTime(record.Timestamp__c) + '</div><div>' + record.Memo__c +'</div>');
           this.markers.push(marker);
         });
         this.featureGroup = L.featureGroup(this.markers).addTo(this.map);
@@ -98,6 +116,15 @@ export default class PicturesMap extends LightningElement {
     this.radius = Number(text) || this.radius;
     localStorage.setItem("myphotos:radius", this.radius);
     this.show = false;
+  }
+
+  onClick = (e) => {
+    const popup = e.target.getTooltip();
+    const recordId = popup.getContent();
+    const message = {
+      recordId: recordId
+    };
+    publish(this.messageContext, RECORD_ID_UPDATE_MESSAGE, message);
   }
 
 }

@@ -5,6 +5,9 @@ import { getImage } from './myphotos';
 import RECORD_NAME_FIELD from '@salesforce/schema/Record__c.Name';
 import RECORD_UUID_FIELD from '@salesforce/schema/Record__c.uuid__c';
 
+import { subscribe, unsubscribe, MessageContext } from 'lightning/messageService';
+import RECORD_ID_UPDATE_MESSAGE from '@salesforce/messageChannel/RecordId__c';
+
 const recordFields = [RECORD_NAME_FIELD, RECORD_UUID_FIELD];
 
 export default class PhotoViewer extends LightningElement {
@@ -19,6 +22,11 @@ export default class PhotoViewer extends LightningElement {
   password;
   url;
 
+  subscription = null;
+
+  @wire(MessageContext)
+  messageContext;
+
   renderedCallback() {
     if (this.show) {
       if (this.username !== null) {
@@ -31,12 +39,6 @@ export default class PhotoViewer extends LightningElement {
         this.template.querySelector('lightning-input[data-name="url"]').value = this.url;
       }
     }
-
-    if (this.imageURL === null && this.username !== null && this.password !== null && this.url !== null && this.uuid != null) {
-      getImage(this.url, this.username, this.password, this.uuid)
-      .then(imageURL => this.imageURL = imageURL);
-    }
-
   }
 
   connectedCallback() {
@@ -44,6 +46,20 @@ export default class PhotoViewer extends LightningElement {
     this.password = localStorage.getItem("myphotos:password");
     this.url = localStorage.getItem("myphotos:url");
     console.log(this.username);
+
+    this.subscription = subscribe(
+      this.messageContext,
+      RECORD_ID_UPDATE_MESSAGE,
+      (message) => {
+        this.recordId = message.recordId;
+      });
+  }
+
+  disconnectedCallback() {
+    if (this.subscription != null) {
+      unsubscribe(this.subscription);
+      this.subscription = null;
+    }
   }
 
   @wire(getRecord, { recordId: '$recordId', fields: recordFields })
@@ -59,7 +75,11 @@ export default class PhotoViewer extends LightningElement {
   }
 
   loadImage() {
-    console.log(this.name + ',' + this.uuid);
+    if (this.username !== null && this.password !== null && this.url !== null && this.uuid != null) {
+      getImage(this.url, this.username, this.password, this.uuid)
+        .then(imageURL => this.imageURL = imageURL);
+    }
+    console.log(this.imageURL);
   }
 
   onSave() {
