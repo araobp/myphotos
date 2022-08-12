@@ -7,18 +7,17 @@ import icons from '@salesforce/resourceUrl/icons'
 import { publish, MessageContext } from 'lightning/messageService';
 import RECORD_ID_UPDATE_MESSAGE from '@salesforce/messageChannel/RecordId__c';
 
-
 const LOCALE = 'ja-JP';
 const toLocalTime = (utcWithoutTZ) => {
-    const date = new Date(utcWithoutTZ);
-    return date.toLocaleString(LOCALE);
+  const date = new Date(utcWithoutTZ);
+  return date.toLocaleString(LOCALE);
 }
 
 export default class PicturesMap extends LightningElement {
   @api height = 500;
   recordId = null;
   position = [35.54236976, 139.64190659];  // Default: Apita Yokohama Tsunashima
-  
+
   radius;
   show = false;
   map;
@@ -49,23 +48,31 @@ export default class PicturesMap extends LightningElement {
       this.centerIcon = L.icon({
         iconUrl: icons + '/center.png',
         iconSize: [24, 24]
-      });      
-      this.draw();
-    });
+      });
 
-    this.radius = localStorage.getItem("myphotos:radius") || 3.0;
+      this.radius = localStorage.getItem("myphotos:radius") || 3.0;
+
+      navigator.geolocation.getCurrentPosition(
+        position => {
+          this.position = [position.coords.latitude, position.coords.longitude];
+          this.draw()
+        },
+        error => {
+          this.draw();
+        });
+    });
   }
 
   draw() {
     const container = this.template.querySelector('[data-id="map"]');
     container.style.height = `${this.height}px`;
     this.map = L.map(container, { scrollWheelZoom: false }).setView(this.position, 15);
-    
+
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       attribution: '&copy; <a href="<https://www.openstreetmap.org/copyright>">OpenStreetMap</a> contributors',
     }).addTo(this.map);
 
-    this.centerMarker = L.marker(this.position, {icon: this.centerIcon}).addTo(this.map);
+    this.centerMarker = L.marker(this.position, { icon: this.centerIcon }).addTo(this.map);
 
     this.map.on('click', this.onclick);
   }
@@ -91,8 +98,8 @@ export default class PicturesMap extends LightningElement {
           const marker = L.marker([record.Geolocation__Latitude__s, record.Geolocation__Longitude__s])
             .addTo(this.map)
             .on('click', this.onClick)
-            .bindTooltip(record.Id, {opacity: 0})
-            .bindPopup('<div>[' + record.Name +']</div><div>' + toLocalTime(record.Timestamp__c) + '</div><div>' + record.Memo__c +'</div>');
+            .bindTooltip(record.Id, { opacity: 0 })
+            .bindPopup('<div>[' + record.Name + ']</div><div>' + toLocalTime(record.Timestamp__c) + '</div><div>' + record.Memo__c + '</div>');
           this.markers.push(marker);
         });
         this.featureGroup = L.featureGroup(this.markers).addTo(this.map);
@@ -103,7 +110,7 @@ export default class PicturesMap extends LightningElement {
           fillColor: '#FFFFFF',
           fillOpacity: 0
         }).addTo(this.map);
-        this.centerMarker = L.marker(e.latlng, {icon: this.centerIcon}).addTo(this.map);
+        this.centerMarker = L.marker(e.latlng, { icon: this.centerIcon }).addTo(this.map);
       });
   }
 
