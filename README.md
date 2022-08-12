@@ -2,8 +2,8 @@
 
 <table>
   <tr>
-    <td valign="top"><img src="./doc/Bunmeido.png"/></td>
-    <td valign="top"><img src="./doc/Bunmeido2.png"/></td>
+    <td valign="top"><img src="./doc/react-myphotos.png" height="350px"></td>
+    <td valign="top"><img src="./doc/Tressa.png" height="350px"></td>
   </tr>
 </table>
 
@@ -47,7 +47,12 @@
 
 <img src="./doc/RecordPage.png" width="700px">
 
-<img src="./doc/Tressa.png" width="700px">
+<table>
+  <tr>
+    <td valign="top"><img src="./doc/Bunmeido.png"/></td>
+    <td valign="top"><img src="./doc/Bunmeido2.png"/></td>    
+  </tr>
+</table>
 
 #### CSP setting
 
