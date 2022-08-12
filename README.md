@@ -14,7 +14,6 @@
 
 #### TODO
 
-- Pubsub among LWC components 
 - OAuth2.0 support
 
 ## Components
