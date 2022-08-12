@@ -9,12 +9,11 @@
 
 ## Goals
 
-- Mobile photo app based on React and SpringBoot/Heroku for my weekend cycling
+- Mobile photo app based on React and SpringBoot/Heroku for cycling and walking on weekends
 - Integration with Salesforce via Heroku Connect to privide rich UIs for desktop
 
 #### TODO
 
-- Pubsub among LWC components 
 - OAuth2.0 support
 
 ## Components
@@ -42,10 +41,13 @@
 
 #### Original LWC components in this project
 
-- [pictureMap](./myphotos/force-app/main/default/lwc/pictureMap) -- I prefer using leaflet rather than Google Map (lightning-map).
+- [pictureMap](./myphotos/force-app/main/default/lwc/pictureMap)
+- [picturesMap](./myphotos/force-app/main/default/lwc/picturesMap)
 - [photoViewer](./myphotos/force-app/main/default/lwc/photoViewer)
 
-<img src="./doc/RecordPage.png" width="600px">
+<img src="./doc/RecordPage.png" width="700px">
+
+<img src="./doc/Tressa.png" width="700px">
 
 #### CSP setting
 
