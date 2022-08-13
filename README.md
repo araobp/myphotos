@@ -12,9 +12,9 @@
 - Mobile photo app based on React and SpringBoot/Heroku for cycling and walking on weekends
 - Integration with Salesforce via Heroku Connect to privide rich UIs for desktop
 
-#### TODO
+#### TODO: OAuth2.0 support
 
-- OAuth2.0 support
+https://trailhead.salesforce.com/ja/content/learn/projects/build-a-connected-app-for-api-integration
 
 ## Components
 
