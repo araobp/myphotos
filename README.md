@@ -15,7 +15,7 @@
 #### TODO
 
 - OAuth2.0 support -- https://trailhead.salesforce.com/ja/content/learn/projects/build-a-connected-app-for-api-integration
-- Lifecycle management based on SFDX -- https://github.com/forcedotcom/df17-ant-to-sfdx
+- Lifecycle management based on SFDX -- https://github.com/forcedotcom/df17-ant-to-sfdx, https://www.youtube.com/watch?v=WX4urLYi7dA
 
 ## Components
 
