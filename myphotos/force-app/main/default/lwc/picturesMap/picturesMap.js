@@ -6,6 +6,7 @@ import icons from '@salesforce/resourceUrl/icons'
 
 import { publish, MessageContext } from 'lightning/messageService';
 import RECORD_ID_UPDATE_MESSAGE from '@salesforce/messageChannel/RecordId__c';
+import Id from '@salesforce/user/Id';
 
 const LOCALE = 'ja-JP';
 const toLocalTime = (utcWithoutTZ) => {
@@ -15,6 +16,7 @@ const toLocalTime = (utcWithoutTZ) => {
 
 export default class PicturesMap extends LightningElement {
   @api height = 500;
+  userId = Id;
   recordId = null;
   position = [35.54236976, 139.64190659];  // Default: Apita Yokohama Tsunashima
 
@@ -52,6 +54,8 @@ export default class PicturesMap extends LightningElement {
 
       this.radius = localStorage.getItem("myphotos:radius") || 3.0;
 
+      console.log('userId: ' + this.userId);
+      
       navigator.geolocation.getCurrentPosition(
         position => {
           this.position = [position.coords.latitude, position.coords.longitude];
