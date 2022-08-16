@@ -42,9 +42,9 @@
 
 #### Original LWC components in this project
 
-- [pictureMap](./myphotos/force-app/main/default/lwc/pictureMap)
-- [picturesMap](./myphotos/force-app/main/default/lwc/picturesMap)
-- [photoViewer](./myphotos/force-app/main/default/lwc/photoViewer)
+- [pictureMap](./myphotos/myphotos/main/default/lwc/pictureMap)
+- [picturesMap](./myphotos/myphotos/main/default/lwc/picturesMap)
+- [photoViewer](./myphotos/myphotos/main/default/lwc/photoViewer)
 
 <img src="./doc/RecordPage.png" width="700px">
 
@@ -57,7 +57,7 @@
 
 #### CSP setting
 
-The "[PhotoViewer](./myphotos/force-app/main/default/lwc/photoViewer)" LWC component issues a HTTP GET from JavaScript to MyPhotos REST API service hosted by the Heroku instance.
+The "[PhotoViewer](./myphotos/myphotos/main/default/lwc/photoViewer)" LWC component issues a HTTP GET from JavaScript to MyPhotos REST API service hosted by the Heroku instance.
 
 CSP setting is required for such as access:
 
