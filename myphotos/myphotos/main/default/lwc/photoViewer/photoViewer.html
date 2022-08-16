@@ -1,0 +1,46 @@
+<template>
+  <lightning-card title="Photo Viewer" icon-name="standard:photo">
+    <div slot="actions">
+      <lightning-button-icon icon-name="utility:settings" alternative-text="MyPhotos API service credential settings"
+        onclick={showSettings}></lightning-button-icon>
+    </div>
+    <template if:true={show}>
+      <div class="slds-p-around_medium lgc-bg">
+        <lightning-input type="text" data-name="username" label="Username: "></lightning-input>
+        <lightning-input type="text" data-name="password" label="Password: "></lightning-input>
+        <lightning-input type="text" data-name="url" label="URL: "></lightning-input>
+        <lightning-button class="slds-button slds-m-top_x-small" label="Save" onclick={onSave}></lightning-button>
+        <lightning-button class="slds-button slds-m-top_x-small" label="Cancel" onclick={onCancel}></lightning-button>
+      </div>
+    </template>
+
+    <div class="slds-m-around_medium" style="text-align: center;">
+      <img src={imageURL} onclick={enableModal}>
+    </div>
+    <div class="slds-m-around_medium">
+      <p>UUID: {uuid}</p>
+    </div>
+
+  </lightning-card>
+
+  <template if:true={showModal}>
+    <section role="dialog" tabindex="-1" aria-modal="true" aria-labelledby="modal-heading-01"
+      class="slds-modal slds-fade-in-open">
+      <div class="slds-modal__container">
+        <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" onclick={disableModal}>
+          <svg class="slds-button__icon slds-button__icon_large" aria-hidden="true">
+            <use xlink:href="/_slds/icons/utility-sprite/svg/symbols.svg#close"></use>
+          </svg>
+          <span class="slds-assistive-text">Close</span>
+        </button>
+        <div class="slds-modal__header">
+          <h1 id="modal-heading-01" class="slds-modal__title slds-hyphenate">{name}</h1>
+        </div>
+        <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1" style="text-align: center;">
+          <img src={imageURL}>
+        </div>
+      </div>
+    </section>
+    <div class="slds-backdrop slds-backdrop_open" role="presentation"></div>
+  </template>
+</template>
