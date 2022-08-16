@@ -1,7 +1,7 @@
 {
     "packageDirectories": [
         {
-            "path": "force-app",
+            "path": "myphotos",
             "default": true,
             "package": "myphotos",
             "versionName": "ver 0.1",
