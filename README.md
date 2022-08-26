@@ -1,5 +1,8 @@
 # My Photos: React-SpringBoot-Salesforce integration
 
+Unfortunately, this project is terminated due to [this announcement](https://blog.heroku.com/next-chapter).
+
+---
 <table>
   <tr>
     <td valign="top"><img src="./doc/react-myphotos.png" height="350px"></td>
