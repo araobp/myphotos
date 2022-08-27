@@ -32,6 +32,10 @@ export default class PicturesMap extends LightningElement {
   @wire(MessageContext)
   messageContext;
 
+  watching = false;
+  watchId = null;
+  address = '<unknown>';
+
   renderedCallback() {
     this.template.querySelector('[data-id="map"]').style.height = `${this.height}px`;
 
@@ -55,29 +59,26 @@ export default class PicturesMap extends LightningElement {
       this.radius = localStorage.getItem("myphotos:radius") || 3.0;
 
       console.log('userId: ' + this.userId);
-      
-      navigator.geolocation.getCurrentPosition(
-        position => {
-          this.position = [position.coords.latitude, position.coords.longitude];
-          this.draw()
-        },
-        error => {
-          this.draw();
-        });
+       this.startWatchingLocation();
     });
   }
 
+  disconnectedCallback() {
+    this.stopWatchingLocation();
+  }
+
   draw() {
-    const container = this.template.querySelector('[data-id="map"]');
-    container.style.height = `${this.height}px`;
-    this.map = L.map(container, { scrollWheelZoom: false }).setView(this.position, 15);
+    if (this.map == null) {
+      const container = this.template.querySelector('[data-id="map"]');
+      container.style.height = `${this.height}px`;  
+      this.map = L.map(container, { scrollWheelZoom: false });    
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="<https://www.openstreetmap.org/copyright>">OpenStreetMap</a> contributors',
+      }).addTo(this.map);  
+    }
 
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      attribution: '&copy; <a href="<https://www.openstreetmap.org/copyright>">OpenStreetMap</a> contributors',
-    }).addTo(this.map);
-
+    this.map.setView(this.position, 15);
     this.centerMarker = L.marker(this.position, { icon: this.centerIcon }).addTo(this.map);
-
     this.map.on('click', this.onclick);
   }
 
@@ -138,4 +139,28 @@ export default class PicturesMap extends LightningElement {
     publish(this.messageContext, RECORD_ID_UPDATE_MESSAGE, message);
   }
 
+  startWatchingLocation = () => {
+    const id = navigator.geolocation.watchPosition(position => {
+          const { latitude, longitude } = position.coords;
+          this.position = [latitude, longitude];
+          console.log(this.position);
+          this.watching = true;
+          this.draw();
+        },
+        () => { console.log('Watching geolocation failed') },
+        {
+          enableHighAccuracy: true
+        }
+    );
+    this.watchId = id;
+  };
+
+  stopWatchingLocation = () => {
+    if ('geolocation' in navigator) {
+        this.watchId && navigator.geolocation.clearWatch(this.watchId);
+        this.watching = false;
+        this.watchId = null;
+    }
+  };
+  
 }
