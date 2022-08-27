@@ -44,7 +44,7 @@ The React part can be replaced with LWC components based on the web components t
 
 ## Remote site settings
 
-[NomintimCallout](./myphotos/myphotos/main/default/classes/NominatimCallout.cls) Apex script assumes a remote site setting as follows:
+[NominatimCallout](./myphotos/myphotos/main/default/classes/NominatimCallout.cls) Apex script assumes a remote site setting as follows:
 
 <img src="./doc/RemoteSiteSettings.png" width="600px">
 
