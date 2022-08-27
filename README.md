@@ -1,4 +1,4 @@
-# My Photos: React-SpringBoot-Salesforce integration
+# My Photos
 
 I have been enjoying this app over a half year in my free time.
 
