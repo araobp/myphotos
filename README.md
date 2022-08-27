@@ -2,7 +2,9 @@
 
 I have been enjoying this app over a half year in my free time.
 
-Unfortunately, this project has been suspended since [this announcement](https://blog.heroku.com/next-chapter).
+Unfortunately, [this announcement](https://blog.heroku.com/next-chapter) made me sad.
+
+I leave "heroku-connect" branch intact and switch back to "main" branch.
 
 I am working on remaking this to exclude the Heroku part (the API server backend implemented on SpringBoot, and Heroku Connect) from this project:
 - Replace "PhotoViewer" LWC with "ImageViewer" LWC to view an attached image file to Record__c object.
