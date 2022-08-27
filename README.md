@@ -1,6 +1,7 @@
 # My Photos: React-SpringBoot-Salesforce integration
 
 Unfortunately, this project is terminated due to [this announcement](https://blog.heroku.com/next-chapter).
+I am working on remaking this to exclude Heroku from this project.
 
 ---
 <table>
