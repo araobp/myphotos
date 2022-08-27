@@ -8,6 +8,8 @@ import { publish, MessageContext } from 'lightning/messageService';
 import RECORD_ID_UPDATE_MESSAGE from '@salesforce/messageChannel/RecordId__c';
 import Id from '@salesforce/user/Id';
 
+import geolocationToAddress from '@salesforce/apex/NominatimCallout.geolocationToAddress';
+
 const LOCALE = 'ja-JP';
 const toLocalTime = (utcWithoutTZ) => {
   const date = new Date(utcWithoutTZ);
@@ -24,7 +26,7 @@ export default class PicturesMap extends LightningElement {
   show = false;
   map;
   centerIcon;
-  centerMarker;
+  centerMarker = null;
   featureGroup;
   markers = [];
   circle;
@@ -75,11 +77,15 @@ export default class PicturesMap extends LightningElement {
       L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '&copy; <a href="<https://www.openstreetmap.org/copyright>">OpenStreetMap</a> contributors',
       }).addTo(this.map);  
+      this.map.on('click', this.onclick);
     }
 
     this.map.setView(this.position, 15);
+
+    if (this.centerMarker != null) {
+      this.map.removeLayer(this.centerMarker);
+    }
     this.centerMarker = L.marker(this.position, { icon: this.centerIcon }).addTo(this.map);
-    this.map.on('click', this.onclick);
   }
 
   onclick = (e) => {
@@ -145,6 +151,11 @@ export default class PicturesMap extends LightningElement {
           this.position = [latitude, longitude];
           console.log(this.position);
           this.watching = true;
+          geolocationToAddress({latitude: latitude, longitude: longitude})
+          .then(jsonData => {
+            this.address = JSON.parse(jsonData).display_name.replace(/ /g, '').split(',').reverse().slice(2).join(' ');
+            console.log('Address: ' + this.address);
+          });
           this.draw();
         },
         () => { console.log('Watching geolocation failed') },
