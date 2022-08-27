@@ -39,9 +39,9 @@ I am working on remaking this to exclude the Heroku part (the API server backend
 ## Architecture
 
 ```
-                            Table <- - - - - in sync - - - - -> Custom object
-[Mobile app]---REST---[REST API service]---Heroku Connect---[APEX backend scripts]---[LWC frontend]
-  React                SpringBoot/Heroku                     Salesforce Platform      Web components
+                      Record__c custom object
+[Mobile app]---REST---[APEX backend scripts]-----[LWC frontend]
+  React                Salesforce Platform       Web components
 
 ```
 
