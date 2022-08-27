@@ -6,7 +6,9 @@ Unfortunately, [this announcement](https://blog.heroku.com/next-chapter) made me
 
 I leave "heroku-connect" branch intact and switch back to "main" branch.
 
-I am working on remaking this to exclude the Heroku part (the API server backend implemented on SpringBoot, and Heroku Connect) from this project.
+I am working on remaking this project to exclude the Heroku part (the API server backend implemented on SpringBoot, and Heroku Connect) and the React part (frontend) from this project.
+
+The React part can be replaced with LWC components based on the web components technology.
 
 ---
 <table>
