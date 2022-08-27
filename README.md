@@ -39,23 +39,22 @@ I am working on remaking this to exclude the Heroku part (the API server backend
 ## Architecture
 
 ```
-                            Table <- - - - - in sync - - - - -> Custom object
-[Mobile app]---REST---[REST API service]---Heroku Connect---[APEX backend scripts]---[LWC frontend]
-  React                SpringBoot/Heroku                     Salesforce Platform      Web components
+                      Record__c custom object
+[Mobile app]---REST---[APEX backend scripts]-----[LWC frontend]
+  React                Salesforce Platform       Web components
 
 ```
 
 ## Projects
 
 - Salesforce: [myphotos](./myphotos) (LWC components in this project)
-- SpringBoot: [spring-myphotos](https://github.com/araobp/spring-myphotos) on "heroku-connect" branch
 - React: [react-myphotos](https://github.com/araobp/react-myphotos) on "heroku-connect" branch
 
 #### Original LWC components in this project
 
 - [pictureMap](./myphotos/myphotos/main/default/lwc/pictureMap)
 - [picturesMap](./myphotos/myphotos/main/default/lwc/picturesMap)
-- [photoViewer](./myphotos/myphotos/main/default/lwc/photoViewer)
+- [imageViewer](./myphotos/myphotos/main/default/lwc/imageViewer)
 
 <img src="./doc/RecordPage.png" width="700px">
 
@@ -65,14 +64,6 @@ I am working on remaking this to exclude the Heroku part (the API server backend
     <td valign="top"><img src="./doc/Bunmeido2.png"/></td>    
   </tr>
 </table>
-
-#### CSP setting
-
-The "[PhotoViewer](./myphotos/myphotos/main/default/lwc/photoViewer)" LWC component issues a HTTP GET from JavaScript to MyPhotos REST API service hosted by the Heroku instance.
-
-CSP setting is required for such as access:
-
-<img src="./doc/CSP.png" width="900px">
 
 ## References
 - [Using Leaflet to show maps in your LWC components](https://sonneiltech.com/2021/01/using-leaflet-to-show-maps-in-your-lwc-components/)
