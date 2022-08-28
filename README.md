@@ -1,6 +1,15 @@
 # My Photos
 
-I have been enjoying this app over a half year in my free time.
+Salesforce Platform could be a great low-code development platform for Sunday programmers as well as for ISVs.
+
+This project is to develop a mobile photo app based on Salesforce Platform.
+
+---
+## Project goal redirection
+
+I have been enjoying and developing this app over a half year in my free time.
+
+This project has been dependent on React as a frontend library and SpringBoot as a backend framework. Java app on SpringBoot has been running on Heroku.
 
 Unfortunately, [this announcement](https://blog.heroku.com/next-chapter) made me sad.
 
