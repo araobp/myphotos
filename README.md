@@ -29,7 +29,8 @@ I am working on remaking this project to exclude the Heroku part (the API server
                                 Record__c custom object
    [LWC components]-------------[APEX backend scripts]
     Web components               Salesforce Platform
-
+                                          |
+   [React frontend]-----------------------+
 ```
 
 #### Original LWC components in this project
