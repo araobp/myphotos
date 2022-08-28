@@ -16,7 +16,7 @@ This project has been dependent on React as a frontend library and SpringBoot as
 
 I leave "heroku-connect" branch intact and switch back to "main" branch.
 
-I am working on remaking this project to exclude the Heroku part (the API server backend implemented on SpringBoot and Heroku Connect) from this project.
+I am working on remaking this project to exclude the Heroku part (the API server backend implemented on SpringBoot and Heroku Connect) and the React part (frontend) from this project.
 
 ---
 <table>
