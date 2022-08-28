@@ -4,8 +4,9 @@ Salesforce Platform could be a great low-code development platform for Sunday pr
 
 This project is to develop a mobile photo app based on Salesforce Platform.
 
-- Use getUserMedia() to capture image from Mac and PC.
-- Use <input/> to capture image from a mobile camera.
+- Use navigator.geolocation for geolocation (GPS).
+- Use navigator.mediaDevices.getUserMedia() to capture image from Mac and PC (its security protected by LWS).
+- Use HTML input element to capture image from a mobile camera.
 
 ---
 ## Project goal redirection
