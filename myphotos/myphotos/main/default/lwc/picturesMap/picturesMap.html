@@ -5,9 +5,9 @@
         onclick={showSettings}></lightning-button-icon>
     </div>
     <template if:true={show}>
-      <div class="slds-p-around_medium lgc-bg">
-        <label>Radius(km): </label>
-        <input type="text" data-name="radius" onchange={onChange}></input>
+      <div class="slds-p-around_medium">
+        <lightning-input data-element="radius" type="text" label="Radius(km)" value={radius} oncommit={handleRadiusChange}></lightning-input>
+        <lightning-input class="slds-p-top_xxx-small" data-element="autoupdate" type="checkbox" label="Auto update" checked onchange={handleAutoUpdateChange}> </lightning-input>
       </div>
     </template>
     <div class="slds-p-horizontal_medium">

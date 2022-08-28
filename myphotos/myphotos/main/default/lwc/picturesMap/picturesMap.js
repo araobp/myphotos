@@ -38,12 +38,14 @@ export default class PicturesMap extends LightningElement {
   watchId = null;
   address = '<unknown>';
 
+  autoupdate = false;
+
   renderedCallback() {
     this.template.querySelector('[data-id="map"]').style.height = `${this.height}px`;
 
     if (this.show) {
       if (this.radius !== null) {
-        this.template.querySelector('input[data-name="radius"]').value = this.radius;
+        this.template.querySelector('[data-element="radius"]').value = this.radius;
       }
     }
   }
@@ -61,7 +63,7 @@ export default class PicturesMap extends LightningElement {
       this.radius = localStorage.getItem("myphotos:radius") || 3.0;
 
       console.log('userId: ' + this.userId);
-       this.startWatchingLocation();
+      this.startWatchingLocation();
     });
   }
 
@@ -72,11 +74,11 @@ export default class PicturesMap extends LightningElement {
   draw() {
     if (this.map == null) {
       const container = this.template.querySelector('[data-id="map"]');
-      container.style.height = `${this.height}px`;  
-      this.map = L.map(container, { scrollWheelZoom: false });    
+      container.style.height = `${this.height}px`;
+      this.map = L.map(container, { scrollWheelZoom: false });
       L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '&copy; <a href="<https://www.openstreetmap.org/copyright>">OpenStreetMap</a> contributors',
-      }).addTo(this.map);  
+      }).addTo(this.map);
       this.map.on('click', this.onclick);
     }
 
@@ -129,11 +131,21 @@ export default class PicturesMap extends LightningElement {
     this.show = !this.show;
   }
 
-  onChange = () => {
-    const text = this.template.querySelector('input[data-name="radius"]').value;
+  handleRadiusChange = () => {
+    const input = this.template.querySelector('[data-element="radius"]'); 
+    const text = input.value;
     this.radius = Number(text) || this.radius;
     localStorage.setItem("myphotos:radius", this.radius);
-    this.show = false;
+    input.blur();
+  }
+
+  handleAutoUpdateChange = () => {
+    const checked = this.template.querySelector('[data-element="autoupdate"]').checked;
+    if (checked) {
+      this.startWatchingLocation();
+    } else {
+      this.stopWatchingLocation();
+    }
   }
 
   onClick = (e) => {
@@ -146,32 +158,34 @@ export default class PicturesMap extends LightningElement {
   }
 
   startWatchingLocation = () => {
-    const id = navigator.geolocation.watchPosition(position => {
-          const { latitude, longitude } = position.coords;
-          this.position = [latitude, longitude];
-          console.log(this.position);
-          this.watching = true;
-          geolocationToAddress({latitude: latitude, longitude: longitude})
+    if ('geolocation' in navigator && this.watchId == null) {
+      const id = navigator.geolocation.watchPosition(position => {
+        const { latitude, longitude } = position.coords;
+        this.position = [latitude, longitude];
+        console.log(this.position);
+        this.watching = true;
+        geolocationToAddress({ latitude: latitude, longitude: longitude })
           .then(jsonData => {
             this.address = JSON.parse(jsonData).display_name.replace(/ /g, '').split(',').reverse().slice(2).join(' ');
             console.log('Address: ' + this.address);
           });
-          this.draw();
-        },
+        this.draw();
+      },
         () => { console.log('Watching geolocation failed') },
         {
           enableHighAccuracy: true
         }
-    );
-    this.watchId = id;
+      );
+      this.watchId = id;
+    }
   };
 
   stopWatchingLocation = () => {
-    if ('geolocation' in navigator) {
-        this.watchId && navigator.geolocation.clearWatch(this.watchId);
-        this.watching = false;
-        this.watchId = null;
+    if (this.watchId != null) {
+      this.watchId && navigator.geolocation.clearWatch(this.watchId);
+      this.watching = false;
+      this.watchId = null;
     }
   };
-  
+
 }
