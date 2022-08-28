@@ -5,21 +5,23 @@ export default class WebCam extends LightningElement {
   webcam = null;
 
   renderedCallback() {
-    this.webcam = this.template.querySelector('[data-element="webcam"]');
+    this.webcam = this.template.querySelector('video');
+
     const constraints = {
       audio: false,
       video: {
-        width: 600, height: 800
+        width: 480, height: 640
       }
     };
 
     if (navigator.mediaDevices.getUserMedia) {
       navigator.mediaDevices.getUserMedia(constraints)
-        .then(function (stream) {
+        .then(stream => {
           this.webcam.srcObject = stream;
+          this.webcam.play();
         })
-        .catch(function (error) {
-          console.log("Something went wrong!");
+        .catch(error => {
+          console.log(error.name + ': ' + error.message);
         });
     }
   }
