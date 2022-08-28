@@ -4,6 +4,9 @@ Salesforce Platform could be a great low-code development platform for Sunday pr
 
 This project is to develop a mobile photo app based on Salesforce Platform.
 
+- Use getUserMedia() to capture image from Mac and PC.
+- Use <input/> to capture image from a mobile camera.
+
 ---
 ## Project goal redirection
 
