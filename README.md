@@ -9,7 +9,7 @@ This project is to develop a mobile photo app based on Salesforce Platform.
 - Use HTML input element to capture image from a mobile camera.
 
 ---
-## Project goal redirection
+## Project goal redirection (August 28th, 2022)
 
 I have been enjoying and developing this app over a half year in my free time.
 
