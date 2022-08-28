@@ -9,9 +9,7 @@ This project is to develop a mobile photo app based on Salesforce Platform.
 
 I have been enjoying and developing this app over a half year in my free time.
 
-This project has been dependent on React as a frontend library and SpringBoot as a backend framework. Java app on SpringBoot has been running on Heroku.
-
-Unfortunately, [this announcement](https://blog.heroku.com/next-chapter) made me sad.
+This project has been dependent on React as a frontend library and SpringBoot as a backend framework. The Java app on SpringBoot has been running on Heroku... Unfortunately, [this announcement](https://blog.heroku.com/next-chapter) made me sad.
 
 I leave "heroku-connect" branch intact and switch back to "main" branch.
 
