@@ -1,0 +1,14 @@
+<template>
+  <lightning-card title="WebCam" icon-name="standard:photo">
+    <div class="slds-m-around_medium" style="text-align: center;">
+      <img src={imageURL}>
+      <video data-element="webcam" playsinline autoplay></video>
+    </div>
+    <div class="slds-m-around_medium" style="text-align: center;">
+      <lightning-button variant="brand" label="Done" title="Done" onclick={handleDone} class="slds-m-left_x-small"></lightning-button>
+      <lightning-button variant="brand-outline" label="Retry" title="Retry" onclick={handleRetry} class="slds-m-left_x-small"></lightning-button>
+      <lightning-button variant="destructive" label="Cancel" title="Cancel" onclick={handleCancel} class="slds-m-left_x-small"></lightning-button>
+    </div>
+  </lightning-card>
+
+</template>
