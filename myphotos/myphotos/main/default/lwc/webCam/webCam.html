@@ -2,8 +2,8 @@
   <lightning-card title="WebCam" icon-name="standard:photo">
     <div class="slds-m-around_medium" style="text-align: center;">
       <img src={imageURL}>
-      <video playsinline></video>
-      <input type="file" accept="image/*" capture="environment"/>
+      <!-- <video playsinline></video> -->
+      <input type="file" accept="image/*" capture="environment" onchange={handleCapture}/>
     </div>
     <div class="slds-m-around_medium" style="text-align: center;">
       <lightning-button variant="brand" label="Done" title="Done" onclick={handleDone} class="slds-m-left_x-small"></lightning-button>

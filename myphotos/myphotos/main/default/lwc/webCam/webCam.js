@@ -3,7 +3,9 @@ import { LightningElement } from 'lwc';
 export default class WebCam extends LightningElement {
 
   webcam = null;
+  imageURL = null;
 
+  /*
   renderedCallback() {
     this.webcam = this.template.querySelector('video');
 
@@ -24,5 +26,14 @@ export default class WebCam extends LightningElement {
           console.log(error.name + ': ' + error.message);
         });
     }
+  }*/
+
+  handleCapture = e => {
+    const f = e.target.files[0];
+    const reader = new FileReader();
+    reader.onload = _ => {
+        this.imageURL = reader.result;
+    };
+    reader.readAsDataURL(f);
   }
 }
