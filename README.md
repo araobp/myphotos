@@ -4,8 +4,12 @@ Salesforce Platform could be a great low-code development platform for Sunday pr
 
 This project is to develop a mobile photo app based on Salesforce Platform.
 
+- Use navigator.geolocation for geolocation (GPS).
+- Use navigator.mediaDevices.getUserMedia() to capture image from Mac and PC (its security protected by LWS).
+- Use HTML input element to capture image from a mobile camera.
+
 ---
-## Project goal redirection
+## Project goal redirection (August 28th, 2022)
 
 I have been enjoying and developing this app over a half year in my free time.
 
@@ -13,7 +17,7 @@ This project has been dependent on React as a frontend library and SpringBoot as
 
 I leave "heroku-connect" branch intact and switch back to "main" branch.
 
-I am working on remaking this project to exclude the Heroku part (the API server backend implemented on SpringBoot and Heroku Connect) from this project.
+I am working on remaking this project to exclude the Heroku part (the API server backend implemented on SpringBoot and Heroku Connect) and the React part (frontend) from this project.
 
 ---
 <table>
