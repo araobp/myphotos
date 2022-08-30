@@ -13,7 +13,7 @@ This project is to develop a mobile photo app based on Salesforce Platform.
 ---
 <table>
   <tr>
-    <td valign="top"><img src="./doc/react-myphotos.png" height="350px"></td>
+    <!-- <td valign="top"><img src="./doc/react-myphotos.png" height="350px"></td> -->
     <td valign="top"><img src="./doc/Tressa.png" height="350px"></td>
   </tr>
 </table>
@@ -71,8 +71,6 @@ I have been enjoying and developing this app over a half year in my free time.
 This project has been dependent on React as a frontend library and SpringBoot as a backend framework. The Java app on SpringBoot has been running on Heroku... Unfortunately, [this announcement](https://blog.heroku.com/next-chapter) made me sad.
 
 I leave "heroku-connect" branch intact and switch back to "main" branch.
-
-<img src="./doc/Bunmeido.png"/>
 
 I am working on remaking this project to exclude the Heroku part (the API server backend implemented on SpringBoot and Heroku Connect) and the React part (frontend) from this project.
 
