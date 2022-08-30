@@ -7,8 +7,10 @@ import icons from '@salesforce/resourceUrl/icons'
 import { publish, MessageContext } from 'lightning/messageService';
 import RECORD_ID_UPDATE_MESSAGE from '@salesforce/messageChannel/RecordId__c';
 import Id from '@salesforce/user/Id';
+import { GPS } from 'c/gps';
 
 import geolocationToAddress from '@salesforce/apex/NominatimCallout.geolocationToAddress';
+import EmailPreferencesStayInTouchReminder from '@salesforce/schema/User.EmailPreferencesStayInTouchReminder';
 
 const LOCALE = 'ja-JP';
 const toLocalTime = (utcWithoutTZ) => {
@@ -20,7 +22,7 @@ export default class PicturesMap extends LightningElement {
   @api height = 500;
   userId = Id;
   recordId = null;
-  position = [35.54236976, 139.64190659];  // Default: Apita Yokohama Tsunashima
+  position = [0, 0];
 
   radius;
   show = false;
@@ -39,6 +41,15 @@ export default class PicturesMap extends LightningElement {
   address = '<unknown>';
 
   autoupdate = false;
+
+  gps;
+
+  constructor() {
+    super();
+    this.gps = new GPS();
+    this.position = this.gps.position;
+    this.address = this.gps.address;
+  }
 
   renderedCallback() {
     this.template.querySelector('[data-id="map"]').style.height = `${this.height}px`;
@@ -63,12 +74,16 @@ export default class PicturesMap extends LightningElement {
       this.radius = localStorage.getItem("myphotos:radius") || 3.0;
 
       console.log('userId: ' + this.userId);
-      this.startWatchingLocation();
+      this.gps.startWatchingLocation((position, address) => {
+        this.position = position;
+        this.address = address;
+        this.draw();
+      });
     });
   }
 
   disconnectedCallback() {
-    this.stopWatchingLocation();
+    this.gps.stopWatchingLocation();
   }
 
   draw() {
@@ -132,7 +147,7 @@ export default class PicturesMap extends LightningElement {
   }
 
   handleRadiusChange = () => {
-    const input = this.template.querySelector('[data-element="radius"]'); 
+    const input = this.template.querySelector('[data-element="radius"]');
     const text = input.value;
     this.radius = Number(text) || this.radius;
     localStorage.setItem("myphotos:radius", this.radius);
@@ -156,36 +171,5 @@ export default class PicturesMap extends LightningElement {
     };
     publish(this.messageContext, RECORD_ID_UPDATE_MESSAGE, message);
   }
-
-  startWatchingLocation = () => {
-    if ('geolocation' in navigator && this.watchId == null) {
-      const id = navigator.geolocation.watchPosition(position => {
-        const { latitude, longitude } = position.coords;
-        this.position = [latitude, longitude];
-        console.log(this.position);
-        this.watching = true;
-        geolocationToAddress({ latitude: latitude, longitude: longitude })
-          .then(jsonData => {
-            this.address = JSON.parse(jsonData).display_name.replace(/ /g, '').split(',').reverse().slice(2).join(' ');
-            console.log('Address: ' + this.address);
-          });
-        this.draw();
-      },
-        () => { console.log('Watching geolocation failed') },
-        {
-          enableHighAccuracy: true
-        }
-      );
-      this.watchId = id;
-    }
-  };
-
-  stopWatchingLocation = () => {
-    if (this.watchId != null) {
-      this.watchId && navigator.geolocation.clearWatch(this.watchId);
-      this.watching = false;
-      this.watchId = null;
-    }
-  };
 
 }
