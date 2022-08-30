@@ -2,7 +2,9 @@
 
 (Work in progress)
 
-Salesforce Platform could be a great low-code development platform for Sunday programmers as well as for ISVs.
+Salesforce Developer Edition could be a great low-code development platform for Sunday programmers.
+
+And the size of storage (5MB data storage and 20MB file storage) is large enough for storing a few hundreds of low-resolution photo images.
 
 This project is to develop a mobile photo app based on Salesforce Platform.
 
