@@ -9,17 +9,6 @@ This project is to develop a mobile photo app based on Salesforce Platform.
 - Use HTML input element to capture image from a mobile camera.
 
 ---
-## Project goal redirection (August 28th, 2022)
-
-I have been enjoying and developing this app over a half year in my free time.
-
-This project has been dependent on React as a frontend library and SpringBoot as a backend framework. The Java app on SpringBoot has been running on Heroku... Unfortunately, [this announcement](https://blog.heroku.com/next-chapter) made me sad.
-
-I leave "heroku-connect" branch intact and switch back to "main" branch.
-
-I am working on remaking this project to exclude the Heroku part (the API server backend implemented on SpringBoot and Heroku Connect) and the React part (frontend) from this project.
-
----
 <table>
   <tr>
     <td valign="top"><img src="./doc/react-myphotos.png" height="350px"></td>
@@ -33,8 +22,7 @@ I am working on remaking this project to exclude the Heroku part (the API server
                                 Record__c custom object
    [LWC components]-------------[APEX backend scripts]
     Web components               Salesforce Platform
-                                          |
-   [React frontend]-----------------------+
+
 ```
 
 #### Original LWC components in this project
@@ -71,3 +59,16 @@ Enable LWS (Lightning Web Security) to enable "navigator.mediaDevices.getUserMed
 - [Develop Against Any Org](https://developer.salesforce.com/docs/atlas.en-us.238.0.sfdx_dev.meta/sfdx_dev/sfdx_dev_develop_any_org.htm)
 - [Nominatim](https://nominatim.org/)
 - [Custom File Upload Using LWC](https://www.salesforcetroop.com/custom_file_upload_using_lwc)
+
+---
+## Project goal redirection (August 28th, 2022)
+
+I have been enjoying and developing this app over a half year in my free time.
+
+This project has been dependent on React as a frontend library and SpringBoot as a backend framework. The Java app on SpringBoot has been running on Heroku... Unfortunately, [this announcement](https://blog.heroku.com/next-chapter) made me sad.
+
+I leave "heroku-connect" branch intact and switch back to "main" branch.
+
+I am working on remaking this project to exclude the Heroku part (the API server backend implemented on SpringBoot and Heroku Connect) and the React part (frontend) from this project.
+
+
