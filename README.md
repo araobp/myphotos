@@ -68,3 +68,4 @@ Enable LWS (Lightning Web Security) to enable "navigator.mediaDevices.getUserMed
 - [Using Leaflet to show maps in your LWC components](https://sonneiltech.com/2021/01/using-leaflet-to-show-maps-in-your-lwc-components/)
 - [Develop Against Any Org](https://developer.salesforce.com/docs/atlas.en-us.238.0.sfdx_dev.meta/sfdx_dev/sfdx_dev_develop_any_org.htm)
 - [Nominatim](https://nominatim.org/)
+- [Custom File Upload Using LWC](https://www.salesforcetroop.com/custom_file_upload_using_lwc)
