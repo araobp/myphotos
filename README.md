@@ -42,6 +42,8 @@ I am working on remaking this project to exclude the Heroku part (the API server
 - [pictureMap](./myphotos/myphotos/main/default/lwc/pictureMap)
 - [picturesMap](./myphotos/myphotos/main/default/lwc/picturesMap)
 - [imageViewer](./myphotos/myphotos/main/default/lwc/imageViewer)
+- [camera](./myphotos/myphotos/main/default/lwc/camera)
+- [gps](./myphotos/myphotos/main/default/lwc/gps)
 
 <img src="./doc/RecordPage.png" width="700px">
 
