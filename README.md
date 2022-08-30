@@ -39,8 +39,7 @@ This project is to develop a mobile photo app based on Salesforce Platform.
 
 <table>
   <tr>
-    <!-- <td valign="top"><img src="./doc/Bunmeido.png"/></td>-->
-    <td>(Frontend to be developed soon)</td>
+    <td valign="top"><img src="./doc/Bunmeido.png"/>
     <td valign="top"><img src="./doc/Bunmeido2.png"/></td>    
   </tr>
 </table>
