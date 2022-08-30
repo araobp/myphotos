@@ -43,7 +43,7 @@ I am working on remaking this project to exclude the Heroku part (the API server
 - [picturesMap](./myphotos/myphotos/main/default/lwc/picturesMap)
 - [imageViewer](./myphotos/myphotos/main/default/lwc/imageViewer)
 - [camera](./myphotos/myphotos/main/default/lwc/camera)
-- [gps](./myphotos/myphotos/main/default/lwc/gps)
+- [gps](./myphotos/myphotos/main/default/lwc/gps) (GPS library, not LWC component)
 
 <img src="./doc/RecordPage.png" width="700px">
 
