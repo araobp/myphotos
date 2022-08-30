@@ -52,7 +52,7 @@ This project is to develop a mobile photo app based on Salesforce Platform.
 
 ## Lightning Web Security
 
-Enable LWS (Lightning Web Security) to enable "navigator.mediaDevices.getUserMedia()".
+Enable LWS (Lightning Web Security) to enable "navigator.mediaDevices.getUserMedia()" (to enable WebCam).
 
 <img src="./doc/LWS.png" width="500px">
 
