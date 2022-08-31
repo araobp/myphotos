@@ -1,11 +1,19 @@
 import { LightningElement } from 'lwc';
 import geolocationToAddress from '@salesforce/apex/NominatimCallout.geolocationToAddress';
+import createRecord from '@salesforce/apex/RecordObject.createRecord';
+
 import { GPS } from 'c/gps';
+
+const IMAGE_SIZE = 432;
+const IMAGE_SIZE_SMALL = 64
 
 export default class camera extends LightningElement {
 
   webcam = null;
   imageURL = null;
+  imageURL_small = null;
+  imageURL_base64 = null;
+  imageURL_small_base64 = null;
   position = [0, 0];
   address = '';
 
@@ -14,7 +22,11 @@ export default class camera extends LightningElement {
     this.gps = new GPS();
     this.position = this.gps.position;
     this.address = this.gps.address;
+    this.uuid = crypto.randomUUID();
+    this.datetime = this.datetimeGmt();
   }
+
+  datetimeGmt = _ => new Date().toISOString().replace('T', ' ').substring(0, 19);
 
   connectedCallback() {
     this.gps.startWatchingLocation((position, address) => {
@@ -55,10 +67,13 @@ export default class camera extends LightningElement {
     const reader = new FileReader();
     reader.onload = _ => {
       const imageURL = reader.result;
-      console.log(imageURL);
-      this.resizeImage(imageURL, 128, resizedImageURL => {
-        console.log(resizedImageURL);
+      this.resizeImage(imageURL, IMAGE_SIZE, resizedImageURL => {
         this.imageURL = resizedImageURL;
+        this.imageURL_base64 = resizedImageURL.split(',')[1];
+        this.resizeImage(imageURL, IMAGE_SIZE_SMALL, resizedImageURL_small => {
+          this.imageURL_small = resizedImageURL_small;
+          this.imageURL_small_base64 = resizedImageURL_small.split(',')[1];
+        });
       });
     };
     reader.readAsDataURL(f);

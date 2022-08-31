@@ -1,7 +1,9 @@
 <template>
   <lightning-card title="Camera" icon-name="standard:photo" style="text-align: center;">
     <div class="slds-grid slds-grid_vertical" style="text-align: left;">
-      <div class="slds-col slds-p-horizontal_small">{address}</div>
+      <div class="slds-col slds-p-horizontal_small">Address: {address}</div>
+      <div class="slds-col slds-p-horizontal_small">UUID: {uuid}</div>
+      <div class="slds-col slds-p-horizontal_small">Datetime: {datetime}</div>
       <lightning-input class="slds-col slds-p-horizontal_small" data-element="name" type="text" label="Name"
         value={name}></lightning-input>
       <lightning-textarea class="slds-col slds-p-horizontal_small" data-element="memo" type="text" label="Memo"

@@ -40,6 +40,7 @@
     <navType>Standard</navType>
     <tabs>standard-home</tabs>
     <tabs>Record__c</tabs>
+    <tabs>MyPhotosWebCam</tabs>
     <tabs>standard-Task</tabs>
     <uiType>Lightning</uiType>
     <utilityBar>My_Photos_UtilityBar</utilityBar>
