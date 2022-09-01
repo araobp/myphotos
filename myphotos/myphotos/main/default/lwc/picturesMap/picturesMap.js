@@ -52,7 +52,7 @@ export default class PicturesMap extends LightningElement {
   }
 
   renderedCallback() {
-    this.template.querySelector('[data-id="map"]').style.height = `${this.height}px`;
+    this.template.querySelector('[data-element="map"]').style.height = `${this.height}px`;
 
     if (this.show) {
       if (this.radius !== null) {
@@ -88,7 +88,7 @@ export default class PicturesMap extends LightningElement {
 
   draw() {
     if (this.map == null) {
-      const container = this.template.querySelector('[data-id="map"]');
+      const container = this.template.querySelector('[data-element="map"]');
       container.style.height = `${this.height}px`;
       this.map = L.map(container, { scrollWheelZoom: false });
       L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {

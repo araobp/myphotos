@@ -8,9 +8,7 @@ export class GPS {
   watchId = null;
 
   startWatchingLocation = callback => {
-    console.log('TEST');
     if ('geolocation' in navigator && this.watchId == null) {
-      console.log('TEST2');
       const id = navigator.geolocation.watchPosition(position => {
         const { latitude, longitude } = position.coords;
         this.position = [latitude, longitude];

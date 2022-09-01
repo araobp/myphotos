@@ -39,6 +39,28 @@ export default class camera extends LightningElement {
     this.gps.stopWatchingLocation();
   }
 
+  handleUpload() {
+    const name = this.template.querySelector('[data-element="name"]').value;
+    const memo = this.template.querySelector('[data-element="memo"]').value;
+    this.datetime = this.datetimeGmt();
+    this.uuid = crypto.randomUUID();
+    createRecord({
+      'name': name,
+      'memo': memo,
+      'address': this.address,
+      'timestampGmt': this.datetime,
+      'latitude': this.position[0],
+      'longitude': this.position[1],
+      'uuid': this.uuid,
+      'base64': this.imageURL_base64,
+      'base64_small': this.imageURL_small_base64
+    })
+    .then(id => {
+      console.log('New record: ' + id);
+      this.template.querySelector('[data-element="upload"]').blur()
+    });
+  }
+
   /*
   renderedCallback() {
     this.webcam = this.template.querySelector('video');
@@ -73,6 +95,7 @@ export default class camera extends LightningElement {
         this.resizeImage(imageURL, IMAGE_SIZE_SMALL, resizedImageURL_small => {
           this.imageURL_small = resizedImageURL_small;
           this.imageURL_small_base64 = resizedImageURL_small.split(',')[1];
+          console.log(this.imageURL_small_base64);
         });
       });
     };

@@ -37,7 +37,7 @@ export default class PhotoViewer extends LightningElement {
     getImageURLs({recordId: this.recordId})
     .then(urlMap => {
       for (let [title, url] of Object.entries(urlMap)) {
-        if (title.endsWith('_small')) {
+        if (title.endsWith('_small') || title.endsWith('_small.jpeg')) {
           console.log(`<small> title: ${title}, imageURL: ${url}`);
         } else {
           console.log(`<large> title: ${title}, imageURL: ${url}`);
