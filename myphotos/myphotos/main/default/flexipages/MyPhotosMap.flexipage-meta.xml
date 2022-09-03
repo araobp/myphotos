@@ -19,10 +19,68 @@
         <type>Region</type>
     </flexiPageRegions>
     <flexiPageRegions>
+        <name>Facet-4f54b414-3f9a-482c-9f8e-e592b15f820a</name>
+        <type>Facet</type>
+    </flexiPageRegions>
+    <flexiPageRegions>
+        <name>Facet-07e9a84e-b220-4788-ac3e-f814304e7db8</name>
+        <type>Facet</type>
+    </flexiPageRegions>
+    <flexiPageRegions>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>body</name>
+                    <value>Facet-4f54b414-3f9a-482c-9f8e-e592b15f820a</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>label</name>
+                    <value>Standard.Tab.detail</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>name</name>
+                    <value>accordionSection1</value>
+                </componentInstanceProperties>
+                <componentName>flexipage:accordionSection</componentName>
+                <identifier>flexipage_accordionSection</identifier>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>body</name>
+                    <value>Facet-07e9a84e-b220-4788-ac3e-f814304e7db8</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>label</name>
+                    <value>Standard.Tab.relatedLists</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>name</name>
+                    <value>accordionSection--p29pko5z4mh</value>
+                </componentInstanceProperties>
+                <componentName>flexipage:accordionSection</componentName>
+                <identifier>flexipage_accordionSection2</identifier>
+            </componentInstance>
+        </itemInstances>
+        <name>Facet-64c5278e-78ec-4729-87dc-14cdfa2f4bf8</name>
+        <type>Facet</type>
+    </flexiPageRegions>
+    <flexiPageRegions>
         <itemInstances>
             <componentInstance>
                 <componentName>imageViewer</componentName>
                 <identifier>c_imageViewer</identifier>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>accordionSections</name>
+                    <value>Facet-64c5278e-78ec-4729-87dc-14cdfa2f4bf8</value>
+                </componentInstanceProperties>
+                <componentName>flexipage:accordion</componentName>
+                <identifier>flexipage_accordion</identifier>
             </componentInstance>
         </itemInstances>
         <name>sidebar</name>

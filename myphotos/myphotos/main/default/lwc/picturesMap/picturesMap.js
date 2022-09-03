@@ -6,7 +6,7 @@ import icons from '@salesforce/resourceUrl/icons'
 
 import { publish, MessageContext } from 'lightning/messageService';
 import RECORD_ID_UPDATE_MESSAGE from '@salesforce/messageChannel/RecordId__c';
-import Id from '@salesforce/user/Id';
+//import Id from '@salesforce/user/Id';
 import { GPS } from 'c/gps';
 
 const LOCALE = 'ja-JP';
@@ -17,7 +17,7 @@ const toLocalTime = (utcWithoutTZ) => {
 
 export default class PicturesMap extends LightningElement {
   @api height = 500;
-  userId = Id;
+  //userId = Id;
   recordId = null;
   position = [0, 0];
 
@@ -70,7 +70,7 @@ export default class PicturesMap extends LightningElement {
 
       this.radius = localStorage.getItem("myphotos:radius") || 3.0;
 
-      console.log('userId: ' + this.userId);
+      //console.log('userId: ' + this.userId);
       this.gps.startWatchingLocation(false, (position, address) => {
         this.position = position;
         this.address = address;
