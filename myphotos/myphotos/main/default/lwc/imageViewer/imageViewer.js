@@ -1,7 +1,7 @@
 import { LightningElement, api, wire } from 'lwc';
 import { subscribe, unsubscribe, MessageContext } from 'lightning/messageService';
 import RECORD_ID_UPDATE_MESSAGE from '@salesforce/messageChannel/RecordId__c';
-import getImageURLs from '@salesforce/apex/ImageURL.getImageURLs';
+import getImageURL from '@salesforce/apex/ImageURL.getImageURL';
 
 export default class PhotoViewer extends LightningElement {
   @api recordId;
@@ -34,17 +34,13 @@ export default class PhotoViewer extends LightningElement {
 
   loadImage() {
     console.log('recordId: ' + this.recordId);
-    getImageURLs({recordId: this.recordId})
-    .then(urlMap => {
-      for (let [title, url] of Object.entries(urlMap)) {
-        if (title.endsWith('_small') || title.endsWith('_small.jpeg')) {
-          console.log(`<small> title: ${title}, imageURL: ${url}`);
-        } else {
-          console.log(`<large> title: ${title}, imageURL: ${url}`);
-          this.imageURL = url;
+    getImageURL({ recordId: this.recordId, thumbnail: false })
+      .then(url => {
+        console.log(`found: ${url.found}, title: ${url.title}, url: ${url.url}`);
+        if (url.found) {
+          this.imageURL = url.url;
         }
-      }
-    });
+      });
   }
 
   enableModal() {

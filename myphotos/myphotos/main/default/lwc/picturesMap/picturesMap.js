@@ -9,9 +9,6 @@ import RECORD_ID_UPDATE_MESSAGE from '@salesforce/messageChannel/RecordId__c';
 import Id from '@salesforce/user/Id';
 import { GPS } from 'c/gps';
 
-import geolocationToAddress from '@salesforce/apex/NominatimCallout.geolocationToAddress';
-import EmailPreferencesStayInTouchReminder from '@salesforce/schema/User.EmailPreferencesStayInTouchReminder';
-
 const LOCALE = 'ja-JP';
 const toLocalTime = (utcWithoutTZ) => {
   const date = new Date(utcWithoutTZ);
