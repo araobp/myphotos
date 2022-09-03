@@ -4,8 +4,8 @@
       <div class="slds-col slds-p-horizontal_small">Address: {address}</div>
       <lightning-input class="slds-col slds-p-horizontal_small" data-element="name" type="text" label="Name"
         value={name}></lightning-input>
-      <lightning-textarea class="slds-col slds-p-horizontal_small" data-element="memo" type="text" label="Memo"
-        value={memo}></lightning-textarea>
+      <lightning-textarea class="slds-col slds-p-horizontal_small" data-element="memo" label="Memo" value={memo}>
+      </lightning-textarea>
     </div>
     <div style="display: flex; flex-direction: column; align-items: center;">
       <img class="slds-col slds-p-around_small" src={imageURL} width="128px">
@@ -13,9 +13,10 @@
       <label class="slds-button slds-button_brand">
         <input style="display: none;" class="slds-col slds-p-around_small" type="file" accept="image/*"
           capture="environment" onchange={handleCapture} />
-          Camera
+        Camera
       </label>
-      <lightning-button data-element="upload" variant="upload" label="Upload" title="Upload" onclick={handleUpload} class="slds-m-top_medium"></lightning-button>
+      <lightning-button data-element="upload" variant="upload" label="Upload" title="Upload" onclick={handleUpload}
+        class="slds-m-top_medium"></lightning-button>
     </div>
   </lightning-card>
 

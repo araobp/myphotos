@@ -71,16 +71,12 @@ export default class PicturesMap extends LightningElement {
       this.radius = localStorage.getItem("myphotos:radius") || 3.0;
 
       console.log('userId: ' + this.userId);
-      this.gps.startWatchingLocation((position, address) => {
+      this.gps.startWatchingLocation(false, (position, address) => {
         this.position = position;
         this.address = address;
         this.draw();
       });
     });
-  }
-
-  disconnectedCallback() {
-    this.gps.stopWatchingLocation();
   }
 
   draw() {
@@ -149,15 +145,6 @@ export default class PicturesMap extends LightningElement {
     this.radius = Number(text) || this.radius;
     localStorage.setItem("myphotos:radius", this.radius);
     input.blur();
-  }
-
-  handleAutoUpdateChange = () => {
-    const checked = this.template.querySelector('[data-element="autoupdate"]').checked;
-    if (checked) {
-      this.startWatchingLocation();
-    } else {
-      this.stopWatchingLocation();
-    }
   }
 
   onClick = (e) => {

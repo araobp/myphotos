@@ -16,6 +16,7 @@ export default class camera extends LightningElement {
   imageURL_small_base64 = null;
   position = [0, 0];
   address = '';
+  uploading = false;
 
   constructor() {
     super();
@@ -29,17 +30,15 @@ export default class camera extends LightningElement {
   datetimeGmt = _ => new Date().toISOString().replace('T', ' ').substring(0, 19);
 
   connectedCallback() {
-    this.gps.startWatchingLocation((position, address) => {
+    this.gps.startWatchingLocation(false, (position, address) => {
       this.position = position;
       this.address = address;
     });
   }
 
-  disconnectedCallback() {
-    this.gps.stopWatchingLocation();
-  }
-
   handleUpload() {
+    this.uploading = true;
+
     const name = this.template.querySelector('[data-element="name"]').value;
     const memo = this.template.querySelector('[data-element="memo"]').value;
     this.datetime = this.datetimeGmt();
@@ -57,7 +56,8 @@ export default class camera extends LightningElement {
     })
     .then(id => {
       console.log('New record: ' + id);
-      this.template.querySelector('[data-element="upload"]').blur()
+      this.uploading = false;
+      this.template.querySelector('[data-element="upload"]').blur();
     });
   }
 
@@ -130,36 +130,5 @@ export default class camera extends LightningElement {
     });
     img.src = imageURL;
   }
-
-  startWatchingLocation = () => {
-    if ('geolocation' in navigator && this.watchId == null) {
-      const id = navigator.geolocation.watchPosition(position => {
-        const { latitude, longitude } = position.coords;
-        this.position = [latitude, longitude];
-        console.log(this.position);
-        this.watching = true;
-        geolocationToAddress({ latitude: latitude, longitude: longitude })
-          .then(jsonData => {
-            this.address = JSON.parse(jsonData).display_name.replace(/ /g, '').split(',').reverse().slice(2).join(' ');
-            console.log('Address: ' + this.address);
-          });
-        this.draw();
-      },
-        () => { console.log('Watching geolocation failed') },
-        {
-          enableHighAccuracy: true
-        }
-      );
-      this.watchId = id;
-    }
-  };
-
-  stopWatchingLocation = () => {
-    if (this.watchId != null) {
-      this.watchId && navigator.geolocation.clearWatch(this.watchId);
-      this.watching = false;
-      this.watchId = null;
-    }
-  };
 
 }
