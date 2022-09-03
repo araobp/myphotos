@@ -51,6 +51,15 @@ This project is to develop a mobile photo app based on Salesforce Platform.
   </tr>
 </table>
 
+## Distance caliculation for each record of "Record__c"
+
+I added a custom field "Geolocation__c" to "User" standard object.
+Then I added a custom formula field "Distance__c" to "Record__c":
+
+```
+Distance(Geolocation__c, $User.Geolocation__c, 'km')
+```
+
 ## Remote site settings
 
 [NominatimCallout](./myphotos/myphotos/main/default/classes/NominatimCallout.cls) Apex script assumes a remote site setting as follows:
