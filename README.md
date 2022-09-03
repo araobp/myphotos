@@ -1,7 +1,5 @@
 # My Photos
 
-(Work in progress)
-
 Salesforce Developer Edition could be a great low-code development platform for Sunday programmers:
 - Security support
 - Database
