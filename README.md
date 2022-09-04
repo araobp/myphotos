@@ -66,7 +66,9 @@ Distance(Geolocation__c, $User.Geolocation__c, 'km')
 
 ## Lightning Web Security (LWS)
 
-Although this project does not use HTML5 webcam, it is necessary to enable LWS to use navigator.mediaDevices.getUserMedia() to capture image from Mac and PC (its security protected by LWS).
+Although this project does not use HTML5 webcam capability, this is just a note for future extensions of this project.
+
+It is necessary to enable LWS to use navigator.mediaDevices.getUserMedia() to capture image from Mac and PC (its security protected by LWS).
 
 <img src="./doc/LWS.png" width="500px">
 
