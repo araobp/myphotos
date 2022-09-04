@@ -7,8 +7,7 @@ And the size of storage (5MB data storage and 20MB file storage) is large enough
 This project is to develop a mobile photo app based on Salesforce Platform.
 
 - Use navigator.geolocation for geolocation (GPS).
-- Use navigator.mediaDevices.getUserMedia() to capture image from Mac and PC (its security protected by LWS).
-- Use HTML input element to capture image from a mobile camera.
+- Use HTML input element to capture image from a mobile camera app.
 
 #### Camera for smart phone
 
@@ -67,9 +66,7 @@ Distance(Geolocation__c, $User.Geolocation__c, 'km')
 
 ## Lightning Web Security (LWS)
 
-Although this project does not use HTML5 webcam, this is a note for enable webcam on LWC.
-
-Enable LWS (Lightning Web Security) to enable "navigator.mediaDevices.getUserMedia()" (to enable WebCam).
+Although this project does not use HTML5 webcam, it is necessary to enable LWS to use navigator.mediaDevices.getUserMedia() to capture image from Mac and PC (its security protected by LWS).
 
 <img src="./doc/LWS.png" width="500px">
 
