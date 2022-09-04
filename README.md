@@ -10,17 +10,17 @@ This project is to develop a mobile photo app based on Salesforce Platform.
 - Use navigator.mediaDevices.getUserMedia() to capture image from Mac and PC (its security protected by LWS).
 - Use HTML input element to capture image from a mobile camera.
 
-### Camera for smart phone
+#### Camera for smart phone
 
 This app makes use of a native mobile camera app via HTML input element.
 
 <img src="./doc/Camera.png" height="360px">
 
-### Home page for desktop
+#### Home page for desktop
 
 <img src="./doc/Tressa.png" width="600px">
 
-### Record page for desktop
+#### Record page for desktop
 
 <img src="./doc/RecordPage.png" width="600px">
 
