@@ -57,7 +57,9 @@ Distance(Geolocation__c, $User.Geolocation__c, 'km')
 
 <img src="./doc/RemoteSiteSettings.png" width="600px">
 
-## Lightning Web Security
+## Lightning Web Security (LWS)
+
+Although this project does not use HTML5 webcam, this is a note for enable webcam on LWC.
 
 Enable LWS (Lightning Web Security) to enable "navigator.mediaDevices.getUserMedia()" (to enable WebCam).
 
