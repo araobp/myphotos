@@ -1,12 +1,6 @@
 # My Photos
 
-Salesforce Developer Edition could be a great low-code development platform for Sunday programmers:
-- Security support
-- Database
-- Data modeling and schema builder
-- SFDX and Developer Console
-- Apex and Lighting Web Components framework
-- Chat and Einstein Chatbots
+Salesforce Developer Edition could be a great low-code development platform for Sunday programmers.
 
 And the size of storage (5MB data storage and 20MB file storage) is large enough for storing a few hundreds of low-resolution photo images.
 
