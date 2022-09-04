@@ -1,12 +1,6 @@
 # My Photos
 
-Salesforce Developer Edition could be a great low-code development platform for Sunday programmers:
-- Security support
-- Database
-- Data modeling and schema builder
-- SFDX and Developer Console
-- Apex and Lighting Web Components framework
-- Chat and Einstein Chatbots
+Salesforce Developer Edition could be a great low-code development platform for Sunday programmers.
 
 And the size of storage (5MB data storage and 20MB file storage) is large enough for storing a few hundreds of low-resolution photo images.
 
@@ -15,15 +9,14 @@ This project is to develop a mobile photo app based on Salesforce Platform.
 - Use navigator.geolocation for geolocation (GPS).
 - Use navigator.mediaDevices.getUserMedia() to capture image from Mac and PC (its security protected by LWS).
 - Use HTML input element to capture image from a mobile camera.
-- Use Einstein Bots for interactive UI.
 
----
-<table>
-  <tr>
-    <!-- <td valign="top"><img src="./doc/react-myphotos.png" height="350px"></td> -->
-    <td valign="top"><img src="./doc/Tressa.png" height="350px"></td>
-  </tr>
-</table>
+#### Home page
+
+<img src="./doc/Tressa.png" width="600px">
+
+#### Record page
+
+<img src="./doc/RecordPage.png" width="600px">
 
 ## Architecture
 
@@ -41,8 +34,6 @@ This project is to develop a mobile photo app based on Salesforce Platform.
 - [imageViewer](./myphotos/myphotos/main/default/lwc/imageViewer)
 - [camera](./myphotos/myphotos/main/default/lwc/camera)
 - [gps](./myphotos/myphotos/main/default/lwc/gps) (GPS library, not LWC component)
-
-<img src="./doc/RecordPage.png" width="700px">
 
 <table>
   <tr>
@@ -66,7 +57,9 @@ Distance(Geolocation__c, $User.Geolocation__c, 'km')
 
 <img src="./doc/RemoteSiteSettings.png" width="600px">
 
-## Lightning Web Security
+## Lightning Web Security (LWS)
+
+Although this project does not use HTML5 webcam, this is a note for enable webcam on LWC.
 
 Enable LWS (Lightning Web Security) to enable "navigator.mediaDevices.getUserMedia()" (to enable WebCam).
 
@@ -77,16 +70,3 @@ Enable LWS (Lightning Web Security) to enable "navigator.mediaDevices.getUserMed
 - [Develop Against Any Org](https://developer.salesforce.com/docs/atlas.en-us.238.0.sfdx_dev.meta/sfdx_dev/sfdx_dev_develop_any_org.htm)
 - [Nominatim](https://nominatim.org/)
 - [Custom File Upload Using LWC](https://www.salesforcetroop.com/custom_file_upload_using_lwc)
-
----
-## Project goal redirection (August 28th, 2022)
-
-I have been enjoying and developing this app over a half year in my free time.
-
-This project has been dependent on React as a frontend library and SpringBoot as a backend framework. The Java app on SpringBoot has been running on Heroku... Unfortunately, [this announcement](https://blog.heroku.com/next-chapter) made me sad.
-
-I leave "heroku-connect" branch intact and switch back to "main" branch.
-
-I am working on remaking this project to exclude the Heroku part (the API server backend implemented on SpringBoot and Heroku Connect) and the React part (frontend) from this project.
-
-
