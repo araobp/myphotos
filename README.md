@@ -15,15 +15,14 @@ This project is to develop a mobile photo app based on Salesforce Platform.
 - Use navigator.geolocation for geolocation (GPS).
 - Use navigator.mediaDevices.getUserMedia() to capture image from Mac and PC (its security protected by LWS).
 - Use HTML input element to capture image from a mobile camera.
-- Use Einstein Bots for interactive UI.
 
----
-<table>
-  <tr>
-    <!-- <td valign="top"><img src="./doc/react-myphotos.png" height="350px"></td> -->
-    <td valign="top"><img src="./doc/Tressa.png" height="350px"></td>
-  </tr>
-</table>
+#### Home page
+
+<img src="./doc/Tressa.png" width="600px">
+
+#### Record page
+
+<img src="./doc/RecordPage.png" width="600px">
 
 ## Architecture
 
@@ -41,8 +40,6 @@ This project is to develop a mobile photo app based on Salesforce Platform.
 - [imageViewer](./myphotos/myphotos/main/default/lwc/imageViewer)
 - [camera](./myphotos/myphotos/main/default/lwc/camera)
 - [gps](./myphotos/myphotos/main/default/lwc/gps) (GPS library, not LWC component)
-
-<img src="./doc/RecordPage.png" width="700px">
 
 <table>
   <tr>
