@@ -6,8 +6,10 @@ import icons from '@salesforce/resourceUrl/icons'
 
 import { publish, MessageContext } from 'lightning/messageService';
 import RECORD_ID_UPDATE_MESSAGE from '@salesforce/messageChannel/RecordId__c';
-//import Id from '@salesforce/user/Id';
+import Id from '@salesforce/user/Id';
 import { GPS } from 'c/gps';
+import updateGeolocation from '@salesforce/apex/UserData.updateGeolocation';
+import geolocationToAddress from '@salesforce/apex/NominatimCallout.geolocationToAddress';
 
 const LOCALE = 'ja-JP';
 const toLocalTime = (utcWithoutTZ) => {
@@ -17,7 +19,7 @@ const toLocalTime = (utcWithoutTZ) => {
 
 export default class PicturesMap extends LightningElement {
   @api height = 500;
-  //userId = Id;
+  userId = Id;
   recordId = null;
   position = [0, 0];
 
@@ -99,7 +101,18 @@ export default class PicturesMap extends LightningElement {
   }
 
   onclick = (e) => {
-    selectRecordsByDistance({ latitude: e.latlng.lat, longitude: e.latlng.lng, radius: this.radius })
+    const latitude = e.latlng.lat;
+    const longitude = e.latlng.lng;
+
+    geolocationToAddress({ latitude: latitude, longitude: longitude })
+    .then(jsonData => {
+      this.address = JSON.parse(jsonData).display_name.replace(/ /g, '').split(',').reverse().slice(2).join(' ');
+      console.log('Address: ' + this.address);
+      console.log('UserId: ' + this.userId);
+      updateGeolocation({userId: this.userId, latitude: latitude, longitude: longitude});
+    })
+    
+    selectRecordsByDistance({ latitude: latitude, longitude: longitude, radius: this.radius })
       .then(records => {
 
         // Clear all existing markers
@@ -118,7 +131,7 @@ export default class PicturesMap extends LightningElement {
           //console.log(record);
           const marker = L.marker([record.Geolocation__Latitude__s, record.Geolocation__Longitude__s])
             .addTo(this.map)
-            .on('click', this.onClick)
+            .on('click', this.onMarkerClick)
             .bindTooltip(record.Id, { opacity: 0 })
             .bindPopup('<div>[' + record.Name + ']</div><div>' + toLocalTime(record.Timestamp__c) + '</div><div>' + record.Memo__c + '</div>');
           this.markers.push(marker);
@@ -147,7 +160,7 @@ export default class PicturesMap extends LightningElement {
     input.blur();
   }
 
-  onClick = (e) => {
+  onMarkerClick = (e) => {
     const popup = e.target.getTooltip();
     const recordId = popup.getContent();
     const message = {
