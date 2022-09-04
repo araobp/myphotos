@@ -24,6 +24,15 @@ This app makes use of a native mobile camera app via HTML input element.
 
 <img src="./doc/RecordPage.png" width="600px">
 
+#### Image viewer
+
+<table>
+  <tr>
+    <td valign="top"><img src="./doc/Bunmeido.png"/>
+    <td valign="top"><img src="./doc/Bunmeido2.png"/></td>    
+  </tr>
+</table>
+
 ## Architecture
 
 ```
@@ -40,13 +49,6 @@ This app makes use of a native mobile camera app via HTML input element.
 - [imageViewer](./myphotos/myphotos/main/default/lwc/imageViewer)
 - [camera](./myphotos/myphotos/main/default/lwc/camera)
 - [gps](./myphotos/myphotos/main/default/lwc/gps) (GPS library, not LWC component)
-
-<table>
-  <tr>
-    <td valign="top"><img src="./doc/Bunmeido.png"/>
-    <td valign="top"><img src="./doc/Bunmeido2.png"/></td>    
-  </tr>
-</table>
 
 ## Distance caliculation for each record of "Record__c"
 
