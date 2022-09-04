@@ -18,6 +18,10 @@ This project is to develop a mobile photo app based on Salesforce Platform.
 
 <img src="./doc/RecordPage.png" width="600px">
 
+#### Camera page
+
+<img src="./doc/Camera.png" height="360px">
+
 ## Architecture
 
 ```
