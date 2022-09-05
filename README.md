@@ -11,7 +11,15 @@ This project is to develop a mobile photo app based on Salesforce Platform.
 
 #### Camera for smart phone
 
-This app makes use of a native mobile camera app via HTML input element.
+This app makes use of a native mobile camera app via HTML input element:
+
+```
+      <label class="slds-button slds-button_brand">
+        <input style="display: none;" class="slds-col slds-p-around_small" type="file" accept="image/*"
+          capture="environment" onchange={handleCapture} />
+        Camera
+      </label>
+```
 
 <img src="./doc/Camera.png" height="360px">
 
