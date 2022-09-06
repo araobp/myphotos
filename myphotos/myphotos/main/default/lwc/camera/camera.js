@@ -1,5 +1,6 @@
 import { LightningElement } from 'lwc';
-import geolocationToAddress from '@salesforce/apex/NominatimCallout.geolocationToAddress';
+//import geolocationToAddress from '@salesforce/apex/NominatimCallout.geolocationToAddress';
+import findPlace from '@salesforce/apex/RecordObject.findPlace';
 import createRecord from '@salesforce/apex/RecordObject.createRecord';
 
 import { GPS } from 'c/gps';
@@ -33,6 +34,10 @@ export default class camera extends LightningElement {
     this.gps.startWatchingLocation(false, (position, address) => {
       this.position = position;
       this.address = address;
+      findPlace({latitude: position[0], longitude: position[1]})
+      .then(name => {
+        this.template.querySelector('[data-element="name"]').value = name;
+      })
     });
   }
 
