@@ -7,16 +7,38 @@ And the size of storage (5MB data storage and 20MB file storage) is large enough
 This project is to develop a mobile photo app based on Salesforce Platform.
 
 - Use navigator.geolocation for geolocation (GPS).
-- Use navigator.mediaDevices.getUserMedia() to capture image from Mac and PC (its security protected by LWS).
-- Use HTML input element to capture image from a mobile camera.
+- Use HTML input element to capture image from a mobile camera app.
 
-#### Home page
+#### Camera for smart phone
+
+This app makes use of a native mobile camera app via HTML input element:
+
+```
+      <label class="slds-button slds-button_brand">
+        <input style="display: none;" class="slds-col slds-p-around_small" type="file" accept="image/*"
+          capture="environment" onchange={handleCapture} />
+        Camera
+      </label>
+```
+
+<img src="./doc/Camera.png" height="360px">
+
+#### Home page for desktop
 
 <img src="./doc/Tressa.png" width="600px">
 
-#### Record page
+#### Record page for desktop
 
 <img src="./doc/RecordPage.png" width="600px">
+
+#### Image viewer
+
+<table>
+  <tr>
+    <td valign="top"><img src="./doc/Bunmeido.png"/>
+    <td valign="top"><img src="./doc/Bunmeido2.png"/></td>    
+  </tr>
+</table>
 
 ## Architecture
 
@@ -35,13 +57,6 @@ This project is to develop a mobile photo app based on Salesforce Platform.
 - [camera](./myphotos/myphotos/main/default/lwc/camera)
 - [gps](./myphotos/myphotos/main/default/lwc/gps) (GPS library, not LWC component)
 
-<table>
-  <tr>
-    <td valign="top"><img src="./doc/Bunmeido.png"/>
-    <td valign="top"><img src="./doc/Bunmeido2.png"/></td>    
-  </tr>
-</table>
-
 ## Distance caliculation for each record of "Record__c"
 
 I added a custom field "Geolocation__c" to "User" standard object.
@@ -59,9 +74,9 @@ Distance(Geolocation__c, $User.Geolocation__c, 'km')
 
 ## Lightning Web Security (LWS)
 
-Although this project does not use HTML5 webcam, this is a note for enable webcam on LWC.
+Although this project does not use HTML5 webcam capability, this is just a note for future extensions of this project.
 
-Enable LWS (Lightning Web Security) to enable "navigator.mediaDevices.getUserMedia()" (to enable WebCam).
+It is necessary to enable LWS to use navigator.mediaDevices.getUserMedia() to capture image from Mac and PC (its security protected by LWS).
 
 <img src="./doc/LWS.png" width="500px">
 
