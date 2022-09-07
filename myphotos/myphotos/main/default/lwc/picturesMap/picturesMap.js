@@ -105,15 +105,15 @@ export default class PicturesMap extends LightningElement {
     const longitude = e.latlng.lng;
 
     geolocationToAddress({ latitude: latitude, longitude: longitude })
-    .then(jsonData => {
-      this.address = JSON.parse(jsonData).display_name.replace(/ /g, '').split(',').reverse().slice(2).join(' ');
-      console.log('Address: ' + this.address);
-      console.log('UserId: ' + this.userId);
-      updateGeolocation({userId: this.userId, latitude: latitude, longitude: longitude});
-    })
-    
+      .then(jsonData => {
+        this.address = JSON.parse(jsonData).display_name.replace(/ /g, '').split(',').reverse().slice(2).join(' ');
+        console.log('Address: ' + this.address);
+        console.log('UserId: ' + this.userId);
+        updateGeolocation({ userId: this.userId, latitude: latitude, longitude: longitude });
+      })
+
     selectRecordsByDistance({ latitude: latitude, longitude: longitude, radius: this.radius })
-      .then(records => {
+      .then(rts => {
 
         // Clear all existing markers
         this.markers.forEach(marker => {
@@ -127,13 +127,19 @@ export default class PicturesMap extends LightningElement {
           this.map.removeLayer(this.centerMarker);
         }
 
-        records.forEach(record => {
+        rts.forEach(rt => {
           //console.log(record);
-          const marker = L.marker([record.Geolocation__Latitude__s, record.Geolocation__Longitude__s])
+          const marker = L.marker([rt.record.Geolocation__Latitude__s, rt.record.Geolocation__Longitude__s])
             .addTo(this.map)
             .on('click', this.onMarkerClick)
-            .bindTooltip(record.Id, { opacity: 0 })
-            .bindPopup('<div>[' + record.Name + ']</div><div>' + toLocalTime(record.Timestamp__c) + '</div><div>' + record.Memo__c + '</div>');
+            .bindTooltip(rt.record.Id, { opacity: 0 })
+            .bindPopup(
+              '<div>[' + rt.record.Name + ']</div><div>' +
+              toLocalTime(rt.record.Timestamp__c) + '</div><div>' +
+              rt.record.Memo__c + '</div>' +
+              '<img src="' + rt.url + '"</img>'
+            );
+            console.log(rt.url);
           this.markers.push(marker);
         });
         this.featureGroup = L.featureGroup(this.markers).addTo(this.map);

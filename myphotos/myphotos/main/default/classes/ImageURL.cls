@@ -2,8 +2,8 @@ public with sharing class ImageURL {
 
     public class URL {
         @AuraEnabled public Boolean found = false;
-        @AuraEnabled public string title;
-        @AuraEnabled public string url;
+        @AuraEnabled public String title;
+        @AuraEnabled public String url;
     }
 
     @AuraEnabled(cacheable=true)
