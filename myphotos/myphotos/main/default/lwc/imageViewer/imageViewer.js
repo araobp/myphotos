@@ -7,6 +7,7 @@ export default class PhotoViewer extends LightningElement {
   @api recordId;
   showModal = false;
   imageURL = null;
+  name
 
   subscription = null;
 
@@ -36,9 +37,10 @@ export default class PhotoViewer extends LightningElement {
     console.log('recordId: ' + this.recordId);
     getImageURL({ recordId: this.recordId, thumbnail: false })
       .then(url => {
-        console.log(`found: ${url.found}, title: ${url.title}, url: ${url.url}`);
+        console.log(`found: ${url.found}, title: ${url.name}, url: ${url.url}`);
         if (url.found) {
           this.imageURL = url.url;
+          this.name = url.name;
         }
       });
   }

@@ -2,7 +2,7 @@ public with sharing class ImageURL {
 
     public class URL {
         @AuraEnabled public Boolean found = false;
-        @AuraEnabled public String title;
+        @AuraEnabled public String name;
         @AuraEnabled public String url;
     }
 
@@ -25,7 +25,8 @@ public with sharing class ImageURL {
             if (add) {
                 Id contentVersionId = contentVersion.Id;
                 url.found = true;
-                url.title = title;
+                Record__c r = [SELECT Name FROM Record__c WHERE Id = :recordId LIMIT 1];
+                url.name = r.Name;
                 url.url = '/sfc/servlet.shepherd/version/download/' + contentVersionId;
             }
         }
