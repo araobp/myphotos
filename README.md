@@ -81,6 +81,17 @@ It is necessary to enable LWS to use navigator.mediaDevices.getUserMedia() to ca
 
 <img src="./doc/LWS.png" width="500px">
 
+## Opening some photos to the public
+
+(Work in progress...)
+
+```
+ [Salesforce Platform]---- CLI ---->[GitHub Pages]
+```
+
+- CLI (as a connected app for Salesforce) to download some records with photos.
+- JavaScript to pick up photos from the data and show them in HTML/CSS.
+
 ## References
 - [Using Leaflet to show maps in your LWC components](https://sonneiltech.com/2021/01/using-leaflet-to-show-maps-in-your-lwc-components/)
 - [Develop Against Any Org](https://developer.salesforce.com/docs/atlas.en-us.238.0.sfdx_dev.meta/sfdx_dev/sfdx_dev_develop_any_org.htm)
