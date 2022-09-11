@@ -6,6 +6,9 @@ import RECORD_ADDRESS_FIELD from '@salesforce/schema/Record__c.Address__c';
 import { loadScript, loadStyle } from 'lightning/platformResourceLoader';
 import LEAFLET from '@salesforce/resourceUrl/leaflet';
 
+import geolocationToAddress from '@salesforce/apex/NominatimCallout.geolocationToAddress';
+import { nominatimResultToAddress } from 'c/util';
+
 const RECORD_GEOLOCATION_LATITUDE_FIELD = 'Record__c.Geolocation__Latitude__s';
 const RECORD_GEOLOCATION_LONGITUDE_FIELD = 'Record__c.Geolocation__Longitude__s';
 
@@ -29,6 +32,7 @@ export default class PictureMap extends LightningElement {
   longitudeClicked = 139.64190659;
   
   address = "<Unknown>";
+  addressClicked = "<Unknown>";
 
   renderedCallback() {
     this.template.querySelector('[data-id="map"]').style.height = `${this.height}px`;
@@ -80,8 +84,11 @@ export default class PictureMap extends LightningElement {
   
   onclick = (e) => {
     this.latitudeClicked = e.latlng.lat.toFixed(8);
-    this.longitudeClicked = e.latlng.lng.toFixed(8);
+    this.longitudeClicked = e.latlng.wrap().lng.toFixed(8);
     this.clicked = true;
+    geolocationToAddress({latitude: this.latitudeClicked, longitude: this.longitudeClicked})
+    .then(jsonData => {
+      this.addressClicked = nominatimResultToAddress(jsonData)
+    });
   }
-
 }

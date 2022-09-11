@@ -5,7 +5,9 @@
       <p>Address: {address}</p>
       <p>Location: {latitude}, {longitude}</p>
       <template if:true={clicked}>
-        <p>Clicked: {latitudeClicked}, {longitudeClicked}</p>
+        <p>--- Clicked place ---</p>
+        <p>Address: {addressClicked}</p>
+        <p>Location: {latitudeClicked}, {longitudeClicked}</p>
       </template>
     </div>
   </lightning-card>

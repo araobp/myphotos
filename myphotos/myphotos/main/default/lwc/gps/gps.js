@@ -2,6 +2,7 @@ import geolocationToAddress from '@salesforce/apex/NominatimCallout.geolocationT
 import Id from '@salesforce/user/Id';
 
 import updateGeolocation from '@salesforce/apex/UserData.updateGeolocation';
+import { nominatimResultToAddress } from 'c/util';
 
 export class GPS {
 
@@ -19,7 +20,7 @@ export class GPS {
         console.log(this.position);
         geolocationToAddress({ latitude: latitude, longitude: longitude })
           .then(jsonData => {
-            this.address = JSON.parse(jsonData).display_name.replace(/ /g, '').split(',').reverse().slice(2).join(' ');
+            this.address = nominatimResultToAddress(jsonData);
             console.log('Address: ' + this.address);
             console.log('UserId: ' + this.userId);
             updateGeolocation({userId: this.userId, latitude: this.position[0], longitude: this.position[1]});

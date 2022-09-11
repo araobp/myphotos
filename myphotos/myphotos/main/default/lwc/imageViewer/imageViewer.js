@@ -2,6 +2,7 @@ import { LightningElement, api, wire } from 'lwc';
 import { subscribe, unsubscribe, MessageContext } from 'lightning/messageService';
 import RECORD_ID_UPDATE_MESSAGE from '@salesforce/messageChannel/RecordId__c';
 import getImageURL from '@salesforce/apex/ImageURL.getImageURL';
+import geolocationToAddress from '@salesforce/apex/NominatimCallout.geolocationToAddress';
 
 export default class PhotoViewer extends LightningElement {
   @api recordId;
