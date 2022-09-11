@@ -20,7 +20,14 @@ export default class PictureMap extends LightningElement {
   @api recordId;
   @api height = 400;
   name = null;
-  position = [35.54236976, 139.64190659];  // Default: Apita Yokohama Tsunashima
+
+  // Default: Apita Yokohama Tsunashima
+  latitude = 35.54236976;
+  longitude = 139.64190659;
+  clicked = false;
+  latitudeClicked = 35.54236976;
+  longitudeClicked = 139.64190659;
+  
   address = "<Unknown>";
 
   renderedCallback() {
@@ -41,15 +48,18 @@ export default class PictureMap extends LightningElement {
       if (this.name !== null) {
         const container = this.template.querySelector('[data-id="map"]');
         container.style.height = `${this.height}px`;
-        const map = L.map(container, { scrollWheelZoom: false }).setView(this.position, 17);
+        const position = [this.latitude, this.longitude];
+        const map = L.map(container, { scrollWheelZoom: false }).setView(position, 17);
 
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
           attribution: '&copy; <a href="<https://www.openstreetmap.org/copyright>">OpenStreetMap</a> contributors',
         }).addTo(map);
 
-        const marker = L.marker(this.position).addTo(map);
-        const featureGroup = L.featureGroup([marker]).addTo(map);
+        const marker = L.marker(position).addTo(map);
+        //const featureGroup = L.featureGroup([marker]).addTo(map);
         //map.fitBounds(featureGroup.getBounds());
+
+        map.on('click', this.onclick);
       } else {
         this.draw();
       }
@@ -63,10 +73,15 @@ export default class PictureMap extends LightningElement {
     } else if (data) {
       this.name = getFieldValue(data, RECORD_NAME_FIELD);
       this.address = getFieldValue(data, RECORD_ADDRESS_FIELD);
-      const latitude = getFieldValue(data, RECORD_GEOLOCATION_LATITUDE_FIELD);
-      const longitude = getFieldValue(data, RECORD_GEOLOCATION_LONGITUDE_FIELD);
-      this.position = [latitude, longitude];
+      this.latitude = getFieldValue(data, RECORD_GEOLOCATION_LATITUDE_FIELD);
+      this.longitude = getFieldValue(data, RECORD_GEOLOCATION_LONGITUDE_FIELD);
     }
+  }
+  
+  onclick = (e) => {
+    this.latitudeClicked = e.latlng.lat.toFixed(8);
+    this.longitudeClicked = e.latlng.lng.toFixed(8);
+    this.clicked = true;
   }
 
 }

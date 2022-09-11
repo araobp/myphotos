@@ -70,7 +70,7 @@ export default class PicturesMap extends LightningElement {
         iconSize: [24, 24]
       });
 
-      this.radius = localStorage.getItem("myphotos:radius") || 3.0;
+      this.radius = localStorage.getItem("myphotos:radius") || 2.0;  // 2.0km default
 
       //console.log('userId: ' + this.userId);
       this.gps.startWatchingLocation(false, (position, address) => {

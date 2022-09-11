@@ -3,6 +3,10 @@
     <div data-id="map" class="slds-m-around_medium"></div>
     <div class="slds-m-around_medium">
       <p>Address: {address}</p>
+      <p>Location: {latitude}, {longitude}</p>
+      <template if:true={clicked}>
+        <p>Clicked: {latitudeClicked}, {longitudeClicked}</p>
+      </template>
     </div>
   </lightning-card>
 </template>

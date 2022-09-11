@@ -4,6 +4,7 @@ import findPlace from '@salesforce/apex/RecordObject.findPlace';
 import createRecord from '@salesforce/apex/RecordObject.createRecord';
 
 import { GPS } from 'c/gps';
+import { uuidv4 } from 'c/util';
 
 const IMAGE_SIZE = 432;
 const IMAGE_SIZE_SMALL = 64
@@ -24,7 +25,11 @@ export default class camera extends LightningElement {
     this.gps = new GPS();
     this.position = this.gps.position;
     this.address = this.gps.address;
-    this.uuid = crypto.randomUUID();
+    try {
+      this.uuid = crypto.randomUUID();
+    } catch (e) {
+      this.uuid = uuidv4();
+    }
     this.datetime = this.datetimeGmt();
   }
 
@@ -34,10 +39,10 @@ export default class camera extends LightningElement {
     this.gps.startWatchingLocation(false, (position, address) => {
       this.position = position;
       this.address = address;
-      findPlace({latitude: position[0], longitude: position[1]})
-      .then(name => {
-        this.template.querySelector('[data-element="name"]').value = name;
-      })
+      findPlace({ latitude: position[0], longitude: position[1] })
+        .then(name => {
+          this.template.querySelector('[data-element="name"]').value = name;
+        })
     });
   }
 
@@ -47,23 +52,35 @@ export default class camera extends LightningElement {
     const name = this.template.querySelector('[data-element="name"]').value;
     const memo = this.template.querySelector('[data-element="memo"]').value;
     this.datetime = this.datetimeGmt();
-    this.uuid = crypto.randomUUID();
-    createRecord({
-      'name': name,
-      'memo': memo,
-      'address': this.address,
-      'timestampGmt': this.datetime,
-      'latitude': this.position[0],
-      'longitude': this.position[1],
-      'uuid': this.uuid,
-      'base64': this.imageURL_base64,
-      'base64_small': this.imageURL_small_base64
-    })
-    .then(id => {
-      console.log('New record: ' + id);
+    
+    try {
+      this.uuid = crypto.randomUUID();
+    } catch (e) {  // Some browsers do not support crypto.randomUUID();
+      this.uudid = uuidv4();
+    }
+
+    try {
+      createRecord({
+        'name': name,
+        'memo': memo,
+        'address': this.address,
+        'timestampGmt': this.datetime,
+        'latitude': this.position[0],
+        'longitude': this.position[1],
+        'uuid': this.uuid,
+        'base64': this.imageURL_base64,
+        'base64_small': this.imageURL_small_base64
+      })
+        .then(id => {
+          console.log('New record: ' + id);
+          this.uploading = false;
+          this.template.querySelector('[data-element="upload"]').blur();
+        });
+    } catch (e) {
+      console.log(e);
       this.uploading = false;
       this.template.querySelector('[data-element="upload"]').blur();
-    });
+    }
   }
 
   /*
@@ -100,7 +117,7 @@ export default class camera extends LightningElement {
         this.resizeImage(imageURL, IMAGE_SIZE_SMALL, resizedImageURL_small => {
           this.imageURL_small = resizedImageURL_small;
           this.imageURL_small_base64 = resizedImageURL_small.split(',')[1];
-          console.log(this.imageURL_small_base64);
+          //console.log(this.imageURL_small_base64);
         });
       });
     };

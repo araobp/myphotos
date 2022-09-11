@@ -2,7 +2,8 @@
   <lightning-card title="Camera" icon-name="standard:photo" style="text-align: center;">
     <div class="slds-grid slds-grid_vertical" style="text-align: left;">
       <div class="slds-col slds-p-horizontal_small">Address: {address}</div>
-      <lightning-input class="slds-col slds-p-horizontal_small" data-element="name" type="text" label="Name"></lightning-input>
+      <lightning-input class="slds-col slds-p-horizontal_small" data-element="name" type="text" label="Name">
+      </lightning-input>
       <lightning-textarea class="slds-col slds-p-horizontal_small" data-element="memo" label="Memo">
       </lightning-textarea>
     </div>
@@ -19,4 +20,22 @@
     </div>
   </lightning-card>
 
+  <template if:true={uploading}>
+    <section role="dialog" tabindex="-1" aria-modal="true" aria-labelledby="modal-heading-01"
+      class="slds-modal slds-fade-in-open">
+      <div class="slds-modal__container">
+        <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse">
+          <svg class="slds-button__icon slds-button__icon_large" aria-hidden="true">
+            <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
+          </svg>
+          <span class="slds-assistive-text">Cancel and close</span>
+        </button>
+        <div class="slds-modal__header">
+          <h1 id="modal-heading-01" class="slds-modal__title slds-hyphenate" tabindex="-1">Uploading...</h1>
+        </div>
+      </div>
+    </section>
+    <div class="slds-backdrop slds-backdrop_open" role="presentation"></div>
+  </template>
+  
 </template>
