@@ -36,7 +36,8 @@ This app makes use of a native mobile camera app via HTML input element:
 <table>
   <tr>
     <td valign="top"><img src="./doc/Bunmeido.png"/>
-    <td valign="top"><img src="./doc/Bunmeido2.png"/></td>    
+    <td valign="top"><img src="./doc/Bunmeido2.png"/></td>
+    <td valign="top"><img src="./doc/FullMoon.jpg"></td>
   </tr>
 </table>
 
@@ -79,6 +80,17 @@ Although this project does not use HTML5 webcam capability, this is just a note 
 It is necessary to enable LWS to use navigator.mediaDevices.getUserMedia() to capture image from Mac and PC (its security protected by LWS).
 
 <img src="./doc/LWS.png" width="500px">
+
+## Opening some photos to the public
+
+(Work in progress...)
+
+```
+ [Salesforce Platform]---- CLI ---->[GitHub Pages]
+```
+
+- CLI (as a connected app for Salesforce) to download some records with photos.
+- JavaScript to pick up photos from the data and show them in HTML/CSS.
 
 ## References
 - [Using Leaflet to show maps in your LWC components](https://sonneiltech.com/2021/01/using-leaflet-to-show-maps-in-your-lwc-components/)
