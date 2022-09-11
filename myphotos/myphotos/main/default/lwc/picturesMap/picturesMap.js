@@ -42,6 +42,7 @@ export default class PicturesMap extends LightningElement {
   autoupdate = false;
 
   gps;
+  positioning = true;
 
   constructor() {
     super();
@@ -77,6 +78,7 @@ export default class PicturesMap extends LightningElement {
         this.position = position;
         this.address = address;
         this.draw();
+        this.positioning = false;
       });
     });
   }

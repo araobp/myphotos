@@ -19,6 +19,7 @@ export default class camera extends LightningElement {
   position = [0, 0];
   address = '';
   uploading = false;
+  positioning = true;
 
   constructor() {
     super();
@@ -42,6 +43,7 @@ export default class camera extends LightningElement {
       findPlace({ latitude: position[0], longitude: position[1] })
         .then(name => {
           this.template.querySelector('[data-element="name"]').value = name;
+          this.positioning = false;
         })
     });
   }
