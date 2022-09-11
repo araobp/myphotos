@@ -4,7 +4,7 @@ Salesforce Developer Edition could be a great low-code development platform for 
 
 And the size of storage (5MB data storage and 20MB file storage) is large enough for storing a few hundreds of low-resolution photo images.
 
-This project is to develop a mobile photo app based on Salesforce Platform.
+This project is to develop a mobile photo app based on Salesforce Platform (i.e., Salesforce Platform license is assigned to the users).
 
 - Use navigator.geolocation for geolocation (GPS).
 - Use HTML input element to capture image from a mobile camera app.
