@@ -11,8 +11,8 @@ public class NominatimCallout {
         req.setHeader('Accept', 'application/json');
         req.setHeader('Accept-Language', 'ja');
     	req.setMethod('GET');
-        
-        HttpResponse res = h.send(req);
+
+	    HttpResponse res = h.send(req);
     	return res.getBody();
     }
 }
