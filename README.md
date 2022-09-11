@@ -36,7 +36,8 @@ This app makes use of a native mobile camera app via HTML input element:
 <table>
   <tr>
     <td valign="top"><img src="./doc/Bunmeido.png"/>
-    <td valign="top"><img src="./doc/Bunmeido2.png"/></td>    
+    <td valign="top"><img src="./doc/Bunmeido2.png"/></td>
+    <td valign="top"><img src="./doc/FullMoon.jpg"></td>
   </tr>
 </table>
 
