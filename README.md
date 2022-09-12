@@ -21,23 +21,23 @@ This app makes use of a native mobile camera app via HTML input element:
       </label>
 ```
 
-<img src="./doc/Camera.png" height="360px">
+<img src="./images/Camera.png" height="360px">
 
 #### Home page for desktop
 
-<img src="./doc/Tressa.png" width="600px">
+<img src="./images/Tressa.png" width="600px">
 
 #### Record page for desktop
 
-<img src="./doc/RecordPage.png" width="600px">
+<img src="./images/RecordPage.png" width="600px">
 
 #### Image viewer
 
 <table>
   <tr>
-    <td valign="top"><img src="./doc/Bunmeido.png"/>
-    <td valign="top"><img src="./doc/Bunmeido2.png"/></td>
-    <td valign="top"><img src="./doc/FullMoon.jpg"></td>
+    <td valign="top"><img src="./images/Bunmeido.png"/>
+    <td valign="top"><img src="./images/Bunmeido2.png"/></td>
+    <td valign="top"><img src="./images/FullMoon.jpg"></td>
   </tr>
 </table>
 
@@ -71,7 +71,7 @@ Distance(Geolocation__c, $User.Geolocation__c, 'km')
 
 [NominatimCallout](./myphotos/myphotos/main/default/classes/NominatimCallout.cls) Apex script assumes a remote site setting as follows:
 
-<img src="./doc/RemoteSiteSettings.png" width="600px">
+<img src="./images/RemoteSiteSettings.png" width="600px">
 
 ## Lightning Web Security (LWS)
 
@@ -79,7 +79,7 @@ Although this project does not use HTML5 webcam capability, this is just a note 
 
 It is necessary to enable LWS to use navigator.mediaDevices.getUserMedia() to capture image from Mac and PC (its security protected by LWS).
 
-<img src="./doc/LWS.png" width="500px">
+<img src="./images/LWS.png" width="500px">
 
 ## Opening some photos to the public
 
@@ -94,6 +94,6 @@ It is necessary to enable LWS to use navigator.mediaDevices.getUserMedia() to ca
 
 ## References
 - [Using Leaflet to show maps in your LWC components](https://sonneiltech.com/2021/01/using-leaflet-to-show-maps-in-your-lwc-components/)
-- [Develop Against Any Org](https://developer.salesforce.com/docs/atlas.en-us.238.0.sfdx_dev.meta/sfdx_dev/sfdx_dev_develop_any_org.htm)
+- [Develop Against Any Org](https://developer.salesforce.com/images/atlas.en-us.238.0.sfdx_dev.meta/sfdx_dev/sfdx_dev_develop_any_org.htm)
 - [Nominatim](https://nominatim.org/)
 - [Custom File Upload Using LWC](https://www.salesforcetroop.com/custom_file_upload_using_lwc)
