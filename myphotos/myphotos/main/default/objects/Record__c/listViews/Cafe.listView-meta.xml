@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Cafe</fullName>
+    <columns>Timestamp__c</columns>
+    <columns>NAME</columns>
+    <columns>Memo__c</columns>
+    <columns>Distance__c</columns>
+    <filterScope>Mine</filterScope>
+    <filters>
+        <field>RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>Record__c.Cafe</value>
+    </filters>
+    <label>Cafe</label>
+</ListView>

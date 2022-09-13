@@ -50,10 +50,6 @@
         <viewAllRecords>false</viewAllRecords>
     </objectPermissions>
     <recordTypeVisibilities>
-        <recordType>Record__c.Public</recordType>
-        <visible>true</visible>
-    </recordTypeVisibilities>
-    <recordTypeVisibilities>
         <recordType>Record__c.Supermarket</recordType>
         <visible>true</visible>
     </recordTypeVisibilities>

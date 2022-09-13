@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>SupermarketValid</fullName>
+    <columns>NAME</columns>
+    <columns>Timestamp__c</columns>
+    <columns>Memo__c</columns>
+    <columns>Distance__c</columns>
+    <filterScope>Mine</filterScope>
+    <filters>
+        <field>RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>Record__c.Supermarket</value>
+    </filters>
+    <filters>
+        <field>Valid__c</field>
+        <operation>equals</operation>
+        <value>1</value>
+    </filters>
+    <label>SupermarketValid</label>
+</ListView>
