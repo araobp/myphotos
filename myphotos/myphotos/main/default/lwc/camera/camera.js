@@ -1,10 +1,7 @@
-import { LightningElement, wire, api } from 'lwc';
+import { LightningElement, wire } from 'lwc';
 //import geolocationToAddress from '@salesforce/apex/NominatimCallout.geolocationToAddress';
 import findPlace from '@salesforce/apex/RecordObject.findPlace';
 import createRecord from '@salesforce/apex/RecordObject.createRecord';
-
-import RECORD from '@salesforce/schema/Record__c';
-import { getObjectInfo, getPicklistValuesByRecordType } from 'lightning/uiObjectInfoApi';
 
 import { GPS } from 'c/gps';
 import { uuidv4 } from 'c/util';
@@ -13,27 +10,6 @@ const IMAGE_SIZE = 432;
 const IMAGE_SIZE_SMALL = 64
 
 export default class camera extends LightningElement {
-
-  @wire(getObjectInfo, { objectApiName: RECORD })
-  objectInfo({ data, error }) {
-      if(data){
-          this.objectInfo = data;
-          console.log(data);
-      } else if (error) {
-          console.log(error);
-      }
-  }
-  recordTypeValues = null;
-  @wire(getPicklistValuesByRecordType, { recordTypeId: '$objectInfo.defaultRecordTypeId', objectApiName: RECORD })
-  recordTypeValues({ data, error }) {
-    if (data) {
-      this.recordTypeValues = data.picklistFieldValues;
-      console.log(data);
-      console.log(this.recordTypeValues);
-    } else if (error) {
-      console.log(error);
-    }
-  }
 
   webcam = null;
   imageURL = null;
