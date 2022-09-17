@@ -1,10 +1,14 @@
 <template>
-  <lightning-quick-action-panel header="Delete">
-    <p>Are you sure you want to delete the record?</p>
+  <lightning-quick-action-panel header="Delete Record">
+    <div class="slds-align_absolute-center">
+      <p>Are you sure you want to delete the record?</p>
+    </div>
     <div style="color: green">{result}</div>
     <div slot="footer">
-      <lightning-button data-element="cancel" vvariant="neutral" label="Cancel" onclick={handleCancel}></lightning-button>
-      <lightning-button data-element="delete" variant="brand" label="Delete" class="slds-m-left_x-small" onclick={handleDelete}></lightning-button>
+      <lightning-button data-element="cancel" vvariant="neutral" label="Cancel" onclick={handleCancel}>
+      </lightning-button>
+      <lightning-button data-element="delete" variant="brand" label="Delete" class="slds-m-left_x-small"
+        onclick={handleDelete}></lightning-button>
     </div>
   </lightning-quick-action-panel>
 </template>
