@@ -19,6 +19,7 @@ export default class camera extends LightningElement {
   position = [0, 0];
   address = '';
   uploading = false;
+  positioning = true;
 
   constructor() {
     super();
@@ -37,6 +38,7 @@ export default class camera extends LightningElement {
 
   connectedCallback() {
     this.gps.getGeoLocation((position, address) => {
+      this.positioning = false;
       this.position = position;
       this.address = address;
       findPlace({ latitude: position[0], longitude: position[1] })
