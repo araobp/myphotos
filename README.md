@@ -9,7 +9,7 @@ This project is to develop a mobile photo app based on Salesforce Platform (i.e.
 - Use navigator.geolocation for geolocation (GPS).
 - Use HTML input element to capture image from a mobile camera app.
 
-#### Deployment instruction
+## Deployment instruction
 
 This project has developed an unmanaged package "myphotos" with "Salesforce Platform" license.
 
@@ -18,6 +18,8 @@ Just deploy it to your salesforce platform by VSCode or SFDX CLI.
 Then create a user with "Salesforce Platform" license and assign a permission sets "MyPhotos" to the user.
 
 That's it!
+
+## Components
 
 #### Camera for smart phone
 
