@@ -98,14 +98,6 @@
         <visibility>Visible</visibility>
     </tabSettings>
     <tabSettings>
-        <tab>MyPhotosMobileCamera</tab>
-        <visibility>Visible</visibility>
-    </tabSettings>
-    <tabSettings>
-        <tab>MyPhotosWebCam</tab>
-        <visibility>Visible</visibility>
-    </tabSettings>
-    <tabSettings>
         <tab>Place__c</tab>
         <visibility>Visible</visibility>
     </tabSettings>
