@@ -19,7 +19,6 @@ export default class camera extends LightningElement {
   position = [0, 0];
   address = '';
   uploading = false;
-  positioning = true;
 
   constructor() {
     super();
@@ -37,13 +36,12 @@ export default class camera extends LightningElement {
   datetimeGmt = _ => new Date().toISOString().replace('T', ' ').substring(0, 19);
 
   connectedCallback() {
-    this.gps.startWatchingLocation(false, (position, address) => {
+    this.gps.getGeoLocation((position, address) => {
       this.position = position;
       this.address = address;
       findPlace({ latitude: position[0], longitude: position[1] })
         .then(name => {
           this.template.querySelector('[data-element="name"]').value = name;
-          this.positioning = false;
         })
     });
   }
@@ -84,29 +82,6 @@ export default class camera extends LightningElement {
       this.template.querySelector('[data-element="upload"]').blur();
     }
   }
-
-  /*
-  renderedCallback() {
-    this.webcam = this.template.querySelector('video');
-
-    const constraints = {
-      audio: false,
-      video: {
-        width: 480, height: 640
-      }
-    };
-
-    if (navigator.mediaDevices.getUserMedia) {
-      navigator.mediaDevices.getUserMedia(constraints)
-        .then(stream => {
-          this.webcam.srcObject = stream;
-          this.webcam.play();
-        })
-        .catch(error => {
-          console.log(error.name + ': ' + error.message);
-        });
-    }
-  }*/
 
   handleCapture = e => {
     const f = e.target.files[0];

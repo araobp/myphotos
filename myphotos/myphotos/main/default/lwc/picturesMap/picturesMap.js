@@ -42,7 +42,6 @@ export default class PicturesMap extends LightningElement {
   autoupdate = false;
 
   gps;
-  positioning = true;
 
   constructor() {
     super();
@@ -73,12 +72,10 @@ export default class PicturesMap extends LightningElement {
 
       this.radius = localStorage.getItem("myphotos:radius") || 2.0;  // 2.0km default
 
-      //console.log('userId: ' + this.userId);
-      this.gps.startWatchingLocation(false, (position, address) => {
+      this.gps.getGeoLocation((position, address) => {
         this.position = position;
         this.address = address;
         this.draw();
-        this.positioning = false;
       });
     });
   }
