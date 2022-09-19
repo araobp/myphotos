@@ -21,7 +21,7 @@
   </lightning-card>
 
   <template if:true={uploading}>
-    <section role="dialog" tabindex="-1" aria-modal="true" aria-labelledby="modal-heading-01"
+    <section role="dialog" tabindex="-1" aria-modal="true" aria-labelledby="Uploading"
       class="slds-modal slds-fade-in-open">
       <div class="slds-modal__container">
         <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse">
@@ -30,8 +30,8 @@
           </svg>
           <span class="slds-assistive-text">Cancel and close</span>
         </button>
-        <div class="slds-modal__header">
-          <h1 id="modal-heading-01" class="slds-modal__title slds-hyphenate" tabindex="-1">Uploading...</h1>
+        <div class="slds-modal__content slds-p-around_medium slds-modal__content_headless slds-align_absolute-center">
+          <p>Uploading...</p>
         </div>
       </div>
     </section>
@@ -39,7 +39,7 @@
   </template>
 
   <template if:true={positioning}>
-    <section role="dialog" tabindex="-1" aria-modal="true" aria-labelledby="modal-heading-02"
+    <section role="dialog" tabindex="-1" aria-modal="true" aria-labelledby="Positioning"
       class="slds-modal slds-fade-in-open">
       <div class="slds-modal__container">
         <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse">
@@ -48,8 +48,8 @@
           </svg>
           <span class="slds-assistive-text">Cancel and close</span>
         </button>
-        <div class="slds-modal__header">
-          <h1 id="modal-heading-02" class="slds-modal__title slds-hyphenate" tabindex="-1">Positioning...</h1>
+        <div class="slds-modal__content slds-p-around_medium slds-modal__content_headless slds-align_absolute-center">
+          <p>Positioning...</p>
         </div>
       </div>
     </section>

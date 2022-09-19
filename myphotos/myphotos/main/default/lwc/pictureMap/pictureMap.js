@@ -1,5 +1,6 @@
 import { LightningElement, api, wire } from 'lwc';
-import { getRecord, getFieldValue } from 'lightning/uiRecordApi';
+import { getRecord, getFieldValue, updateRecord } from 'lightning/uiRecordApi';
+import ID_FIELD from "@salesforce/schema/Record__c.Id";
 import RECORD_NAME_FIELD from '@salesforce/schema/Record__c.Name';
 import RECORD_ADDRESS_FIELD from '@salesforce/schema/Record__c.Address__c';
 
@@ -30,7 +31,7 @@ export default class PictureMap extends LightningElement {
   clicked = false;
   latitudeClicked = 35.54236976;
   longitudeClicked = 139.64190659;
-  
+
   address = "<Unknown>";
   addressClicked = "<Unknown>";
 
@@ -81,14 +82,30 @@ export default class PictureMap extends LightningElement {
       this.longitude = getFieldValue(data, RECORD_GEOLOCATION_LONGITUDE_FIELD);
     }
   }
-  
+
   onclick = (e) => {
     this.latitudeClicked = e.latlng.lat.toFixed(8);
     this.longitudeClicked = e.latlng.wrap().lng.toFixed(8);
     this.clicked = true;
-    geolocationToAddress({latitude: this.latitudeClicked, longitude: this.longitudeClicked})
-    .then(jsonData => {
-      this.addressClicked = nominatimResultToAddress(jsonData)
-    });
+    geolocationToAddress({ latitude: this.latitudeClicked, longitude: this.longitudeClicked })
+      .then(jsonData => {
+        this.addressClicked = nominatimResultToAddress(jsonData)
+      });
+  }
+
+  handleGeolocationUpdate = () => {
+    const fields = {};
+    fields[ID_FIELD.fieldApiName] = this.recordId;
+    fields[RECORD_ADDRESS_FIELD.fieldApiName] = this.addressClicked;
+    fields['Geolocation__Latitude__s'] = this.latitudeClicked;
+    fields['Geolocation__Longitude__s'] =this.longitudeClicked;
+    const recordInput = {
+      fields: fields
+    };
+    updateRecord(recordInput)
+      .then(record => {
+        console.log(record);
+        this.template.querySelector('[data-name="update"]').blur();
+      });
   }
 }
