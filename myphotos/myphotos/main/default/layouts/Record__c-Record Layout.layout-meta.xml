@@ -28,10 +28,6 @@
                 <field>Timestamp__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Required</behavior>
-                <field>uuid__c</field>
-            </layoutItems>
-            <layoutItems>
                 <behavior>Readonly</behavior>
                 <field>Distance__c</field>
             </layoutItems>
@@ -58,7 +54,6 @@
     </layoutSections>
     <miniLayout>
         <fields>Name</fields>
-        <fields>uuid__c</fields>
     </miniLayout>
     <platformActionList>
         <actionListContext>Record</actionListContext>
