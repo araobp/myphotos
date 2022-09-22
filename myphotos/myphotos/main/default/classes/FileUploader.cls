@@ -9,7 +9,9 @@ public with sharing class FileUploader {
       if (cv == null || cdl == null) {
         return null;
       }
-      return cdl.Id;
+
+			ContentVersion[] contentVersions = [SELECT Id FROM ContentVersion WHERE ContentDocumentId = :cdl.contentDocumentId];
+      return contentVersions[0].Id;
 		} catch (Exception e) {
 			throw new AuraHandledException(e.getMessage());
 		}
@@ -69,4 +71,25 @@ public with sharing class FileUploader {
       return null;
     }
 	}
+
+	// This method is for an operation & maintenance purpose only
+	/*
+	public static void updateImageField(Id id) {
+		List<Record__c> records;
+		if (id == null) {
+			records = [SELECT Id, ImageURL__c, Timestamp__c FROM Record__c ORDER BY Id LIMIT 33];
+		} else {
+			records = [SELECT Id, ImageURL__c, Timestamp__c FROM Record__c WHERE Id > :id ORDER BY Id LIMIT 33];
+		}
+		Id lastId;
+		for (Record__c r : records) {
+			ContentDocumentLink link = [SELECT ContentDocumentId FROM ContentDocumentLink WHERE LinkedEntityId = :r.Id LIMIT 1];
+			ContentVersion version = [SELECT Id FROM ContentVersion WHERE ContentDocumentId = :link.ContentDocumentId LIMIT 1];
+			r.ImageURL__c = '/sfc/servlet.shepherd/version/download/' + version.Id;
+			lastId = r.Id;
+		}
+		update records;
+		System.debug(lastId);
+	}
+	*/	
 }

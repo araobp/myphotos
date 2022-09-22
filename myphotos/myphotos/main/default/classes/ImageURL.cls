@@ -7,7 +7,7 @@ public with sharing class ImageURL {
     }
 
     @AuraEnabled(cacheable=true)
-    public static URL getImageURL(Id recordId, Boolean thumbnail) {
+    public static URL getImageURL(Id recordId) {
         
         URL url = new URL();
         List<ContentDocumentLink> contentDocumentLinks = [SELECT ContentDocumentId from ContentDocumentLink where LinkedEntityId = :recordId];
@@ -16,19 +16,11 @@ public with sharing class ImageURL {
             Id contentDocumentId = link.ContentDocumentId;
             ContentVersion contentVersion = [SELECT Id, Title FROM ContentVersion WHERE ContentDocumentId = :contentDocumentId LIMIT 1];
             String title = contentVersion.Title;
-            Boolean add = false;
-            if (title.endsWith('_small') || title.endsWith('_small.jpeg')) {  // thumbnail image
-                if (thumbnail == true) add = true;
-            } else {
-                if (thumbnail == false) add = true;
-            }
-            if (add) {
-                Id contentVersionId = contentVersion.Id;
-                url.found = true;
-                Record__c r = [SELECT Name FROM Record__c WHERE Id = :recordId LIMIT 1];
-                url.name = r.Name;
-                url.url = '/sfc/servlet.shepherd/version/download/' + contentVersionId;
-            }
+            Id contentVersionId = contentVersion.Id;
+            url.found = true;
+            Record__c r = [SELECT Name FROM Record__c WHERE Id = :recordId LIMIT 1];
+            url.name = r.Name;
+            url.url = '/sfc/servlet.shepherd/version/download/' + contentVersionId;
         }
         System.debug(url);
         return url;

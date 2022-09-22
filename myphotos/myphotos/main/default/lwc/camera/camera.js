@@ -15,7 +15,6 @@ export default class camera extends LightningElement {
   imageURL = null;
   imageURL_small = null;
   imageURL_base64 = null;
-  imageURL_small_base64 = null;
   position = [0, 0];
   address = '';
   uploading = false;
@@ -70,8 +69,7 @@ export default class camera extends LightningElement {
         'latitude': this.position[0],
         'longitude': this.position[1],
         'uuid': this.uuid,
-        'base64': this.imageURL_base64,
-        'base64_small': this.imageURL_small_base64
+        'base64': this.imageURL_base64
       })
         .then(id => {
           console.log('New record: ' + id);
@@ -93,11 +91,6 @@ export default class camera extends LightningElement {
       this.resizeImage(imageURL, IMAGE_SIZE, resizedImageURL => {
         this.imageURL = resizedImageURL;
         this.imageURL_base64 = resizedImageURL.split(',')[1];
-        this.resizeImage(imageURL, IMAGE_SIZE_SMALL, resizedImageURL_small => {
-          this.imageURL_small = resizedImageURL_small;
-          this.imageURL_small_base64 = resizedImageURL_small.split(',')[1];
-          //console.log(this.imageURL_small_base64);
-        });
       });
     };
     reader.readAsDataURL(f);

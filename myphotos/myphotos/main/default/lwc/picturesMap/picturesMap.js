@@ -114,7 +114,7 @@ export default class PicturesMap extends LightningElement {
       })
 
     selectRecordsByDistance({ latitude: latitude, longitude: longitude, radius: this.radius })
-      .then(rts => {
+      .then(records => {
 
         // Clear all existing markers
         this.markers.forEach(marker => {
@@ -128,19 +128,19 @@ export default class PicturesMap extends LightningElement {
           this.map.removeLayer(this.centerMarker);
         }
 
-        rts.forEach(rt => {
+        records.forEach(r => {
           //console.log(record);
-          const marker = L.marker([rt.record.Geolocation__Latitude__s, rt.record.Geolocation__Longitude__s])
+          const marker = L.marker([r.Geolocation__Latitude__s, r.Geolocation__Longitude__s])
             .addTo(this.map)
             .on('click', this.onMarkerClick)
-            .bindTooltip(rt.record.Id, { opacity: 0 })
+            .bindTooltip(r.Id, { opacity: 0 })
             .bindPopup(
-              '<div>[' + rt.record.Name + ']</div><div>' +
-              toLocalTime(rt.record.Timestamp__c) + '</div><div>' +
-              rt.record.Memo__c + '</div>' +
-              '<img src="' + rt.url + '"</img>'
+              '<div>[' + r.Name + ']</div><div>' +
+              toLocalTime(r.Timestamp__c) + '</div><div>' +
+              r.Memo__c + '</div>' +
+              r.Image__c
             );
-            console.log(rt.url);
+            console.log(r.Image__c);
           this.markers.push(marker);
         });
         this.featureGroup = L.featureGroup(this.markers).addTo(this.map);
