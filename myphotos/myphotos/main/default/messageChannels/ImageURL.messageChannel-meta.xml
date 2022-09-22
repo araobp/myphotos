@@ -2,7 +2,8 @@
 <LightningMessageChannel xmlns="http://soap.sforce.com/2006/04/metadata">
     <isExposed>true</isExposed>
     <lightningMessageFields>
-        <fieldName>recordId</fieldName>
+        <fieldName>name</fieldName>
+        <fieldName>imageURL</fieldName>
     </lightningMessageFields>
-    <masterLabel>RecordId</masterLabel>
+    <masterLabel>ImageURL</masterLabel>
 </LightningMessageChannel>

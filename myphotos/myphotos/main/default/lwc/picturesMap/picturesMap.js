@@ -5,7 +5,7 @@ import selectRecordsByDistance from '@salesforce/apex/SelectRecords.selectRecord
 import icons from '@salesforce/resourceUrl/icons'
 
 import { publish, MessageContext } from 'lightning/messageService';
-import RECORD_ID_UPDATE_MESSAGE from '@salesforce/messageChannel/RecordId__c';
+import IMAGE_URL_UPDATE_MESSAGE from '@salesforce/messageChannel/ImageURL__c';
 import Id from '@salesforce/user/Id';
 import { GPS } from 'c/gps';
 import updateGeolocation from '@salesforce/apex/UserData.updateGeolocation';
@@ -133,14 +133,14 @@ export default class PicturesMap extends LightningElement {
           const marker = L.marker([r.Geolocation__Latitude__s, r.Geolocation__Longitude__s])
             .addTo(this.map)
             .on('click', this.onMarkerClick)
-            .bindTooltip(r.Id, { opacity: 0 })
+            .bindTooltip(r.Name + ',' + r.ImageURL__c, { opacity: 0 })
             .bindPopup(
               '<div>[' + r.Name + ']</div><div>' +
               toLocalTime(r.Timestamp__c) + '</div><div>' +
               r.Memo__c + '</div>' +
               r.Image__c
             );
-            console.log(r.Image__c);
+          console.log(r.Image__c);
           this.markers.push(marker);
         });
         this.featureGroup = L.featureGroup(this.markers).addTo(this.map);
@@ -169,11 +169,8 @@ export default class PicturesMap extends LightningElement {
 
   onMarkerClick = (e) => {
     const popup = e.target.getTooltip();
-    const recordId = popup.getContent();
-    const message = {
-      recordId: recordId
-    };
-    publish(this.messageContext, RECORD_ID_UPDATE_MESSAGE, message);
+    const content = popup.getContent().split(',');
+    publish(this.messageContext, IMAGE_URL_UPDATE_MESSAGE, { name: content[0], imageURL: content[1] });
   }
 
 }
