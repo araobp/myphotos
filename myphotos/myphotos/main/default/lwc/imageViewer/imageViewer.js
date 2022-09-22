@@ -3,8 +3,10 @@ import { subscribe, unsubscribe, MessageContext } from 'lightning/messageService
 import IMAGE_URL_UPDATE_MESSAGE from '@salesforce/messageChannel/ImageURL__c';
 import { getRecord, getFieldValue } from 'lightning/uiRecordApi';
 
-import RECORD_NAME_FIELD from '@salesforce/schema/Record__c/Name';
-import IMAGE_URL_FIELD from '@salesforce/schema/Record__c/ImageURL__c';
+import RECORD_NAME_FIELD from '@salesforce/schema/Record__c.Name';
+import IMAGE_URL_FIELD from '@salesforce/schema/Record__c.ImageURL__c';
+
+const recordFields = [ RECORD_NAME_FIELD, IMAGE_URL_FIELD ];
 
 export default class PhotoViewer extends LightningElement {
   @api recordId;
@@ -32,6 +34,7 @@ export default class PhotoViewer extends LightningElement {
       this.messageContext,
       IMAGE_URL_UPDATE_MESSAGE,
       (message) => {
+        console.log(message);
         this.name = message.name;
         this.imageURL = message.imageURL;
       }

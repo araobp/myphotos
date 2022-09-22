@@ -3,6 +3,8 @@
     <isExposed>true</isExposed>
     <lightningMessageFields>
         <fieldName>name</fieldName>
+    </lightningMessageFields>
+    <lightningMessageFields>
         <fieldName>imageURL</fieldName>
     </lightningMessageFields>
     <masterLabel>ImageURL</masterLabel>
