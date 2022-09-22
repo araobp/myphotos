@@ -26,6 +26,24 @@
         <type>Flexipage</type>
         <pageOrSobjectType>standard-home</pageOrSobjectType>
     </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <comment>Action override created by Lightning App Builder during activation.</comment>
+        <content>PlacePage</content>
+        <formFactor>Small</formFactor>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Flexipage</type>
+        <pageOrSobjectType>Place__c</pageOrSobjectType>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <comment>Action override created by Lightning App Builder during activation.</comment>
+        <content>PlacePage</content>
+        <formFactor>Large</formFactor>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Flexipage</type>
+        <pageOrSobjectType>Place__c</pageOrSobjectType>
+    </actionOverrides>
     <brand>
         <headerColor>#78B6ED</headerColor>
         <shouldOverrideOrgTheme>true</shouldOverrideOrgTheme>

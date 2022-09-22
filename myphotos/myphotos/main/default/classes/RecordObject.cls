@@ -26,21 +26,37 @@ public with sharing class RecordObject {
     static Decimal VICINITY_RADIUS = 0.1;  // 100m
 
     @AuraEnabled
-    public static Boolean addPlace(String name, String address, Decimal latitude, Decimal longitude){
+    //public static Boolean addPlace(String name, String address, Decimal latitude, Decimal longitude){
+    public static Boolean addPlace(Id recordId) {
         Boolean success = false;
         try {
-            List<Place__c> places = [SELECT Name, Address__c, Geolocation__Latitude__s, Geolocation__Longitude__s
-            FROM Place__c
-            WHERE DISTANCE(Geolocation__c, GEOLOCATION(:latitude, :longitude), 'km') < :VICINITY_RADIUS];
+            Record__c r = [
+                SELECT Name, Address__c, Geolocation__Latitude__s, Geolocation__Longitude__s, Place__c
+                FROM Record__c
+                WHERE Id = :recordId
+                LIMIT 1
+            ];
+            
+            Decimal latitude = r.Geolocation__Latitude__s;
+            Decimal longitude = r.Geolocation__Longitude__s;
+
+            List<Place__c> places = [
+                SELECT Name, Address__c, Geolocation__Latitude__s, Geolocation__Longitude__s
+                FROM Place__c
+                WHERE DISTANCE(Geolocation__c, GEOLOCATION(:latitude, :longitude), 'km') < :VICINITY_RADIUS
+            ];
             if (places.size() == 0) {
                 Place__c place = new Place__c();
-                place.Name = name;
-                place.Address__c = address;
+                place.Name = r.Name;
+                place.Address__c = r.Address__c;
                 place.Geolocation__Latitude__s = latitude;
                 place.Geolocation__Longitude__s = longitude;
                 insert place;
-                success = true;
 
+                r.Place__c = place.Id;
+                update r;
+
+                success = true;
                 System.debug(place);
             }
             return success;
