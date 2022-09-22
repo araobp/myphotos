@@ -58,6 +58,9 @@ public with sharing class RecordObject {
 
                 success = true;
                 System.debug(place);
+            } else {
+                r.Place__c = places[0].Id;
+                update r;
             }
             return success;
    
