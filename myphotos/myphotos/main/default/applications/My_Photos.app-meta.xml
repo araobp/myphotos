@@ -48,7 +48,7 @@
         <headerColor>#78B6ED</headerColor>
         <shouldOverrideOrgTheme>true</shouldOverrideOrgTheme>
     </brand>
-    <description>My photos app</description>
+    <description>My Photos app</description>
     <formFactors>Small</formFactors>
     <formFactors>Large</formFactors>
     <isNavAutoTempTabsDisabled>false</isNavAutoTempTabsDisabled>
