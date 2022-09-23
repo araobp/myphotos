@@ -93,7 +93,7 @@ It is necessary to enable LWS to use navigator.mediaDevices.getUserMedia() to ca
 
 <img src="./images/LWS.png" width="500px">
 
-## Images saved as Salesforce Files
+## Images saved as Salesforce Files (ContentDocument/ContentVersion)
 
 Images captured by a mobile camera are saved as Salesforce Files.
 
