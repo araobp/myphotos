@@ -93,6 +93,14 @@ It is necessary to enable LWS to use navigator.mediaDevices.getUserMedia() to ca
 
 <img src="./images/LWS.png" width="500px">
 
+## Images saved as Salesforce Files
+
+Images captured by a mobile camera are saved as Salesforce Files.
+
+[Reference] https://qiita.com/panxl/items/c8a4d5ffe7fe92f6a3ab
+
+<img src="https://camo.qiitausercontent.com/016a2b548a388b19bb86b9599da53f34eb16f207/68747470733a2f2f71696974612d696d6167652d73746f72652e73332e61702d6e6f727468656173742d312e616d617a6f6e6177732e636f6d2f302f3439363538392f36666339316633352d393661322d643734352d386532652d6366666439313663336338662e706e67" width="500px">
+
 ## References
 - [Using Leaflet to show maps in your LWC components](https://sonneiltech.com/2021/01/using-leaflet-to-show-maps-in-your-lwc-components/)
 - [Nominatim](https://nominatim.org/)
