@@ -21,6 +21,13 @@ That's it!
 
 ## Data model
 
+This application uses the following objects and fields:
+
+- "Record__c" custome object for text data of every photo images
+- "Place__c" custom object for places I often go
+- "Geolocation__c" custome field in "User" standard object for my current location
+- "Content Version", "ContentDocument" and "ContentDocumentLink" for photo images
+
 <img src="./images/Schema.jpg" width="600px">
 
 ## Components
