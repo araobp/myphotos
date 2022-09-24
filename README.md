@@ -19,6 +19,10 @@ Then create a user with "Salesforce Platform" license width "Standard Platform U
 
 That's it!
 
+## Data model
+
+<img src="./images/Schema.jpg" width="600px">
+
 ## Components
 
 #### Camera for smart phone
