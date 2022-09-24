@@ -90,6 +90,10 @@
         <visible>true</visible>
     </recordTypeVisibilities>
     <tabSettings>
+        <tab>Camera</tab>
+        <visibility>Visible</visibility>
+    </tabSettings>
+    <tabSettings>
         <tab>Place__c</tab>
         <visibility>Visible</visibility>
     </tabSettings>
