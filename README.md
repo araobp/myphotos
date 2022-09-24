@@ -15,7 +15,7 @@ This project has developed an unmanaged package "myphotos" with "Salesforce Plat
 
 Just deploy it to your salesforce platform by VSCode or SFDX CLI.
 
-Then create a user with "Salesforce Platform" license width "Standard Platform User" profile, then assign a permission sets "MyPhotos" to the user.
+Then create a user with "Salesforce Platform" license with "Standard Platform User" profile, then assign a permission sets "MyPhotos" to the user.
 
 That's it!
 
