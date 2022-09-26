@@ -23,6 +23,7 @@ const recordFields = [
 export default class PictureMap extends LightningElement {
   @api recordId;
   @api height = 400;
+  alreadyWired = false;
   name = null;
 
   // Default: Apita Yokohama Tsunashima
@@ -50,7 +51,7 @@ export default class PictureMap extends LightningElement {
 
   draw() {
     setTimeout(() => {
-      if (this.name !== null) {
+      if (this.alreadyWired) {
         const container = this.template.querySelector('[data-id="map"]');
         container.style.height = `${this.height}px`;
         const position = [this.latitude, this.longitude];
@@ -76,10 +77,12 @@ export default class PictureMap extends LightningElement {
     if (error) {
       console.log(error);
     } else if (data) {
-      this.name = getFieldValue(data, RECORD_NAME_FIELD);
-      this.address = getFieldValue(data, RECORD_ADDRESS_FIELD);
-      this.latitude = getFieldValue(data, RECORD_GEOLOCATION_LATITUDE_FIELD);
-      this.longitude = getFieldValue(data, RECORD_GEOLOCATION_LONGITUDE_FIELD);
+        this.name = getFieldValue(data, RECORD_NAME_FIELD);
+        this.address = getFieldValue(data, RECORD_ADDRESS_FIELD);
+        this.latitude = getFieldValue(data, RECORD_GEOLOCATION_LATITUDE_FIELD);
+        this.longitude = getFieldValue(data, RECORD_GEOLOCATION_LONGITUDE_FIELD);
+      console.log(data);
+      this.alreadyWired = true;
     }
   }
 
@@ -98,10 +101,11 @@ export default class PictureMap extends LightningElement {
     fields[ID_FIELD.fieldApiName] = this.recordId;
     fields[RECORD_ADDRESS_FIELD.fieldApiName] = this.addressClicked;
     fields['Geolocation__Latitude__s'] = this.latitudeClicked;
-    fields['Geolocation__Longitude__s'] =this.longitudeClicked;
+    fields['Geolocation__Longitude__s'] = this.longitudeClicked;
     const recordInput = {
       fields: fields
     };
+    this.alreadyWired = false;
     updateRecord(recordInput)
       .then(record => {
         console.log(record);
