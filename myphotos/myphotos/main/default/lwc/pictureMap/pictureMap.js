@@ -1,8 +1,11 @@
 import { LightningElement, api, wire } from 'lwc';
 import { getRecord, getFieldValue, updateRecord } from 'lightning/uiRecordApi';
-import ID_FIELD from "@salesforce/schema/Record__c.Id";
+import RECORD_ID_FIELD from "@salesforce/schema/Record__c.Id";
 import RECORD_NAME_FIELD from '@salesforce/schema/Record__c.Name';
 import RECORD_ADDRESS_FIELD from '@salesforce/schema/Record__c.Address__c';
+import PLACE_ID_FIELD from "@salesforce/schema/Place__c.Id";
+import PLACE_NAME_FIELD from '@salesforce/schema/Place__c.Name';
+import PLACE_ADDRESS_FIELD from '@salesforce/schema/Place__c.Address__c';
 
 import { loadScript, loadStyle } from 'lightning/platformResourceLoader';
 import LEAFLET from '@salesforce/resourceUrl/leaflet';
@@ -12,15 +15,11 @@ import { nominatimResultToAddress } from 'c/util';
 
 const RECORD_GEOLOCATION_LATITUDE_FIELD = 'Record__c.Geolocation__Latitude__s';
 const RECORD_GEOLOCATION_LONGITUDE_FIELD = 'Record__c.Geolocation__Longitude__s';
-
-const recordFields = [
-  RECORD_NAME_FIELD,
-  RECORD_ADDRESS_FIELD,
-  RECORD_GEOLOCATION_LATITUDE_FIELD,
-  RECORD_GEOLOCATION_LONGITUDE_FIELD
-];
+const PLACE_GEOLOCATION_LATITUDE_FIELD = 'Place__c.Geolocation__Latitude__s';
+const PLACE_GEOLOCATION_LONGITUDE_FIELD = 'Place__c.Geolocation__Longitude__s';
 
 export default class PictureMap extends LightningElement {
+  @api targetObject;
   @api recordId;
   @api height = 400;
   alreadyWired = false;
@@ -41,6 +40,27 @@ export default class PictureMap extends LightningElement {
   }
 
   connectedCallback() {
+    console.log("connectedCallback firing");
+    if (this.targetObject === 'Record__c') {
+      this.ID_FIELD = RECORD_ID_FIELD;
+      this.NAME_FIELD = RECORD_NAME_FIELD;
+      this.ADDRESS_FIELD = RECORD_ADDRESS_FIELD;
+      this.GEOLOCATION_LATITUDE_FIELD = RECORD_GEOLOCATION_LATITUDE_FIELD;
+      this.GEOLOCATION_LONGITUDE_FIELD = RECORD_GEOLOCATION_LONGITUDE_FIELD;
+    } else if (this.targetObject === 'Place__c') {
+      this.ID_FIELD = PLACE_ID_FIELD;
+      this.NAME_FIELD = PLACE_NAME_FIELD;
+      this.ADDRESS_FIELD = PLACE_ADDRESS_FIELD;
+      this.GEOLOCATION_LATITUDE_FIELD = PLACE_GEOLOCATION_LATITUDE_FIELD;
+      this.GEOLOCATION_LONGITUDE_FIELD = PLACE_GEOLOCATION_LONGITUDE_FIELD;
+    }
+    this.fields = [
+      this.NAME_FIELD,
+      this.ADDRESS_FIELD,
+      this.GEOLOCATION_LATITUDE_FIELD,
+      this.GEOLOCATION_LONGITUDE_FIELD
+    ];
+    console.log(this.fields);
     Promise.all([
       loadStyle(this, LEAFLET + '/leaflet.css'),
       loadScript(this, LEAFLET + '/leaflet.js'),
@@ -72,15 +92,15 @@ export default class PictureMap extends LightningElement {
     }, 500);
   }
 
-  @wire(getRecord, { recordId: '$recordId', fields: recordFields })
+  @wire(getRecord, { recordId: '$recordId', fields: '$fields' })
   loadRecord({ error, data }) {
     if (error) {
       console.log(error);
     } else if (data) {
-        this.name = getFieldValue(data, RECORD_NAME_FIELD);
-        this.address = getFieldValue(data, RECORD_ADDRESS_FIELD);
-        this.latitude = getFieldValue(data, RECORD_GEOLOCATION_LATITUDE_FIELD);
-        this.longitude = getFieldValue(data, RECORD_GEOLOCATION_LONGITUDE_FIELD);
+      this.name = getFieldValue(data, this.NAME_FIELD);
+      this.address = getFieldValue(data, this.ADDRESS_FIELD);
+      this.latitude = getFieldValue(data, this.GEOLOCATION_LATITUDE_FIELD);
+      this.longitude = getFieldValue(data, this.GEOLOCATION_LONGITUDE_FIELD);
       console.log(data);
       this.alreadyWired = true;
     }
@@ -98,14 +118,16 @@ export default class PictureMap extends LightningElement {
 
   handleGeolocationUpdate = () => {
     const fields = {};
-    fields[ID_FIELD.fieldApiName] = this.recordId;
-    fields[RECORD_ADDRESS_FIELD.fieldApiName] = this.addressClicked;
-    fields['Geolocation__Latitude__s'] = this.latitudeClicked;
-    fields['Geolocation__Longitude__s'] = this.longitudeClicked;
+
+    fields[this.ID_FIELD.fieldApiName] = this.recordId;
+    fields[this.ADDRESS_FIELD.fieldApiName] = this.addressClicked;
+    fields.Geolocation__Latitude__s = this.latitudeClicked;
+    fields.Geolocation__Longitude__s = this.longitudeClicked;
+
     const recordInput = {
       fields: fields
     };
-    this.alreadyWired = false;
+
     updateRecord(recordInput)
       .then(record => {
         console.log(record);

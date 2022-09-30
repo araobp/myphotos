@@ -161,7 +161,12 @@
         <type>Text</type>
     </nameField>
     <recordTypeTrackHistory>false</recordTypeTrackHistory>
-    <searchLayouts></searchLayouts>
+    <searchLayouts>
+        <searchResultsAdditionalFields>Timestamp__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Address__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Memo__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Image__c</searchResultsAdditionalFields>
+    </searchLayouts>
     <sharingModel>Private</sharingModel>
     <visibility>Public</visibility>
 </CustomObject>

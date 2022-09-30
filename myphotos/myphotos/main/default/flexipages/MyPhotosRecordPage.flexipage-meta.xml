@@ -53,6 +53,10 @@
     <flexiPageRegions>
         <itemInstances>
             <componentInstance>
+                <componentInstanceProperties>
+                    <name>targetObject</name>
+                    <value>Record__c</value>
+                </componentInstanceProperties>
                 <componentName>pictureMap</componentName>
                 <identifier>c_pictureMap</identifier>
             </componentInstance>
