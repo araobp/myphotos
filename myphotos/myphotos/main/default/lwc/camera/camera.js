@@ -1,5 +1,4 @@
 import { LightningElement, wire } from 'lwc';
-//import geolocationToAddress from '@salesforce/apex/NominatimCallout.geolocationToAddress';
 import findPlace from '@salesforce/apex/RecordObject.findPlace';
 import createRecord from '@salesforce/apex/RecordObject.createRecord';
 
@@ -7,7 +6,6 @@ import { GPS } from 'c/gps';
 import { uuidv4 } from 'c/util';
 
 const IMAGE_SIZE = 432;
-const IMAGE_SIZE_SMALL = 64
 
 export default class camera extends LightningElement {
 
@@ -40,7 +38,7 @@ export default class camera extends LightningElement {
       this.positioning = false;
       this.position = position;
       this.address = address;
-      findPlace({ latitude: position[0], longitude: position[1] })
+      findPlace()
         .then(name => {
           this.template.querySelector('[data-element="name"]').value = name;
         })

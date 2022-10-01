@@ -23,10 +23,19 @@ public with sharing class RecordObject {
         }
     }
 
+    @AuraEnabled(cacheable=true)
+    public static List<Record__c> selectRecordsByDistance(Decimal latitude, Decimal longitude, Decimal radius) {
+        return [
+            SELECT Id, uuid__c, Name, Memo__c, Timestamp__c, Geolocation__Latitude__s, Geolocation__Longitude__s, Image__c, ImageURL__c
+            FROM Record__c
+            WHERE DISTANCE(Geolocation__c, GEOLOCATION(:latitude, :longitude), 'km') < :radius
+            LIMIT 100
+        ];
+    }
+    
     static Decimal VICINITY_RADIUS = 0.1;  // 100m
 
     @AuraEnabled
-    //public static Boolean addPlace(String name, String address, Decimal latitude, Decimal longitude){
     public static Boolean addPlace(Id recordId) {
         Boolean success = false;
         try {
@@ -43,7 +52,8 @@ public with sharing class RecordObject {
             List<Place__c> places = [
                 SELECT Name, Address__c, Geolocation__Latitude__s, Geolocation__Longitude__s
                 FROM Place__c
-                WHERE DISTANCE(Geolocation__c, GEOLOCATION(:latitude, :longitude), 'km') < :VICINITY_RADIUS
+                WHERE Distance__c < :VICINITY_RADIUS
+                // WHERE DISTANCE(Geolocation__c, GEOLOCATION(:latitude, :longitude), 'km') < :VICINITY_RADIUS
             ];
             if (places.size() == 0) {
                 Place__c place = new Place__c();
@@ -70,18 +80,47 @@ public with sharing class RecordObject {
     }
 
     @AuraEnabled(cacheable=true)
-    public static string findPlace(Decimal latitude, Decimal longitude){
+    public static string findPlace(){
         String name = '';
         try {
             Place__c place = [SELECT Name
             FROM Place__c
-            WHERE DISTANCE(Geolocation__c, GEOLOCATION(:latitude, :longitude), 'km') < :VICINITY_RADIUS
+            WHERE Distance__c < :VICINITY_RADIUS
+            //WHERE DISTANCE(Geolocation__c, GEOLOCATION(:latitude, :longitude), 'km') < :VICINITY_RADIUS
             LIMIT 1];
             System.debug(place);
             if (place != null) {
                 name = place.Name;
             }
             return name;
+        } catch (Exception e) {
+            throw new AuraHandledException(e.getMessage());
+        }
+    }
+
+    @AuraEnabled
+    public static List<Id> findTasksNearby(){
+        try {
+            List<Place__c> places = [
+                SELECT Id
+                FROM Place__c
+                ORDER BY Distance__c ASC
+                LIMIT 50
+            ];
+            
+            List<Id> taskIds = new List<Id>();
+            for (Place__c p : places) {
+                Task t = [
+                    SELECT Id
+                    FROM Task
+                    WHERE WhatId = :p.Id
+                    LIMIT 1
+                ];
+                if (t != null) {
+                    taskIds.add(t.Id);
+                }
+            }
+            return taskIds;
         } catch (Exception e) {
             throw new AuraHandledException(e.getMessage());
         }

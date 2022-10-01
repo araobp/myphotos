@@ -1,7 +1,7 @@
 import { LightningElement, api, wire } from 'lwc';
 import { loadScript, loadStyle } from 'lightning/platformResourceLoader';
 import LEAFLET from '@salesforce/resourceUrl/leaflet';
-import selectRecordsByDistance from '@salesforce/apex/SelectRecords.selectRecordsByDistance';
+import selectRecordsByDistance from '@salesforce/apex/RecordObject.selectRecordsByDistance';
 import icons from '@salesforce/resourceUrl/icons'
 
 import { publish, MessageContext } from 'lightning/messageService';
