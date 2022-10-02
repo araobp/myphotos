@@ -13,6 +13,9 @@ import LEAFLET from '@salesforce/resourceUrl/leaflet';
 import geolocationToAddress from '@salesforce/apex/NominatimCallout.geolocationToAddress';
 import { nominatimResultToAddress } from 'c/util';
 
+import { subscribe, unsubscribe, MessageContext } from 'lightning/messageService';
+import RECORD_ID_UPDATE_MESSAGE from '@salesforce/messageChannel/RecordId__c';
+
 const RECORD_GEOLOCATION_LATITUDE_FIELD = 'Record__c.Geolocation__Latitude__s';
 const RECORD_GEOLOCATION_LONGITUDE_FIELD = 'Record__c.Geolocation__Longitude__s';
 const PLACE_GEOLOCATION_LATITUDE_FIELD = 'Place__c.Geolocation__Latitude__s';
@@ -34,6 +37,11 @@ export default class PictureMap extends LightningElement {
 
   address = "<Unknown>";
   addressClicked = "<Unknown>";
+
+  subscription = null;
+
+  @wire(MessageContext)
+  messageContext;
 
   renderedCallback() {
     this.template.querySelector('[data-id="map"]').style.height = `${this.height}px`;
@@ -61,12 +69,29 @@ export default class PictureMap extends LightningElement {
       this.GEOLOCATION_LONGITUDE_FIELD
     ];
     console.log(this.fields);
+
+    this.subscription = subscribe(
+      this.messageContext,
+      RECORD_ID_UPDATE_MESSAGE,
+      (message) => {
+        console.log(message);
+        this.recordId = message.recordId;
+      }
+    );
+
     Promise.all([
       loadStyle(this, LEAFLET + '/leaflet.css'),
       loadScript(this, LEAFLET + '/leaflet.js'),
     ]).then(() => {
       this.draw();
     });
+  }
+
+  disconnectedCallback() {
+    if (this.subscription != null) {
+      unsubscribe(this.subscription);
+      this.subscription = null;
+    }
   }
 
   draw() {

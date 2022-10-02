@@ -32,7 +32,7 @@ public with sharing class RecordObject {
             LIMIT 100
         ];
     }
-    
+
     static Decimal VICINITY_RADIUS = 0.1;  // 100m
 
     @AuraEnabled
@@ -53,7 +53,6 @@ public with sharing class RecordObject {
                 SELECT Name, Address__c, Geolocation__Latitude__s, Geolocation__Longitude__s
                 FROM Place__c
                 WHERE Distance__c < :VICINITY_RADIUS
-                // WHERE DISTANCE(Geolocation__c, GEOLOCATION(:latitude, :longitude), 'km') < :VICINITY_RADIUS
             ];
             if (places.size() == 0) {
                 Place__c place = new Place__c();
@@ -86,7 +85,6 @@ public with sharing class RecordObject {
             Place__c place = [SELECT Name
             FROM Place__c
             WHERE Distance__c < :VICINITY_RADIUS
-            //WHERE DISTANCE(Geolocation__c, GEOLOCATION(:latitude, :longitude), 'km') < :VICINITY_RADIUS
             LIMIT 1];
             System.debug(place);
             if (place != null) {
@@ -98,29 +96,34 @@ public with sharing class RecordObject {
         }
     }
 
+    public class TasksNearby {
+        @AuraEnabled public Place__c place;
+        @AuraEnabled public List<Task> tasks;
+    }
+
     @AuraEnabled
-    public static List<Id> findTasksNearby(){
+    public static TasksNearby findTasksNearby(){
+        TasksNearby nearby = new TasksNearby();
         try {
-            List<Place__c> places = [
-                SELECT Id
+            Place__c place = [
+                SELECT Id, Name
                 FROM Place__c
                 ORDER BY Distance__c ASC
-                LIMIT 50
+                LIMIT 1
             ];
             
-            List<Id> taskIds = new List<Id>();
-            for (Place__c p : places) {
-                Task t = [
-                    SELECT Id
+            nearby.place = place;
+
+            List<Task> tasks = [
+                    SELECT Id, Subject, Description
                     FROM Task
-                    WHERE WhatId = :p.Id
-                    LIMIT 1
+                    WHERE WhatId = :place.Id AND Status != 'Completed'
                 ];
-                if (t != null) {
-                    taskIds.add(t.Id);
-                }
-            }
-            return taskIds;
+
+            nearby.tasks = tasks;
+
+            return nearby;
+
         } catch (Exception e) {
             throw new AuraHandledException(e.getMessage());
         }

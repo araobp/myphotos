@@ -1,3 +1,29 @@
 <template>
-    
+  <template for:each={tasks} for:item="task">
+    <lightning-card key={task.Id} title={place.Name} icon-name="standard:task">
+      <div class="slds-p-horizontal_medium">
+        <div>Subject: {task.Subject}</div>
+        <div>Comment: {task.Comment}</div>
+      </div>
+    </lightning-card>
+  </template>
+
+  <template if:true={positioning}>
+    <section role="dialog" tabindex="-1" aria-modal="true" aria-labelledby="Positioning"
+      class="slds-modal slds-fade-in-open">
+      <div class="slds-modal__container">
+        <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse">
+          <svg class="slds-button__icon slds-button__icon_large" aria-hidden="true">
+            <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
+          </svg>
+          <span class="slds-assistive-text">Cancel and close</span>
+        </button>
+        <div class="slds-modal__content slds-p-around_medium slds-modal__content_headless slds-align_absolute-center">
+          <p>Positioning...</p>
+        </div>
+      </div>
+    </section>
+    <div class="slds-backdrop slds-backdrop_open" role="presentation"></div>
+  </template>
+
 </template>
