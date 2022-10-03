@@ -8,7 +8,7 @@ export default class TaskHere extends LightningElement {
 
   positioning = true;
 
-  place;
+  place = "<Unknown>"
   tasks;
   
   gps;
@@ -33,5 +33,12 @@ export default class TaskHere extends LightningElement {
         publish(this.messageContext, RECORD_ID_UPDATE_MESSAGE, { recordId: this.place.Id });
       });
     });
+  }
+
+  handleCheckboxChange(event) {
+
+    const checked = event.target.checked;
+    const recordId = event.target;
+    console.log(event);
   }
 }
