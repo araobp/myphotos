@@ -7,5 +7,12 @@
         <target>lightning__RecordPage</target>
         <target>lightning__HomePage</target>
     </targets>
-
+    <targetConfigs>
+        <targetConfig targets="lightning__RecordPage,lightning__AppPage,lightning__HomePage">
+            <supportedFormFactors>
+                <supportedFormFactor type="Small" />
+                <supportedFormFactor type="Large" />
+            </supportedFormFactors>
+        </targetConfig>
+    </targetConfigs>
 </LightningComponentBundle>

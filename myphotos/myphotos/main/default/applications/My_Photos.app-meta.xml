@@ -59,6 +59,33 @@
     <profileActionOverrides>
         <actionName>View</actionName>
         <content>MyPhotosRecordPage</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Record__c</pageOrSobjectType>
+        <recordType>Record__c.Mall</recordType>
+        <type>Flexipage</type>
+        <profile>StandardAul</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>MyPhotosRecordPage</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Record__c</pageOrSobjectType>
+        <recordType>Record__c.Mall</recordType>
+        <type>Flexipage</type>
+        <profile>Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>MyPhotosRecordPage</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Record__c</pageOrSobjectType>
+        <recordType>Record__c.Mall</recordType>
+        <type>Flexipage</type>
+        <profile>Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>MyPhotosRecordPage</content>
         <formFactor>Small</formFactor>
         <pageOrSobjectType>Record__c</pageOrSobjectType>
         <recordType>Record__c.Supermarket</recordType>
@@ -296,33 +323,6 @@
     <profileActionOverrides>
         <actionName>View</actionName>
         <content>MyPhotosRecordPage</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Record__c</pageOrSobjectType>
-        <recordType>Record__c.Mall</recordType>
-        <type>Flexipage</type>
-        <profile>StandardAul</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>MyPhotosRecordPage</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Record__c</pageOrSobjectType>
-        <recordType>Record__c.Mall</recordType>
-        <type>Flexipage</type>
-        <profile>Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>MyPhotosRecordPage</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Record__c</pageOrSobjectType>
-        <recordType>Record__c.Mall</recordType>
-        <type>Flexipage</type>
-        <profile>Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>MyPhotosRecordPage</content>
         <formFactor>Small</formFactor>
         <pageOrSobjectType>Record__c</pageOrSobjectType>
         <recordType>Record__c.Public_Transport</recordType>
@@ -428,10 +428,10 @@
         <type>Flexipage</type>
         <profile>Admin</profile>
     </profileActionOverrides>
-    <tabs>standard-home</tabs>
-    <tabs>Record__c</tabs>
+    <tabs>HomeMobile</tabs>
     <tabs>Camera</tabs>
     <tabs>Here</tabs>
+    <tabs>Record__c</tabs>
     <tabs>Place__c</tabs>
     <tabs>standard-Task</tabs>
     <tabs>standard-report</tabs>
