@@ -1,8 +1,10 @@
 import { LightningElement, wire } from 'lwc';
 import { GPS } from 'c/gps';
 import findTasksNearby from '@salesforce/apex/RecordObject.findTasksNearby';
+import makeTasksCompleted from '@salesforce/apex/RecordObject.makeTasksCompleted';
 import { publish, MessageContext } from 'lightning/messageService';
 import RECORD_ID_UPDATE_MESSAGE from '@salesforce/messageChannel/RecordId__c';
+import { ShowToastEvent } from 'lightning/platformShowToastEvent';
 
 export default class TaskHere extends LightningElement {
 
@@ -10,7 +12,7 @@ export default class TaskHere extends LightningElement {
 
   place = "<Unknown>"
   tasks;
-  
+
   gps;
 
   @wire(MessageContext)
@@ -25,20 +27,44 @@ export default class TaskHere extends LightningElement {
     this.gps.getGeoLocation(() => {  // Just for updating my current location
       this.positioning = false;
       findTasksNearby().
-      then(nearby => {
-        console.log(nearby);
-        this.place = nearby.place;
-        this.tasks = nearby.tasks;
-        console.log({recordId: this.place.Id});
-        publish(this.messageContext, RECORD_ID_UPDATE_MESSAGE, { recordId: this.place.Id });
-      });
+        then(nearby => {
+          console.log(nearby);
+          this.place = nearby.place;
+          this.tasks = nearby.tasks;
+          console.log({ recordId: this.place.Id });
+          publish(this.messageContext, RECORD_ID_UPDATE_MESSAGE, { recordId: this.place.Id });
+        });
     });
   }
 
-  handleCheckboxChange(event) {
-
-    const checked = event.target.checked;
-    const recordId = event.target;
-    console.log(event);
+  handleMakeComplete() {
+    const inputs = this.template.querySelectorAll('lightning-input');
+    const recordIds = [];
+    inputs.forEach(input => {
+      if (input.checked) {
+        const recordId = input.getAttribute('data-id');
+        recordIds.push(recordId);
+      }
+    });
+    console.log(recordIds);
+    if (recordIds.length > 0) {
+      makeTasksCompleted({ recordIds })
+        .then(() => {
+          findTasksNearby().
+            then(nearby => {
+              console.log(nearby);
+              this.place = nearby.place;
+              this.tasks = nearby.tasks;
+              this.dispatchEvent(
+                new ShowToastEvent({
+                  title: 'Success',
+                  message: 'Task completed',
+                  variant: 'success'
+                })
+              );
+            });
+        });
+    }
+    this.template.querySelector('[data-element="makeComplete"]').blur();
   }
 }

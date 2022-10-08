@@ -2,10 +2,11 @@
   <lightning-card title={place.Name} icon-name="standard:task">
     <template for:each={tasks} for:item="task">
       <div class="slds-grid slds-m-around_medium" key={task.Id}>
-        <lightning-input type="checkbox" id={task.Id} onchange={handleCheckboxChange}></lightning-input>
+        <lightning-input type="checkbox" data-id={task.Id}></lightning-input>
         <div>{task.Subject}</div>        
       </div>
     </template>
+    <lightning-button variant="brand" data-element="makeComplete" label="Make Complete" onclick={handleMakeComplete} class="slds-m-left_x-small"></lightning-button>
   </lightning-card>
 
 <template if:true={positioning}>

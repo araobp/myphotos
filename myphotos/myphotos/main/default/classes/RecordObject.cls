@@ -128,4 +128,23 @@ public with sharing class RecordObject {
             throw new AuraHandledException(e.getMessage());
         }
     }
+
+    @AuraEnabled
+    public static void makeTasksCompleted(List<Id> recordIds) {
+        try {
+            List<Task> tasks = new List<Task>();
+            for (Id recordId : recordIds) {
+                Task task = [SELECT Id, Status FROM Task WHERE Id = :recordId];
+                if (task != null) {
+                    task.Status = 'Completed';
+                    tasks.add(task);
+                }
+            }
+            if (tasks.size() > 0) {
+                update tasks;
+            }
+        } catch (Exception e) {
+            throw new AuraHandledException(e.getMessage());
+        }
+    }
 }
