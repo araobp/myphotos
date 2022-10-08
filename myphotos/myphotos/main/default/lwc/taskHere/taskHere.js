@@ -9,6 +9,7 @@ import { ShowToastEvent } from 'lightning/platformShowToastEvent';
 export default class TaskHere extends LightningElement {
 
   positioning = true;
+  showTasks = false;
 
   place = "<Unknown>"
   tasks;
@@ -33,6 +34,9 @@ export default class TaskHere extends LightningElement {
           this.tasks = nearby.tasks;
           console.log({ recordId: this.place.Id });
           publish(this.messageContext, RECORD_ID_UPDATE_MESSAGE, { recordId: this.place.Id });
+          if (this.tasks.length > 0) {
+            this.showTasks = true;
+          }
         });
     });
   }

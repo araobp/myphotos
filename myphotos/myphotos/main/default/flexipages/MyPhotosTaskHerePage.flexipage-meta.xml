@@ -29,6 +29,9 @@
         <quickActionListItems>
             <quickActionName>NewTask</quickActionName>
         </quickActionListItems>
+        <quickActionListItems>
+            <quickActionName>NewEvent</quickActionName>
+        </quickActionListItems>
     </quickActionList>
     <template>
         <name>flexipage:appHomeTemplateTwoColumns</name>

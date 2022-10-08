@@ -1,30 +1,36 @@
 <template>
   <lightning-card title={place.Name} icon-name="standard:task">
-    <template for:each={tasks} for:item="task">
-      <div class="slds-grid slds-m-around_medium" key={task.Id}>
-        <lightning-input type="checkbox" data-id={task.Id}></lightning-input>
-        <div>{task.Subject}</div>        
-      </div>
+    <template if:true={showTasks}>
+      <template for:each={tasks} for:item="task">
+        <div class="slds-grid slds-m-around_medium" key={task.Id}>
+          <lightning-input type="checkbox" data-id={task.Id}></lightning-input>
+          <div>{task.Subject}</div>
+        </div>
+      </template>
+      <lightning-button variant="brand" data-element="makeComplete" label="Make Complete" onclick={handleMakeComplete}
+        class="slds-m-left_x-small"></lightning-button>
     </template>
-    <lightning-button variant="brand" data-element="makeComplete" label="Make Complete" onclick={handleMakeComplete} class="slds-m-left_x-small"></lightning-button>
+    <template if:false={showTasks}>
+      <div class="slds-grid slds-m-around_medium">No tasks</div>
+    </template>
   </lightning-card>
 
-<template if:true={positioning}>
-  <section role="dialog" tabindex="-1" aria-modal="true" aria-labelledby="Positioning"
-    class="slds-modal slds-fade-in-open">
-    <div class="slds-modal__container">
-      <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse">
-        <svg class="slds-button__icon slds-button__icon_large" aria-hidden="true">
-          <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
-        </svg>
-        <span class="slds-assistive-text">Cancel and close</span>
-      </button>
-      <div class="slds-modal__content slds-p-around_medium slds-modal__content_headless slds-align_absolute-center">
-        <p>Positioning...</p>
+  <template if:true={positioning}>
+    <section role="dialog" tabindex="-1" aria-modal="true" aria-labelledby="Positioning"
+      class="slds-modal slds-fade-in-open">
+      <div class="slds-modal__container">
+        <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse">
+          <svg class="slds-button__icon slds-button__icon_large" aria-hidden="true">
+            <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
+          </svg>
+          <span class="slds-assistive-text">Cancel and close</span>
+        </button>
+        <div class="slds-modal__content slds-p-around_medium slds-modal__content_headless slds-align_absolute-center">
+          <p>Positioning...</p>
+        </div>
       </div>
-    </div>
-  </section>
-  <div class="slds-backdrop slds-backdrop_open" role="presentation"></div>
-</template>
+    </section>
+    <div class="slds-backdrop slds-backdrop_open" role="presentation"></div>
+  </template>
 
 </template>

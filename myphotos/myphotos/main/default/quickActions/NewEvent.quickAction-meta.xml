@@ -49,5 +49,6 @@
     </quickActionLayout>
     <standardLabel>New</standardLabel>
     <targetObject>Event</targetObject>
+    <targetRecordType>Event.PlaceEvent</targetRecordType>
     <type>Create</type>
 </QuickAction>
