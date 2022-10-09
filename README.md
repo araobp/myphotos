@@ -8,6 +8,7 @@ This project is to develop a mobile photo app based on Salesforce Platform (i.e.
 
 - Use navigator.geolocation for geolocation (GPS).
 - Use HTML input element to capture image from a mobile camera app.
+- Use Task object for location-based task reminder.
 
 ## Deployment instruction
 
