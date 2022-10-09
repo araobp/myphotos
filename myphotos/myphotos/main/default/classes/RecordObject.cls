@@ -96,34 +96,20 @@ public with sharing class RecordObject {
         }
     }
 
-    public class TasksNearby {
-        @AuraEnabled public Place__c place;
-        @AuraEnabled public List<Task> tasks;
-    }
-
     @AuraEnabled
-    public static TasksNearby findTasksNearby(){
-        TasksNearby nearby = new TasksNearby();
+    public static List<Task> findTasksNearby(Id recordId) {
         try {
             Place__c place = [
                 SELECT Id, Name
                 FROM Place__c
-                ORDER BY Distance__c ASC
+                WHERE Id = :recordId
                 LIMIT 1
             ];
-            
-            nearby.place = place;
-
-            List<Task> tasks = [
+            return [
                     SELECT Id, Subject, Description
                     FROM Task
                     WHERE WhatId = :place.Id AND Status != 'Completed'
                 ];
-
-            nearby.tasks = tasks;
-
-            return nearby;
-
         } catch (Exception e) {
             throw new AuraHandledException(e.getMessage());
         }

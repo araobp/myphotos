@@ -1,10 +1,10 @@
 <template>
-  <lightning-card title={place.Name} icon-name="standard:task">
+  <lightning-card title="Tasks" icon-name="standard:task">
     <template if:true={showTasks}>
       <template for:each={tasks} for:item="task">
-        <div class="slds-grid slds-m-around_medium" key={task.Id}>
-          <lightning-input type="checkbox" data-id={task.Id}></lightning-input>
-          <div>{task.Subject}</div>
+        <!--<div class="slds-grid slds-m-around_medium" key={task.Id}>-->
+        <div key={task.Id} class="slds-p-left_medium slds-p-bottom_medium slds-p-right_medium">
+          <lightning-input type="checkbox" data-id={task.Id} label={task.Subject}></lightning-input>
         </div>
       </template>
       <lightning-button variant="brand" data-element="makeComplete" label="Make Complete" onclick={handleMakeComplete}
