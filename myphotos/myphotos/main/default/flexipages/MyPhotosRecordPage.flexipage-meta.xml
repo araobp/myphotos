@@ -37,6 +37,12 @@
                 <identifier>c_imageViewer</identifier>
             </componentInstance>
         </itemInstances>
+        <itemInstances>
+            <componentInstance>
+                <componentName>addPlace</componentName>
+                <identifier>c_addPlace</identifier>
+            </componentInstance>
+        </itemInstances>
         <name>leftsidebar</name>
         <type>Region</type>
     </flexiPageRegions>

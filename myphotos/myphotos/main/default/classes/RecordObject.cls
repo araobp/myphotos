@@ -52,7 +52,7 @@ public with sharing class RecordObject {
             List<Place__c> places = [
                 SELECT Name, Address__c, Geolocation__Latitude__s, Geolocation__Longitude__s
                 FROM Place__c
-                WHERE Distance__c < :VICINITY_RADIUS
+                WHERE DISTANCE(Geolocation__c, GEOLOCATION(:latitude, :longitude), 'km')  < :VICINITY_RADIUS
             ];
             if (places.size() == 0) {
                 Place__c place = new Place__c();
@@ -73,6 +73,31 @@ public with sharing class RecordObject {
             }
             return success;
    
+        } catch (Exception e) {
+            throw new AuraHandledException(e.getMessage());
+        }
+    }
+
+    @AuraEnabled
+    public static Boolean isAlreadyRegistered(Id recordId){
+        try {
+            Record__c r = [
+                SELECT Name, Address__c, Geolocation__Latitude__s, Geolocation__Longitude__s, Place__c
+                FROM Record__c
+                WHERE Id = :recordId
+                LIMIT 1
+            ];
+            
+            Decimal latitude = r.Geolocation__Latitude__s;
+            Decimal longitude = r.Geolocation__Longitude__s;
+
+            List<Place__c> places = [
+                SELECT Name, Address__c, Geolocation__Latitude__s, Geolocation__Longitude__s
+                FROM Place__c
+                WHERE DISTANCE(Geolocation__c, GEOLOCATION(:latitude, :longitude), 'km')  < :VICINITY_RADIUS
+            ];
+            return (places.size() != 0);
+
         } catch (Exception e) {
             throw new AuraHandledException(e.getMessage());
         }

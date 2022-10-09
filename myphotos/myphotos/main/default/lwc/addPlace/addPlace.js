@@ -1,5 +1,6 @@
 import { LightningElement, api, wire } from 'lwc';
 import addPlace from '@salesforce/apex/RecordObject.addPlace';
+import isAlreadyRegistered from '@salesforce/apex/RecordObject.isAlreadyRegistered';
 import { getRecord, getFieldValue } from 'lightning/uiRecordApi';
 import RECORD_NAME_FIELD from '@salesforce/schema/Record__c.Name';
 import RECORD_ADDRESS_FIELD from '@salesforce/schema/Record__c.Address__c';
@@ -14,6 +15,8 @@ export default class AddPlace extends LightningElement {
   name = null;
   address;
 
+  status = "Add this place for location-based task reminder?"
+
   @wire(getRecord, { recordId: '$recordId', fields: recordFields })
   loadRecord({ error, data }) {
     if (error) {
@@ -22,6 +25,15 @@ export default class AddPlace extends LightningElement {
       this.name = getFieldValue(data, RECORD_NAME_FIELD);
       this.address = getFieldValue(data, RECORD_ADDRESS_FIELD);
     }
+  }
+
+  connectedCallback() {
+    isAlreadyRegistered({ recordId: this.recordId })
+      .then(already => {
+        if (already) {
+          this.status = "This place has already been registered.";
+        }
+      });
   }
 
   handleAddPlace() {

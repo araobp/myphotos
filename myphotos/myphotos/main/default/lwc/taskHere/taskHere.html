@@ -8,7 +8,9 @@
         </div>
       </template>
       <lightning-button variant="brand" data-element="makeComplete" label="Make Complete" onclick={handleMakeComplete}
-        class="slds-m-left_x-small"></lightning-button>
+        class="slds-p-left_medium"></lightning-button>
+      <lightning-button-icon icon-name="utility:refresh" data-element="refresh" label="Refresh" onclick={handleRefresh}
+        class="slds-p-left_medium"></lightning-button-icon>
     </template>
     <template if:false={showTasks}>
       <div class="slds-grid slds-m-around_medium">No tasks</div>

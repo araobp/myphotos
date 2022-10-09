@@ -1,6 +1,7 @@
 <template>
-  <lightning-card class="slds-p-bottom_medium">
-      <lightning-button variant="brand" label="Add Place" onclick={handleAddPlace}
-        class="slds-m-left_x-small"></lightning-button>
-  </lightning-card> 
+  <lightning-card title="Place" icon-name="custom:custom85">
+    <div class="slds-m-around_medium">{status}</div>
+    <lightning-button variant="brand" label="Add" onclick={handleAddPlace} class="slds-m-left_medium">
+    </lightning-button>
+  </lightning-card>
 </template>
