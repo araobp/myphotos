@@ -10,6 +10,8 @@ This project is to develop a mobile photo app based on Salesforce Platform (i.e.
 - Use HTML input element to capture image from a mobile camera app.
 - Use Task object for location-based task reminder.
 
+[ドキュメント（日本語,作成中）](https://docs.google.com/presentation/d/e/2PACX-1vThFeg9FeNg4kEuNcWNcRyY2i67ijAPIiIBs82b_zYlq_BmLSSwvneXUAh5Sk-sQN7y7K5qXxb4oewN/pub?start=false&loop=false&delayms=3000)
+
 ## Deployment instruction
 
 This project has developed an unmanaged package "myphotos" with "Salesforce Platform" license.
