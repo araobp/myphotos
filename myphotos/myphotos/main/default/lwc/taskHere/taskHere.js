@@ -51,12 +51,6 @@ export default class TaskHere extends LightningElement {
     this.template.querySelector('[data-element="makeComplete"]').blur();
   }
 
-  handleRefresh() {
-    setTimeout(
-      () => {
-        window.location.reload();
-        this.template.querySelector('[data-element="refresh"]').blur();
-      },
-      500);
-  }
+  handleRefresh = () => window.location.reload();
+  
 }

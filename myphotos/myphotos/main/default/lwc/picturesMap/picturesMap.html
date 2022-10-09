@@ -1,7 +1,9 @@
 <template>
   <lightning-card title="Map" icon-name="standard:address">
     <div slot="actions">
-      <lightning-button-icon icon-name="utility:settings" alternative-text="MyPhotos API service credential settings"
+      <lightning-button-icon icon-name="utility:refresh" alternative-text="Refresh page"
+      onclick={handleRefresh} class="slds-p-right_medium"></lightning-button-icon>
+      <lightning-button-icon icon-name="utility:settings" alternative-text="Range setting"
         onclick={showSettings}></lightning-button-icon>
     </div>
     <template if:true={show}>

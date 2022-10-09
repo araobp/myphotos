@@ -4,8 +4,6 @@
     <columns>NAME</columns>
     <columns>Address__c</columns>
     <columns>Distance__c</columns>
-    <columns>Geolocation__Latitude__s</columns>
-    <columns>Geolocation__Longitude__s</columns>
     <filterScope>Everything</filterScope>
     <label>All</label>
 </ListView>

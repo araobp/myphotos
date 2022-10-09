@@ -173,4 +173,6 @@ export default class PicturesMap extends LightningElement {
     publish(this.messageContext, IMAGE_URL_UPDATE_MESSAGE, { name: content[0], imageURL: content[1] });
   }
 
+  handleRefresh = () => window.location.reload();
+
 }
