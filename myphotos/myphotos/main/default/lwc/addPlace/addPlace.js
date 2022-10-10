@@ -14,8 +14,7 @@ export default class AddPlace extends LightningElement {
 
   name = null;
   address;
-
-  status = "Add this place for location-based task reminder?"
+  already = false;
 
   @wire(getRecord, { recordId: '$recordId', fields: recordFields })
   loadRecord({ error, data }) {
@@ -29,11 +28,7 @@ export default class AddPlace extends LightningElement {
 
   connectedCallback() {
     isAlreadyRegistered({ recordId: this.recordId })
-      .then(already => {
-        if (already) {
-          this.status = "This place has already been registered.";
-        }
-      });
+      .then(already => this.already = already);
   }
 
   handleAddPlace() {

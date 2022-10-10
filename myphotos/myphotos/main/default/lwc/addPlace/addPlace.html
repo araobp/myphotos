@@ -1,7 +1,9 @@
 <template>
-  <lightning-card title="Place" icon-name="custom:custom85">
-    <div class="slds-m-around_medium">{status}</div>
-    <lightning-button variant="brand" label="Add" onclick={handleAddPlace} class="slds-m-left_medium">
-    </lightning-button>
-  </lightning-card>
+  <template if:false={already}>
+    <lightning-card title="Place" icon-name="custom:custom85">
+      <div class="slds-m-around_medium">Add place for location-based task reminder?</div>
+      <lightning-button variant="brand" label="Add" onclick={handleAddPlace} class="slds-m-left_medium">
+      </lightning-button>
+    </lightning-card>
+  </template>
 </template>
