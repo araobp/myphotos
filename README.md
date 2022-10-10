@@ -1,8 +1,14 @@
-# My Photos（私の写真）：私の趣味プロジェクト
+# My Photos:セールスフォースでつくる写真アプリ
 
-## セールスフォースでつくる写真アプリ
+本プロジェクトは、Salesforceの開発者エディション（無償）で写真アプリをつくります。位置情報と紐づけたメモ付き写真記録を行えるところが、ここで開発する写真アプリの特徴です。
+現在はRelease 1.0の開発中（最終段階）ですが、Release 2.0ではAR(Unityでフロントエンド、Salesforceでバックエンド開発)と連携させた空間情報と紐づける予定です。
 
-[ドキュメント（日本語,作成中） Release 1.0](https://docs.google.com/presentation/d/e/2PACX-1vThFeg9FeNg4kEuNcWNcRyY2i67ijAPIiIBs82b_zYlq_BmLSSwvneXUAh5Sk-sQN7y7K5qXxb4oewN/pub?start=false&loop=false&delayms=3000)
+【注意】 本プロジェクトの成果は週末の私の趣味として開発したもので、私の仕事とは一切関係ありません。
+
+## ドキュメント
+
+- [概要設計書　Release 1.0](https://docs.google.com/presentation/d/e/2PACX-1vThFeg9FeNg4kEuNcWNcRyY2i67ijAPIiIBs82b_zYlq_BmLSSwvneXUAh5Sk-sQN7y7K5qXxb4oewN/pub?start=false&loop=false&delayms=3000)
+- [マニュアル Release 1.0] ... 作成中
 
 ## リリース予定
 
