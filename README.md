@@ -13,6 +13,8 @@
 
 この開発を通して実感したのは、こういうアプリの開発は、ウォーターフォール開発でなく、アジャイル開発やCI/CDが向いているということです。なぜなら、実際にアプリを色々な現場で使ってみて、初めて、こんな機能があったら良いなとか、ここは改善した方が良いな、といったことが判るからです。当プロジェクトでは、バックログ（Salesforceのタスクでバックログ管理)に欲しい機能や改善すべき点を書いておき、優先順位をつけて開発しています。
 
+もし、このアプリをビジネスとする機会があるなら、設備管理あたりで活用出来るかなー。。。と思いつつあるところです。Release 2.0まで辿り着けたらの話ですが。
+
 ## ドキュメント
 
 - [概要設計書　Release 1.0](https://docs.google.com/presentation/d/e/2PACX-1vThFeg9FeNg4kEuNcWNcRyY2i67ijAPIiIBs82b_zYlq_BmLSSwvneXUAh5Sk-sQN7y7K5qXxb4oewN/pub?start=false&loop=false&delayms=3000)
