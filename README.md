@@ -4,6 +4,11 @@
 
 [ドキュメント（日本語,作成中）](https://docs.google.com/presentation/d/e/2PACX-1vThFeg9FeNg4kEuNcWNcRyY2i67ijAPIiIBs82b_zYlq_BmLSSwvneXUAh5Sk-sQN7y7K5qXxb4oewN/pub?start=false&loop=false&delayms=3000)
 
+## リリース予定
+
+- 2022年8月より開発開始。2022年12月までに未管理パッケージとしてRelease 1.0をリリース予定。
+- 2023年以降は屋内位置情報を3D座標で取り扱うため、AR(Unity)と組み合わせた空間情報まで領域を広げる予定。
+
 <hr>
 
 Salesforce Developer Edition could be a great low-code development platform for Sunday programmers.
