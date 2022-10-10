@@ -2,7 +2,13 @@
 
 ## セールスフォースでつくる写真アプリ
 
-[ドキュメント（日本語,作成中）](https://docs.google.com/presentation/d/e/2PACX-1vThFeg9FeNg4kEuNcWNcRyY2i67ijAPIiIBs82b_zYlq_BmLSSwvneXUAh5Sk-sQN7y7K5qXxb4oewN/pub?start=false&loop=false&delayms=3000)
+[ドキュメント（日本語,作成中） Release 1.0](https://docs.google.com/presentation/d/e/2PACX-1vThFeg9FeNg4kEuNcWNcRyY2i67ijAPIiIBs82b_zYlq_BmLSSwvneXUAh5Sk-sQN7y7K5qXxb4oewN/pub?start=false&loop=false&delayms=3000)
+
+## リリース予定
+
+- 2022年8月より開発開始。2022年12月までに未管理パッケージとしてRelease 1.0をリリース予定。LeafletとGSPによる測位と位置表現。iOS/Androidのネイティブカメラアプリによる写真撮影。
+- 2023年以降は屋内位置情報を3D座標で取り扱うため、AR(Unity)と組み合わせた空間情報まで領域を広げる予定。
+-- スーパーなどの特定の場所で、その場所内のポスターやQRコードをARアンカーとし、それを基準点とした屋内測位を行ったり、特定の3D位置へARマーカーを付与する。
 
 <hr>
 
