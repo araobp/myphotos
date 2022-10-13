@@ -420,8 +420,8 @@
         <type>Flexipage</type>
         <profile>Admin</profile>
     </profileActionOverrides>
-    <tabs>HomeMobile</tabs>
     <tabs>Camera</tabs>
+    <tabs>HomeMobile</tabs>
     <tabs>Record__c</tabs>
     <tabs>Place__c</tabs>
     <tabs>standard-Task</tabs>
