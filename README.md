@@ -27,6 +27,10 @@
 - 2023年以降は屋内位置情報を3D座標で取り扱うため、AR(Unity)と組み合わせた空間情報まで領域を広げる予定。
 -- スーパーなどの特定の場所で、その場所内のポスターやQRコードをARアンカーとし、それを基準点とした屋内測位を行ったり、特定の3D位置へARマーカーを付与する。
 
+## 事件
+
+2022/10/5, 悲しいことに、Salesfore for Androidで、突然、getCurrentPosition()がほとんど正常に動作しなくなった。たまに位置情報がとれるといった、よくわからない状態。Salesforce for iOSでは問題なし。
+
 <hr>
 
 Salesforce Developer Edition could be a great low-code development platform for Sunday programmers.
