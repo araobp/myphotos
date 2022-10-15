@@ -29,7 +29,7 @@
 
 ## 事件
 
-2022/10/5, 悲しいことに、Salesfore for Androidで、突然、getCurrentPosition()がほとんど正常に動作しなくなった。たまに位置情報がとれるといった、よくわからない状態。Salesforce for iOSでは問題なし。
+2022/10/15, 悲しいことに、Salesfore for Androidで、突然、getCurrentPosition()がほとんど正常に動作しなくなった。たまに位置情報がとれるといった、よくわからない状態。Salesforce for iOSでは問題なし。Release 1.0は中断しRelease 2.0に進むべきか。。。Unityであれば、ARに加え、写真撮影、位置情報、メモ入力ができる。
 
 <hr>
 
