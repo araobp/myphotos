@@ -21,15 +21,18 @@
 - [概要設計書　Release 1.0](https://docs.google.com/presentation/d/e/2PACX-1vThFeg9FeNg4kEuNcWNcRyY2i67ijAPIiIBs82b_zYlq_BmLSSwvneXUAh5Sk-sQN7y7K5qXxb4oewN/pub?start=false&loop=false&delayms=3000)
 - [マニュアル Release 1.0] ... 作成中
 
-## リリース予定
+## リリース予定(Pending)
 
-- 2022年8月より開発開始。2022年12月までに未管理パッケージとしてRelease 1.0をリリース予定。LeafletとGSPによる測位と位置表現。iOS/Androidのネイティブカメラアプリによる写真撮影。
+- 2022/10/16 フロントエンドに関しては、総合判断によりモバイル向けSalesforceアプリの利用を止め、以前つくったReactベースのコードへ移行。理由はSalesforceアプリの起動が遅すぎること、AndroidでgetCurrentPosition()による位置情報が取得出来なくなったこと、その他、Salesforceアプリの制約が多くアプリ上での操作が複雑なこと。
 - 2023年以降は屋内位置情報を3D座標で取り扱うため、AR(Unity)と組み合わせた空間情報まで領域を広げる予定。
 -- スーパーなどの特定の場所で、その場所内のポスターやQRコードをARアンカーとし、それを基準点とした屋内測位を行ったり、特定の3D位置へARマーカーを付与する。
 
 ## 事件
 
-2022/10/15, 悲しいことに、Salesfore for Androidで、突然、getCurrentPosition()がほとんど正常に動作しなくなった。たまに位置情報がとれるといった、よくわからない状態。Salesforce for iOSでは問題なし。Release 1.0は中断しRelease 2.0に進むべきか。。。Unityであれば、ARに加え、写真撮影、位置情報、メモ入力ができる。
+- 2022/8月下旬、Heroku無償プラン廃止のニュースあり、全データをHerokuからSalesforceへ移行。
+- 2022/10/15, 悲しいことに、Salesfore for Androidで、突然、getCurrentPosition()がほとんど正常に動作しなくなった。たまに位置情報がとれるといった、よくわからない状態。Salesforce for iOSでは問題なし。
+
+結論として、Salesforceのデスクトップ側画面はつくりが良いし気に入っているが、モバイルの方が良くない。ブラウザエンジンベースのアプリの様だが、iOSとAndroid間で挙動が異なったり、先が読めない。
 
 <hr>
 
