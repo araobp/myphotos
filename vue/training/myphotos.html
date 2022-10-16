@@ -16,6 +16,7 @@
     <template v-if="connected == true">
       <p>Connected to Salesforce Platform</p>
     </template>
+
     <template v-if="connected == false">
       <label for="username">username:</label><br>
       <input type="text" id="username" name="username" /><br>
@@ -24,11 +25,18 @@
       <button type="button" onclick="handleLogin()">login</button>
     </template>
 
+    <h2>Record__c</h2>
     <template v-for="r in record__c">
       <div v-bind:key="r.Id">
         {{r.Id}},{{r.Timestamp__c}},{{r.Name}},{{r.Memo__c}}
       </div>
     </template>
+
+    <h2>Position</h2>
+    <div>{{position}}</div>
+
+    <h2>Nearest Place</h2>
+    
 
   </div>
 

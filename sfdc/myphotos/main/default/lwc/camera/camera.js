@@ -1,5 +1,5 @@
 import { LightningElement, wire } from 'lwc';
-import findPlace from '@salesforce/apex/RecordObject.findPlace';
+import findPlace from '@salesforce/apex/PlaceObject.findPlace';
 import createRecord from '@salesforce/apex/RecordObject.createRecord';
 
 import { GPS } from 'c/gps';

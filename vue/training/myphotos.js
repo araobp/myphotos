@@ -2,7 +2,8 @@ const app = new Vue({
   el: '#app',
   data: {
     connected: false,
-    record__c: null
+    record__c: null,
+    position: [35.54236976, 139.64190659]
   }
 });
 
@@ -31,4 +32,23 @@ const handleLogin = () => {
 
     app.connected = true;
   });
+
+  if (navigator.geolocation) {
+
+    const options = {
+      enableHighAccuracy: true,
+      timeout: 10000,
+      maximumAge: 0
+    };
+  
+    const success = position => {
+      app.position = position.coords;
+    }
+  
+    const error = err => {
+      console.error(err);
+    }
+  
+    navigator.geolocation.getCurrentPosition(success, error, options);
+  }  
 }

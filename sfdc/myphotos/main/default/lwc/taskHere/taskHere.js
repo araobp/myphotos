@@ -1,6 +1,6 @@
 import { LightningElement, api } from 'lwc';
-import findTasksNearby from '@salesforce/apex/RecordObject.findTasksNearby';
-import makeTasksCompleted from '@salesforce/apex/RecordObject.makeTasksCompleted';
+import findTasksNearby from '@salesforce/apex/TaskObject.findTasksNearby';
+import makeTasksCompleted from '@salesforce/apex/TaskObject.makeTasksCompleted';
 import { ShowToastEvent } from 'lightning/platformShowToastEvent';
 
 export default class TaskHere extends LightningElement {

@@ -1,5 +1,5 @@
 import { LightningElement, api, wire } from 'lwc';
-import addPlace from '@salesforce/apex/RecordObject.addPlace';
+import addPlace from '@salesforce/apex/PlaceObject.addPlace';
 import { CloseActionScreenEvent } from 'lightning/actions';
 import { getRecord, getFieldValue } from 'lightning/uiRecordApi';
 import RECORD_NAME_FIELD from '@salesforce/schema/Record__c.Name';

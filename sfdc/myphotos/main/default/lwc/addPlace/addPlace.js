@@ -1,6 +1,6 @@
 import { LightningElement, api, wire } from 'lwc';
-import addPlace from '@salesforce/apex/RecordObject.addPlace';
-import isAlreadyRegistered from '@salesforce/apex/RecordObject.isAlreadyRegistered';
+import addPlace from '@salesforce/apex/PlaceObject.addPlace';
+import isAlreadyRegistered from '@salesforce/apex/PlaceCheck.isAlreadyRegistered';
 import { getRecord, getFieldValue } from 'lightning/uiRecordApi';
 import RECORD_NAME_FIELD from '@salesforce/schema/Record__c.Name';
 import RECORD_ADDRESS_FIELD from '@salesforce/schema/Record__c.Address__c';
