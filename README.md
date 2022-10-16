@@ -37,6 +37,12 @@
 
 結論として、Salesforceのデスクトップ側画面はつくりが良いし気に入っているが、モバイルの方が良くない。ブラウザエンジンベースのアプリの様だが、iOSとAndroid間で挙動が異なったり、先が読めない。動作保証出来ない。
 
+### いつものようにCORSに悩まされる
+
+以下のアドオンで回避：
+
+https://chrome.google.com/webstore/detail/cors-unblock/lfhmikememgdcahcdlaciloancbhjino/related?hl=ja
+
 <hr>
 
 Salesforce Developer Edition could be a great low-code development platform for Sunday programmers.
