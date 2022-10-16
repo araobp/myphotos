@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>MyPhotos</title>
+  <link rel="stylesheet" href="myphotos.css">
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jsforce/1.9.1/jsforce.min.js"></script>
+  <script src="http://jp.vuejs.org/js/vue.js"></script>
+</head>
+
+<body>
+
+  <h1>MyPhotos</h1>
+
+  <div id="app">
+    <template v-if="connected == true">
+      <p>Connected to Salesforce Platform</p>
+    </template>
+    <template v-if="connected == false">
+      <label for="username">username:</label><br>
+      <input type="text" id="username" name="username" /><br>
+      <label for="password">password:</label><br>
+      <input type="password" id="password" name="password" /><br><br>
+      <button type="button" onclick="handleLogin()">login</button>
+    </template>
+
+    <template v-for="r in record__c">
+      <div v-bind:key="r.Id">
+        {{r.Id}},{{r.Timestamp__c}},{{r.Name}},{{r.Memo__c}}
+      </div>
+    </template>
+
+  </div>
+
+  <script src="myphotos.js"></script>
+
+</body>
+
+</html>
