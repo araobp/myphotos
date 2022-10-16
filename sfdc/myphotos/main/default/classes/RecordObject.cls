@@ -23,6 +23,24 @@ public with sharing class RecordObject {
         }
     }
 
+    @AuraEnabled
+    public static Boolean deleteRecord(Id recordId){
+        try {
+            Boolean success = FileUploader.deleteFile(recordId);
+            if (success) {
+                List<Record__c> r = [SELECT Id FROM Record__c WHERE Id = :recordId LIMIT 1];
+                if (r.size() >= 1) {
+                    delete r;
+                } else {
+                    success = false;
+                }
+            }
+            return success;
+        } catch (Exception e) {
+            throw new AuraHandledException(e.getMessage());
+        }
+    }
+
     @AuraEnabled(cacheable=true)
     public static List<Record__c> selectRecordsByDistance(Decimal latitude, Decimal longitude, Decimal radius) {
         return [
