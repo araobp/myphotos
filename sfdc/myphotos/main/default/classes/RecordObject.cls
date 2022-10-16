@@ -107,13 +107,15 @@ public with sharing class RecordObject {
     public static string findPlace(){
         String name = '';
         try {
-            Place__c place = [SELECT Name
-            FROM Place__c
-            WHERE Distance__c < :VICINITY_RADIUS
-            LIMIT 1];
+            List<Place__c> place = [
+                SELECT Name
+                FROM Place__c
+                WHERE Distance__c < :VICINITY_RADIUS
+                LIMIT 1
+            ];
             System.debug(place);
-            if (place != null) {
-                name = place.Name;
+            if (place.size() != 0) {
+                name = place[0].Name;
             }
             return name;
         } catch (Exception e) {

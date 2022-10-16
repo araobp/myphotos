@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Hello Vue</title>
+    <link rel="stylesheet" href="main.css">
+  </head>
+  <body>
+    <div id="app">
+      {{message}}
+    </div>
+    <div id="app2">
+      {{message}}
+    </div>
+    <div id="app3">
+      {{lang == 'ja' ? message_ja : message_en}}
+    </div>
+
+    <div id="app4">
+      <input type="text" v-bind:value="message">
+    </div>
+
+    <div id="app5">
+      <p v-bind:style="{fontSize: pSize}">Font size: {{pSize}}</p>
+    </div>
+
+    <div id="app6">
+      <p v-bind:class="{capitalize: isCapital}">hello vue!</p>
+    </div>
+
+    <div id="app7">
+      <table border="1">
+        <tr><th>Product Name</th><th>Product Code</th></tr>
+        <tr v-for="item in products" v-bind:key="item.code">
+          <td>{{item.name}}</td><td>{{item.code}}</td>
+        </tr>
+      </table>
+    </div>
+
+    <div id="app9">
+      <template v-for="item in products">
+        <div v-bind:key="item.code">
+          <p>"template"</p>
+          <div >{{item.name}}, {{item.code}}</div>
+        </div>
+      </template>
+    </div>
+
+    <hr>
+
+    <div id="app8">
+      {{price}}円 <span v-if="price < 1000">セール実施中！</span>
+    </div>
+
+    <script src="http://jp.vuejs.org/js/vue.js"></script>
+    <script src="main.js"></script>
+  </body>
+</html>
