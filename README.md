@@ -21,11 +21,24 @@
 - [概要設計書　Release 1.0](https://docs.google.com/presentation/d/e/2PACX-1vThFeg9FeNg4kEuNcWNcRyY2i67ijAPIiIBs82b_zYlq_BmLSSwvneXUAh5Sk-sQN7y7K5qXxb4oewN/pub?start=false&loop=false&delayms=3000)
 - [マニュアル Release 1.0] ... 作成中
 
-## リリース予定
+## リリース予定(Pending)
 
-- 2022年8月より開発開始。2022年12月までに未管理パッケージとしてRelease 1.0をリリース予定。LeafletとGSPによる測位と位置表現。iOS/Androidのネイティブカメラアプリによる写真撮影。
+- 2022/10/16 フロントエンドに関しては、総合判断によりモバイル向けSalesforceアプリの利用を止め、Vue.jsで開発していく。
 - 2023年以降は屋内位置情報を3D座標で取り扱うため、AR(Unity)と組み合わせた空間情報まで領域を広げる予定。
 -- スーパーなどの特定の場所で、その場所内のポスターやQRコードをARアンカーとし、それを基準点とした屋内測位を行ったり、特定の3D位置へARマーカーを付与する。
+
+## React vs Vue
+
+LWCで書いたコードを移植するので、なんとなく、Vue.jsの方が移植しやすいか？と思い、Vue.jsで書いてみる。以前、Reactで書いたコードと比較してみて、どちらが良いか決める。
+
+## 事件
+
+- 2022/8月下旬、Heroku無償プラン廃止のニュースあり、全データをHerokuからSalesforceへ移行。
+- 2022/10/15, 悲しいことに、Salesfore for Androidで、突然、getCurrentPosition()がほとんど正常に動作しなくなった。たまに位置情報がとれるといった、よくわからない状態。Salesforce for iOSでは問題なし。
+
+その他、Salesforceでフロントエンドをつくると、外部モジュールをstatic resourcesにしなければならないとか、色々と制約が多い。
+
+結論として、Salesforceのデスクトップ側画面はつくりが良いし気に入っているが、モバイルの方が良くない。ブラウザエンジンベースのアプリの様だが、iOSとAndroid間で挙動が異なったり、先が読めない。
 
 <hr>
 
