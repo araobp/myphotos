@@ -1,9 +1,18 @@
-public with sharing class PlaceObject {
+@RestResource(urlMapping='/place/*')
+global with sharing class PlaceObject {
 
-    public static Decimal VICINITY_RADIUS = 0.1;  // 100m
+    global static Decimal VICINITY_RADIUS = 0.1;  // 100m
+
+    @HttpPost
+    global static Boolean postOperation(){
+        RestRequest req = RestContext.request;
+        RestResponse res = RestContext.response;
+        Id recordId = req.requestURI.substring(req.requestURI.lastIndexOf('/')+1);
+        return addPlace(recordId);
+    }
 
     @AuraEnabled
-    public static Boolean addPlace(Id recordId) {
+    global static Boolean addPlace(Id recordId) {
         Boolean success = false;
         try {
             Record__c r = [
@@ -45,8 +54,13 @@ public with sharing class PlaceObject {
         }
     }
 
+    @HttpGet
+    global static String getOperation() {
+        return findPlace();
+    }
+
     @AuraEnabled(cacheable=true)
-    public static string findPlace(){
+    global static String findPlace(){
         String name = '';
         try {
             List<Place__c> place = [

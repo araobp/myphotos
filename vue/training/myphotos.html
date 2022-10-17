@@ -12,9 +12,13 @@
 
   <h1>MyPhotos</h1>
 
+  <h2>Position</h2>
+
   <div id="app">
+
     <template v-if="connected == true">
       <p>Connected to Salesforce Platform</p>
+      <div>{{position[0]}}, {{position[1]}} </div>
     </template>
 
     <template v-if="connected == false">
@@ -32,12 +36,20 @@
       </div>
     </template>
 
-    <h2>Position</h2>
-    <div>{{position}}</div>
+    <h2>Place__c</h2>
+    <template v-for="p in place__c">
+      <div v-bind:key="p.Id">
+        {{p.Id}},{{p.Name}}
+      </div>
+    </template>
 
-    <h2>Nearest Place</h2>
+    <h2>Tasks nearby</h2>
+    <template v-for="t in task">
+      <div v-bind:key="t.Id">
+        {{t.Id}},{{t.Subject}}
+      </div>
+    </template>
     
-
   </div>
 
   <script src="myphotos.js"></script>
