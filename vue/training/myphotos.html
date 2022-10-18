@@ -29,6 +29,15 @@
       <button type="button" onclick="handleLogin()">login</button>
     </template>
 
+    <br><br>
+    <div style="background: cyan; width: 100px; text-align: center;">
+      <label style="padding: 20px;">
+        <input id="camera" style="display: none;" type="file" accept="image/*" capture="environment"
+          onchange={handleCapture} />
+        Camera
+      </label>
+    </div>
+
     <h2>Record__c</h2>
     <template v-for="r in record__c">
       <div v-bind:key="r.Id">
@@ -49,7 +58,7 @@
         {{t.Id}},{{t.Subject}}
       </div>
     </template>
-    
+
   </div>
 
   <script src="myphotos.js"></script>
