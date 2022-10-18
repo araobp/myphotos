@@ -39,6 +39,12 @@ https://chrome.google.com/webstore/detail/cors-unblock/lfhmikememgdcahcdlaciloan
 
 ここ８年くらい、仕事でも趣味でも、様々な開発プラットフォームや開発言語で各種プロトタイピングを行ってきた。しかし、年齢的な制約で、もうそろそろ、何か一つに絞って、長々と続けられる開発スタイルにしたいと考えた。そこで、1995年当時、私自身がNCSAモザイクからウエブを始めたころに戻り、フロントエンドの開発に絞りたいと考えた。１９９５年当時、世界はJavaアプレットに大きな期待を寄せていて、Netscapeナビゲーターが流行り、そこからJavaScriptが生まれたという背景もある。
 
+### このプロジェクトでは、なぜVueでフロントエンドを開発するの？
+
+Salesforce for Androidを日常的に使ってきたが、起動時間が長い、CDN上のJSライブラリへアクセスできないなど、色々と制約が見られる。これは、Salesforceが提供する高いセキュリティー上の制約で、受け入れるしかない。しかし、制約がない世界でもフロントエンドを作ってみたい。
+
+以前、Reactでフロントエンド開発した経験があるが、上に書いた、何か一つに絞るという考えでは、http/css/javascriptの基本の延長で考えられるフレームワークが良い。そうすると、選択肢はAngularJSかVue。以前、AngularJSを使ったことあるが、現在の最適な選択肢はVue。SalesforceのLWCとの親和性（コード流用性）を考えても、選択肢はVueとなる。
+
 <hr>
 
 Salesforce Developer Edition could be a great low-code development platform for Sunday programmers.
