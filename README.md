@@ -8,12 +8,22 @@
 - 私は、このアプリを、私の週末の活動、買い物、散歩やサイクリングで利用しています。AndroidスマホへSalesforceアプリを入れておき、その上で、このアプリを利用しています。
 - 基本的には写真記録アプリなのですが、Salesforce的な要素を多分に取り入れております。例えば、「次にあのスーパーへ行ったら、これを買おう」みたいなタスクを登録しておき、そのスーパーへ行った時にこのアプリを起動すると、タスク一覧が表示されます。
 - このアプリを利用しながら継続的な改善を継続し、使い勝手が向上しつつあります。
-- 現在はRelease 1.0の開発中（最終段階）ですが。。。色々と理由あり、モバイル向けフロントエンドをReactで開発開始。
+- 現在はRelease 1.0の開発中（最終段階）ですが。。。色々と理由あり、モバイル向けフロントエンドをVueで開発開始。
 
 ## ドキュメント
 
-- [概要設計書　Release 1.0](https://docs.google.com/presentation/d/e/2PACX-1vThFeg9FeNg4kEuNcWNcRyY2i67ijAPIiIBs82b_zYlq_BmLSSwvneXUAh5Sk-sQN7y7K5qXxb4oewN/pub?start=false&loop=false&delayms=3000)
+- [概要設計書　Release 1.0](https://docs.google.com/presentation/d/e/2PACX-1vThFeg9FeNg4kEuNcWNcRyY2i67ijAPIiIBs82b_zYlq_BmLSSwvneXUAh5Sk-sQN7y7K5qXxb4oewN/pub?start=false&loop=false&delayms=3000) ... 作成中
 - [マニュアル Release 1.0] ... 作成中
+
+## Salesforce Platformでアプリを作ってみた感想
+
+色々とPaaSやローコード開発プラットフォームを試した中で、Salesforceが一番良いと思ったのは、オブジェクトやフィールドを定義すると自動的にUIも生成されるので、オブジェクト定義だけで最低限のアプリとして機能するようになること。そして、その最低限のアプリを使いながら段階的に機能追加し、アプリを継続的に改善し続けることが出来ること。要は、アジャイル開発でアプリをつくるのに適していること。
+
+また、LWCはとても魅力的。簡単に、デスクトップでもモバイルでも使えるレスポンシブなウエブページ（フロントエンド）をつくることが出来るし、SLDSのおかげで、見栄えの良いものが出来る。
+
+また、ApexクラスはREST APIとして公開することもできるので、VueやReactでフロントエンドを作ることも可能。よって、例えば、趣味でVueアプリを作りたいけどバックエンドの開発は面倒だ。。。といった場合、Salesforce開発者エディションはとても役に立つ。セキュリティー、ユーザ認証といった実装が面倒なところ、Salesforce開発者エディションがカバーしてくれる。
+
+なので、Salesforce開発者エディションは、色々な意味でとても魅力的な開発プラットフォームである。
 
 ## その他
 
