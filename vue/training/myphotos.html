@@ -5,14 +5,13 @@
   <title>MyPhotos</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
     integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-  <link rel="stylesheet" href="myphotos.css">
   <script src="//cdnjs.cloudflare.com/ajax/libs/jsforce/1.9.1/jsforce.min.js"></script>
   <script src="https://unpkg.com/vue@next"></script>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 </head>
 
-<body style="padding-top: 55px;">
+<body style="padding-top: 55px; padding-bottom: 55px;">
 
   <div class="m-3">
 
@@ -50,22 +49,22 @@
       </label>
 
       <h2>Record__c</h2>
-      <template v-for="r in record__c">
-        <div v-bind:key="r.Id">
+      <template v-for="r in record__c" v-bind:key="r.Id">
+        <div>
           {{r.Id}},{{r.Timestamp__c}},{{r.Name}},{{r.Memo__c}}
         </div>
       </template>
 
       <h2>Place__c</h2>
-      <template v-for="p in place__c">
-        <div v-bind:key="p.Id">
+      <template v-for="p in place__c" v-bind:key="p.Id">
+        <div>
           {{p.Id}},{{p.Name}}
         </div>
       </template>
 
       <h2>Tasks nearby</h2>
-      <template v-for="t in task">
-        <div v-bind:key="t.Id">
+      <template v-for="t in task" v-bind:key="t.Id">
+        <div>
           {{t.Id}},{{t.Subject}}
         </div>
       </template>
@@ -77,10 +76,10 @@
         <a class="navbar-brand" href="#">Fixed bottom</a>
       </div>
     </nav>
-
-    <script src="myphotos.js"></script>
-
   </div>
+
+  <script src="myphotos.js"></script>
+
 </body>
 
 </html>
