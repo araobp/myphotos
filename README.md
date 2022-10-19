@@ -19,9 +19,9 @@
 
 [フロントエンド](https://araobp.github.io/myphotos/vue/training/myphotos.html)
 
-- [Vue](https://vuejs.org/)
-- [Bootstrap](https://getbootstrap.com/)
-- [JSforce](https://jsforce.github.io/)
+- [Vue](https://vuejs.org/): JavaScriptフレームワーク
+- [Bootstrap](https://getbootstrap.com/): CSSフレームワーク
+- [JSforce](https://jsforce.github.io/): Salesforce JavaScriptライブラリ
 
 ## Salesforce Platformでアプリを作ってみた感想
 
