@@ -14,7 +14,7 @@ export class GPS {
   getGeoLocation = (callback) => {
     const id = navigator.geolocation.getCurrentPosition(position => {
       const { latitude, longitude } = position.coords;
-      this.position = [latitude, longitude];
+      this.position = [parseFloat(latitude), parseFloat(longitude)];
       console.log(this.position);
       geolocationToAddress({ latitude: latitude, longitude: longitude })
         .then(jsonData => {
