@@ -8,7 +8,7 @@ import { publish, MessageContext } from 'lightning/messageService';
 import IMAGE_URL_UPDATE_MESSAGE from '@salesforce/messageChannel/ImageURL__c';
 import Id from '@salesforce/user/Id';
 import { GPS } from 'c/gps';
-import updateGeolocation from '@salesforce/apex/UserData.updateGeolocation';
+import updateGeolocation from '@salesforce/apex/UserObject.updateGeolocation';
 import geolocationToAddress from '@salesforce/apex/NominatimCallout.geolocationToAddress';
 
 const LOCALE = 'ja-JP';

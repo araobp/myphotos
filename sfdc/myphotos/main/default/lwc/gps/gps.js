@@ -1,7 +1,7 @@
 import geolocationToAddress from '@salesforce/apex/NominatimCallout.geolocationToAddress';
 import Id from '@salesforce/user/Id';
 
-import updateGeolocation from '@salesforce/apex/UserData.updateGeolocation';
+import updateGeolocation from '@salesforce/apex/UserObject.updateGeolocation';
 import { nominatimResultToAddress } from 'c/util';
 
 export class GPS {
