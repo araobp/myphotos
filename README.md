@@ -15,6 +15,10 @@
 - [概要設計書　Release 1.0](https://docs.google.com/presentation/d/e/2PACX-1vThFeg9FeNg4kEuNcWNcRyY2i67ijAPIiIBs82b_zYlq_BmLSSwvneXUAh5Sk-sQN7y7K5qXxb4oewN/pub?start=false&loop=false&delayms=3000) ... 作成中
 - [マニュアル Release 1.0] ... 作成中
 
+## Svelete
+
+[はじめてのSvelte - 基礎から応用まで](https://www.twilio.com/blog/all-you-need-to-know-svelte-jp)
+
 ## Salesforce Platformでアプリを作ってみた感想
 
 色々とPaaSやローコード開発プラットフォームを試した中で、Salesforceが一番良いと思ったのは、オブジェクトやフィールドを定義すると自動的にUIも生成されるので、オブジェクト定義だけで最低限のアプリとして機能するようになること。そして、その最低限のアプリを使いながら段階的に機能追加し、アプリを継続的に改善し続けることが出来ること。要は、アジャイル開発でアプリをつくるのに適していること。
