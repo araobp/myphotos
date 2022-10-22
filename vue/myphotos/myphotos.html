@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>MyPhotos</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+    integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jsforce/1.9.1/jsforce.min.js"></script>
+  <script src="https://unpkg.com/vue@next"></script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+</head>
+
+<body style="padding-top: 55px; padding-bottom: 55px;">
+
+  <div class="m-3">
+
+    <div id="app">
+
+      <nav class="navbar fixed-top navbar-dark bg-primary">
+        <div class="container-fluid">
+          <span class="navbar-brand mb-0 h1">MyPhotos</span>
+          <a class="navbar-brand" href="#">link1</a>
+        </div>
+      </nav>
+
+      <template v-if="connected == true">
+        <p>Connected to Salesforce Platform</p>
+        <div>Latitude: {{position[0]}}, Longitude: {{position[1]}} </div>
+      </template>
+
+      <template v-if="connected == false">
+        <div class="form-group">
+          <label for="username" class="mb-0">username:</label>
+          <input type="text" class="form-control" id="username" name="username" placeholder="user name" />
+        </div>
+        <div class="form-group">
+          <label for="password" class="mb-0">password:</label>
+          <input type="password" class="form-control" id="password" name="password" placeholder="password" />
+        </div>
+        <button type="button" class="btn btn-secondary" onclick="handleLogin()">login</button>
+      </template>
+
+      <hr>
+
+      <img v-bind:src="imageURL"/>
+      <br>
+      <label class="btn btn-primary">
+        <input id="camera" style="display: none;" type="file" accept="image/*" capture="environment"
+          @change="handleCapture" />
+        Camera
+      </label>
+
+      <!--
+      <h2>Record__c</h2>
+      <template v-for="r in record__c" v-bind:key="r.Id">
+        <div>
+          {{r.Id}},{{r.Timestamp__c}},{{r.Name}},{{r.Memo__c}}
+        </div>
+      </template>
+
+      <h2>Place__c</h2>
+      <template v-for="p in place__c" v-bind:key="p.Id">
+        <div>
+          {{p.Id}},{{p.Name}}
+        </div>
+      </template>
+
+      <h2>Tasks nearby</h2>
+      <template v-for="t in task" v-bind:key="t.Id">
+        <div>
+          {{t.Id}},{{t.Subject}}
+        </div>
+      </template>
+
+
+      <nav class="navbar fixed-bottom navbar-dark bg-primary">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">Fixed bottom</a>
+        </div>
+      </nav>
+
+      -->
+
+    </div>
+
+  </div>
+
+  <script src="myphotos.js"></script>
+
+</body>
+
+</html>
