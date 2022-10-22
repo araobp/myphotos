@@ -21,6 +21,8 @@ Vue3でフロントエンド開発開始。
 
 <img src="images/camera_vue3.jpg" width="200px">
 
+[フロントエンド](https://araobp.github.io/myphotos/vue/myphotos/myphotos.html)
+
 ## Salesforce Platformでアプリを作ってみた感想
 
 色々とPaaSやローコード開発プラットフォームを試した中で、Salesforceが一番良いと思ったのは、オブジェクトやフィールドを定義すると自動的にUIも生成されるので、オブジェクト定義だけで最低限のアプリとして機能するようになること。そして、その最低限のアプリを使いながら段階的に機能追加し、アプリを継続的に改善し続けることが出来ること。要は、アジャイル開発でアプリをつくるのに適していること。
