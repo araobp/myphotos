@@ -8,14 +8,14 @@
 - 私は、このアプリを、私の週末の活動、買い物、散歩やサイクリングで利用しています。AndroidスマホへSalesforceアプリを入れておき、その上で、このアプリを利用しています。
 - 基本的には写真記録アプリなのですが、Salesforce的な要素を多分に取り入れております。例えば、「次にあのスーパーへ行ったら、これを買おう」みたいなタスクを登録しておき、そのスーパーへ行った時にこのアプリを起動すると、タスク一覧が表示されます。
 - このアプリを利用しながら継続的な改善を継続し、使い勝手が向上しつつあります。
-- 現在はRelease 1.0の開発中（最終段階）ですが。。。色々と理由あり、モバイル向けフロントエンドをSveleteで開発開始するところ。
+- 現在はRelease 1.0の開発中（最終段階）ですが。。。色々と理由あり、モバイル向けフロントエンドをSvelteで開発開始するところ。
 
 ## ドキュメント
 
 - [概要設計書　Release 1.0](https://docs.google.com/presentation/d/e/2PACX-1vThFeg9FeNg4kEuNcWNcRyY2i67ijAPIiIBs82b_zYlq_BmLSSwvneXUAh5Sk-sQN7y7K5qXxb4oewN/pub?start=false&loop=false&delayms=3000) ... 作成中
 - [マニュアル Release 1.0] ... 作成中
 
-## Svelete
+## Svelte
 
 [はじめてのSvelte - 基礎から応用まで](https://www.twilio.com/blog/all-you-need-to-know-svelte-jp)
 
