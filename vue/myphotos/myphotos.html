@@ -19,39 +19,64 @@
 
       <nav class="navbar fixed-top navbar-dark bg-primary">
         <div class="container-fluid">
+          <a class="navbar-brand" href="#">Profile</a>
           <span class="navbar-brand mb-0 h1">MyPhotos</span>
-          <a class="navbar-brand" href="#">link1</a>
+          <a class="navbar-brand" href="#">Settings</a>
         </div>
       </nav>
 
-      <template v-if="connected == true">
-        <p>Connected to Salesforce Platform</p>
-        <div>Latitude: {{position[0]}}, Longitude: {{position[1]}} </div>
-      </template>
-
       <template v-if="connected == false">
         <div class="form-group">
-          <label for="username" class="mb-0">username:</label>
+          <label for="username" class="mb-0">Username</label>
           <input type="text" class="form-control" id="username" name="username" placeholder="user name" />
         </div>
         <div class="form-group">
-          <label for="password" class="mb-0">password:</label>
+          <label for="password" class="mb-0">Password</label>
           <input type="password" class="form-control" id="password" name="password" placeholder="password" />
         </div>
-        <button type="button" class="btn btn-secondary" onclick="handleLogin()">login</button>
+        <div class="text-right">
+          <button type="button" class="btn btn-secondary w-50" onclick="handleLogin()">login</button>
+        </div>
       </template>
 
-      <hr>
+      <template v-if="connected == true">
+        <div>Latitude: {{position[0]}}, Longitude: {{position[1]}} </div>
+        <div>Address: {{address}} </div>
 
-      <img v-bind:src="imageURL"/>
-      <br>
-      <label class="btn btn-primary">
-        <input id="camera" style="display: none;" type="file" accept="image/*" capture="environment"
-          @change="handleCapture" />
-        Camera
-      </label>
+        <br>
 
-      <!--
+        <div class="form-group">
+          <label for="name" class="mb-0">Name</label>
+          <input type="text" class="form-control" id="name" name="name" placeholder="name" />
+        </div>
+        <div class="form-group">
+          <label for="memo" class="mb-0">Memo</label>
+          <textarea rows="3" class="form-control" id="memo" name="memo" placeholder="memo"></textarea>
+        </div>
+
+        <div class="text-center">
+          <img class="w-25" v-bind:src="imageURL" />
+          <br>
+          <label class="btn btn-primary w-50 mt-3">
+            <input id="camera" style="display: none;" type="file" accept="image/*" capture="environment"
+              @change="handleCapture" />
+            Camera
+          </label>
+          <br>
+          <button type="button" class="btn btn-secondary w-50 mt-3" onclick="handleUpload()">Upload</button>
+      </template>
+
+      <nav class="navbar fixed-bottom navbar-dark bg-primary">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">Camera</a>
+          <a class="navbar-brand" href="#">Map</a>
+          <a class="navbar-brand" href="#">Record</a>
+          <a class="navbar-brand" href="#">Place</a>
+        </div>
+      </nav>
+
+    </div>
+    <!--
       <h2>Record__c</h2>
       <template v-for="r in record__c" v-bind:key="r.Id">
         <div>
@@ -74,15 +99,9 @@
       </template>
 
 
-      <nav class="navbar fixed-bottom navbar-dark bg-primary">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="#">Fixed bottom</a>
-        </div>
-      </nav>
-
       -->
 
-    </div>
+  </div>
 
   </div>
 

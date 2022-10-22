@@ -5,6 +5,7 @@ const app = {
     return {
       connected: false,
       position: [35.54236976, 139.64190659],
+      address: '<unknown>',
       imageURL: null,
       imageURL_base64: null
     }
@@ -19,7 +20,7 @@ const app = {
         resizeImage(imageURL, IMAGE_SIZE, resizedImageURL => {
           vm.imageURL = resizedImageURL;
           vm.imageURL_base64 = resizedImageURL.split(',')[1];
-          console.log(resizedImageURL);
+          // console.log(resizedImageURL);
         });
       };
       reader.readAsDataURL(f);
@@ -47,24 +48,6 @@ const handleLogin = () => {
     vm.connected = true;
 
     getCurrentPosition();
-
-    conn.query("SELECT Id, Name, Memo__c, Timestamp__c FROM Record__c LIMIT 100", (err, result) => {
-      if (err) { return console.error(err); }
-      console.log("The size of records : " + result.totalSize);
-      console.log("The length of records : " + result.records.length);
-      // console.log(result.records);
-      vm.record__c = result.records;
-      
-      conn.query("SELECT Id, Name FROM Place__c LIMIT 100", (err, result) => {
-        if (err) { return console.error(err); }
-        console.log("The size of places : " + result.totalSize);
-        console.log("The length of places : " + result.records.length);
-        vm.place__c = result.records;
-        
-        findTasksNearby();
-
-      });
-    });
   });
 }
 
@@ -78,6 +61,7 @@ const getCurrentPosition = () => {
       const { latitude, longitude }  = position.coords;
       vm.position = [latitude, longitude];
       console.log(this.position);
+      geolocationToAddress();
     },
       err => {
         console.error(err);
@@ -115,3 +99,14 @@ const resizeImage = (imageURL, targetWidth, callback) => {
   });
   img.src = imageURL;
 }
+
+const geolocationToAddress = () => {
+    conn.apex.get(`/nominatim/${vm.position[0]},${vm.position[1]}`, null, function (err, res) {
+      if (err) { return console.error(err); }
+      console.log(res);
+      vm.address = nominatimResultToAddress(res);
+    });
+}
+
+const nominatimResultToAddress = jsonData => JSON.parse(jsonData).display_name.replace(/ /g, '').split(',').reverse().slice(2).join(' ');
+
