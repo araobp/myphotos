@@ -35,10 +35,6 @@ Salesforce Platformの難点としては、ガバナー制限を気にした開�
 
 https://chrome.google.com/webstore/detail/cors-unblock/lfhmikememgdcahcdlaciloancbhjino/related?hl=ja
 
-### なぜフロントエンド開発にこだわるのか
-
-ここ８年くらい、仕事でも趣味でも、様々な開発プラットフォームや開発言語で各種プロトタイピングを行ってきた。しかし、年齢的な制約で、もうそろそろ、何か一つに絞って、長々と続けられる開発スタイルにしたいと考えた。そこで、1995年当時、私自身がNCSAモザイクからウエブを始めたころに戻り、フロントエンドの開発に絞りたいと考えた。１９９５年当時、世界はJavaアプレットに大きな期待を寄せていて、Netscapeナビゲーターが流行り、そこからJavaScriptが生まれたという背景もある。
-
 <hr>
 
 Salesforce Developer Edition could be a great low-code development platform for Sunday programmers.
