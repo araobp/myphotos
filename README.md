@@ -8,20 +8,12 @@
 - 私は、このアプリを、私の週末の活動、買い物、散歩やサイクリングで利用しています。AndroidスマホへSalesforceアプリを入れておき、その上で、このアプリを利用しています。
 - 基本的には写真記録アプリなのですが、Salesforce的な要素を多分に取り入れております。例えば、「次にあのスーパーへ行ったら、これを買おう」みたいなタスクを登録しておき、そのスーパーへ行った時にこのアプリを起動すると、タスク一覧が表示されます。
 - このアプリを利用しながら継続的な改善を継続し、使い勝手が向上しつつあります。
-- 現在はRelease 1.0の開発中（最終段階）ですが。。。色々と理由あり、モバイル向けフロントエンドをVueで開発開始。
+- 現在はRelease 1.0の開発中（最終段階）ですが。。。色々と理由あり、モバイル向けフロントエンドをVueで開発開始するところ。
 
 ## ドキュメント
 
 - [概要設計書　Release 1.0](https://docs.google.com/presentation/d/e/2PACX-1vThFeg9FeNg4kEuNcWNcRyY2i67ijAPIiIBs82b_zYlq_BmLSSwvneXUAh5Sk-sQN7y7K5qXxb4oewN/pub?start=false&loop=false&delayms=3000) ... 作成中
 - [マニュアル Release 1.0] ... 作成中
-
-## 開発中のVue3でつくるフロントエンド
-
-[フロントエンド](https://araobp.github.io/myphotos/vue/training/myphotos.html)
-
-- [Vue](https://vuejs.org/): JavaScriptフレームワーク
-- [Bootstrap](https://getbootstrap.com/): CSSフレームワーク
-- [JSforce](https://jsforce.github.io/): Salesforce JavaScriptライブラリ
 
 ## Salesforce Platformでアプリを作ってみた感想
 
@@ -46,12 +38,6 @@ https://chrome.google.com/webstore/detail/cors-unblock/lfhmikememgdcahcdlaciloan
 ### なぜフロントエンド開発にこだわるのか
 
 ここ８年くらい、仕事でも趣味でも、様々な開発プラットフォームや開発言語で各種プロトタイピングを行ってきた。しかし、年齢的な制約で、もうそろそろ、何か一つに絞って、長々と続けられる開発スタイルにしたいと考えた。そこで、1995年当時、私自身がNCSAモザイクからウエブを始めたころに戻り、フロントエンドの開発に絞りたいと考えた。１９９５年当時、世界はJavaアプレットに大きな期待を寄せていて、Netscapeナビゲーターが流行り、そこからJavaScriptが生まれたという背景もある。
-
-### このプロジェクトでは、なぜVueでフロントエンドを開発するの？
-
-Salesforce for Androidを日常的に使ってきたが、起動時間が長い、CDN上のJSライブラリへアクセスできないなど、色々と制約が見られる。これは、Salesforceが提供する高いセキュリティー上の制約で、受け入れるしかない。しかし、制約がない世界でもフロントエンドを作ってみたい。
-
-以前、Reactでフロントエンド開発した経験があるが、上に書いた、何か一つに絞るという考えでは、http/css/javascriptの基本の延長で考えられるフレームワークが良い。そうすると、選択肢はAngularJSかVue。以前、AngularJSを使ったことあるが、現在の最適な選択肢はVue。SalesforceのLWCとの親和性（コード流用性）を考えても、選択肢はVueとなる。
 
 <hr>
 
