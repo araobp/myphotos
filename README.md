@@ -23,7 +23,18 @@ Vue3でフロントエンド開発開始。
 
 [フロントエンド](https://araobp.github.io/myphotos/vue/myphotos/myphotos.html)
 
+### Oauth2.0 テストコード (curl)
+
 [Oauth2 web flow テストコード](https://github.com/araobp/myphotos/tree/main/vue/myphotos/auth_test)
+
+```
+Salesforceウエブ認証画面を開く。
+$ sfdc_oauth2_openweb.sh
+
+ブラウザ上でリダイレクトされたURLの?code=<authorization code>をコピペし、以下のシェルスクリプトを実行。
+<authorization code>末尾の"%3D%3D"を"=="へ置き換えること。
+$ sfdc_oauth2_openweb.sh　<authorization code>
+```
 
 ## Salesforce Platformでアプリを作ってみた感想
 
