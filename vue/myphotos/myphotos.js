@@ -1,5 +1,8 @@
 const IMAGE_SIZE = 432;
 
+
+console.log(`url: ${window.location.href}`)
+
 const app = {
   data() {
     return {
