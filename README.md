@@ -33,8 +33,15 @@ $ sfdc_oauth2_openweb.sh
 
 ブラウザ上でリダイレクトされたURLの?code=<authorization code>をコピペし、以下のシェルスクリプトを実行。
 <authorization code>末尾の"%3D%3D"を"=="へ置き換えること。
-$ sfdc_oauth2_openweb.sh　　<authorization code>
+
+$ sfdc_oauth2_openweb.sh <authorization code>
 ```
+
+ローカルhttpsサーバー起動
+```
+$ http-server -p 8080 --cors --ssl --key server.key --cert server.cert 
+```
+SalesforceのConnected appへredirect uri(https://localhost:8080)の登録をして、このローカルhttpsサーバへリダイレクトさせる。
 
 ## Salesforce Platformでアプリを作ってみた感想
 
