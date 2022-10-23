@@ -23,6 +23,8 @@ Vue3でフロントエンド開発開始。
 
 [フロントエンド](https://araobp.github.io/myphotos/vue/myphotos/myphotos.html)
 
+[Oauth2 web flow テストコード](https://github.com/araobp/myphotos/tree/main/vue/myphotos/auth_test)
+
 ## Salesforce Platformでアプリを作ってみた感想
 
 色々とPaaSやローコード開発プラットフォームを試した中で、Salesforceが一番良いと思ったのは、オブジェクトやフィールドを定義すると自動的にUIも生成されるので、オブジェクト定義だけで最低限のアプリとして機能するようになること。そして、その最低限のアプリを使いながら段階的に機能追加し、アプリを継続的に改善し続けることが出来ること。要は、アジャイル開発でアプリをつくるのに適していること。
@@ -42,6 +44,10 @@ Salesforce Platformの難点としては、ガバナー制限を気にした開�
 以下のアドオンで回避：
 
 https://chrome.google.com/webstore/detail/cors-unblock/lfhmikememgdcahcdlaciloancbhjino/related?hl=ja
+
+### 参考
+
+- [Salesforce REST API にOAuth2.0認証フローでPostmanからアクセスする方法](https://www.cdata.com/jp/blog/salesforce-oauth-postman#Web-%E3%82%B5%E3%83%BC%E3%83%90%E3%83%95%E3%83%AD%E3%83%BC)
 
 <hr>
 
