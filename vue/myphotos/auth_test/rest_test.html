@@ -1,0 +1,17 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+
+<body>
+  <script>
+    const url = window.location.href;
+    const param = url.split('?')[-1];
+    const authorizationCode = param.split('=')[1];
+    console.log(`auth_code: ${authorizationCode}`);    
+  </script>
+</body>
+
+</html>
