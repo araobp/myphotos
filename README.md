@@ -27,14 +27,6 @@
 
 Salesforce Platformの難点としては、ガバナー制限を気にした開発が強要されること。これは、クラウドやデータベースリソースを複数のユーザや企業間で公平利用するという意味で、受け入れて行くしかない。
 
-## その他
-
-### いつものようにCORSに悩まされる
-
-以下のアドオンで回避：
-
-https://chrome.google.com/webstore/detail/cors-unblock/lfhmikememgdcahcdlaciloancbhjino/related?hl=ja
-
 <hr>
 
 Salesforce Developer Edition could be a great low-code development platform for Sunday programmers.
