@@ -1,7 +1,10 @@
 const IMAGE_SIZE = 432;
 
 
-console.log(`url: ${window.location.href}`)
+console.log(`url: ${window.location.href}`);
+const accessToken = window.location.href.split('?').pop().split('=').pop();
+console.log(`accessToken: ${accessToken}`);
+
 
 const app = {
   data() {

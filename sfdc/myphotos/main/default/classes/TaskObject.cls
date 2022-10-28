@@ -1,14 +1,5 @@
-@RestResource(urlMapping='/task/*')
 global with sharing class TaskObject {
     
-    @HttpGet
-    global static List<Task> getOperation() {
-        RestRequest req = RestContext.request;
-        RestResponse res = RestContext.response;
-        Id recordId = req.requestURI.substring(req.requestURI.lastIndexOf('/')+1);
-        return findTasksNearby(recordId);
-    }
-
     @AuraEnabled
     global static List<Task> findTasksNearby(Id recordId) {
         try {
@@ -26,15 +17,6 @@ global with sharing class TaskObject {
         } catch (Exception e) {
             throw new AuraHandledException(e.getMessage());
         }
-    }
-
-    global class TaskParams {
-        global List<Id> Ids;
-    }
-
-    @HttpPatch
-    global static void patchOperation(TaskParams t) {
-        makeTasksCompleted(t.Ids);
     }
 
     @AuraEnabled

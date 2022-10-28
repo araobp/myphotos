@@ -1,13 +1,4 @@
-@RestResource(urlMapping='/placenearby/*')
 global with sharing class PlaceCheck {
-
-    @HttpGet
-    global static Boolean getOperation() {
-        RestRequest req = RestContext.request;
-        RestResponse res = RestContext.response;
-        Id recordId = req.requestURI.substring(req.requestURI.lastIndexOf('/')+1);
-        return isAlreadyRegistered(recordId);
-    }
 
     @AuraEnabled
     global static Boolean isAlreadyRegistered(Id recordId){

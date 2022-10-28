@@ -1,15 +1,6 @@
-@RestResource(urlMapping='/place/*')
 global with sharing class PlaceObject {
 
     global static Decimal VICINITY_RADIUS = 0.1;  // 100m
-
-    @HttpPost
-    global static Boolean postOperation(){
-        RestRequest req = RestContext.request;
-        RestResponse res = RestContext.response;
-        Id recordId = req.requestURI.substring(req.requestURI.lastIndexOf('/')+1);
-        return addPlace(recordId);
-    }
 
     @AuraEnabled
     global static Boolean addPlace(Id recordId) {
@@ -52,11 +43,6 @@ global with sharing class PlaceObject {
         } catch (Exception e) {
             throw new AuraHandledException(e.getMessage());
         }
-    }
-
-    @HttpGet
-    global static String getOperation() {
-        return findPlace();
     }
 
     @AuraEnabled(cacheable=true)

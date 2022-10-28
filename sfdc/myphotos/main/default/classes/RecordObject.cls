@@ -1,30 +1,5 @@
-@RestResource(urlMapping='/record/*')
 global with sharing class RecordObject {
     
-    global class RecordParams {
-        global String name;
-        global String memo;
-        global String address;
-        global String timestampGmt;
-        global String uuid;
-        global Decimal latitude;
-        global Decimal longitude;
-        global String base64;
-    }
-
-    @HttpPost
-    global static Id postOperation(RecordParams p) {
-        return createRecord(
-            p.name,
-            p.memo,
-            p.address,
-            p.timestampGmt,
-            p.uuid,
-            p.latitude,
-            p.longitude,
-            p.base64);
-    }
-
     @AuraEnabled(cacheable=false)
     global static Id createRecord(String name, String memo, String address, String timestampGmt, String uuid, Decimal latitude, Decimal longitude, String base64) {
         try {
@@ -48,14 +23,6 @@ global with sharing class RecordObject {
         }
     }
 
-    @HttpDelete
-    global static Boolean deleteOperation() {
-        RestRequest req = RestContext.request;
-        RestResponse res = RestContext.response;
-        Id recordId = req.requestURI.substring(req.requestURI.lastIndexOf('/')+1);
-        return deleteRecord(recordId);
-    }
-
     @AuraEnabled
     global static Boolean deleteRecord(Id recordId){
         try {
@@ -72,17 +39,6 @@ global with sharing class RecordObject {
         } catch (Exception e) {
             throw new AuraHandledException(e.getMessage());
         }
-    }
-
-    @HttpGet
-    global static List<Record__c> getOperation() {
-        RestRequest req = RestContext.request;
-        RestResponse res = RestContext.response;
-        String[] position = req.requestURI.substring(req.requestURI.lastIndexOf('/')+1).split(',');
-        Decimal latitude = decimal.valueOf(position[0]);
-        Decimal longitude = decimal.valueOf(position[1]);
-        Decimal radius = decimal.valueOf(position[2]);
-        return selectRecordsByDistance(latitude, longitude, radius);
     }
 
     @AuraEnabled(cacheable=true)
