@@ -15,34 +15,6 @@
 - [概要設計書　Release 1.0](https://docs.google.com/presentation/d/e/2PACX-1vThFeg9FeNg4kEuNcWNcRyY2i67ijAPIiIBs82b_zYlq_BmLSSwvneXUAh5Sk-sQN7y7K5qXxb4oewN/pub?start=false&loop=false&delayms=3000) ... 作成中
 - [マニュアル Release 1.0] ... 作成中
 
-## Vue3でのフロントエンド開発開始
-
-2022年10月上旬、Salesforce for Androidでnavigator.geolocation.getCurrentPosition()が機能しなくなってしまった。Android OSの更新が10/28に入り、再起動後に再機能するようになった。良かった！しかし、カメラ機能だけVue3で開発開始。Salesforce for Androidの起動時間が遅いため、シャッターチャンスを逃してしまうから。
-
-<img src="images/camera_vue3.jpg" width="200px">
-
-[フロントエンド](https://araobp.github.io/myphotos/vue/myphotos/myphotos.html)
-
-### Oauth2.0 テストコード (curl)
-
-[Oauth2 web flow テストコード](https://github.com/araobp/myphotos/tree/main/vue/myphotos/auth_test)
-
-```
-Salesforceウエブ認証画面を開く。
-$ sfdc_oauth2_openweb.sh
-
-ブラウザ上でリダイレクトされたURLの?code=<authorization code>をコピペし、以下のシェルスクリプトを実行。
-<authorization code>末尾の"%3D%3D"を"=="へ置き換えること。
-
-$ sfdc_oauth2_openweb.sh <authorization code>
-```
-
-ローカルhttpsサーバー起動
-```
-$ http-server -p 8080 --cors --ssl --key server.key --cert server.cert 
-```
-SalesforceのConnected appへredirect uri(https://localhost:8080/myphotos.html)の登録をして、このローカルhttpsサーバへリダイレクトさせる。
-
 ## Salesforce Platformでアプリを作ってみた感想
 
 色々とPaaSやローコード開発プラットフォームを試した中で、Salesforceが一番良いと思ったのは、オブジェクトやフィールドを定義すると自動的にUIも生成されるので、オブジェクト定義だけで最低限のアプリとして機能するようになること。そして、その最低限のアプリを使いながら段階的に機能追加し、アプリを継続的に改善し続けることが出来ること。要は、アジャイル開発でアプリをつくるのに適していること。
@@ -62,10 +34,6 @@ Salesforce Platformの難点としては、ガバナー制限を気にした開�
 以下のアドオンで回避：
 
 https://chrome.google.com/webstore/detail/cors-unblock/lfhmikememgdcahcdlaciloancbhjino/related?hl=ja
-
-### 参考
-
-- [Salesforce REST API にOAuth2.0認証フローでPostmanからアクセスする方法](https://www.cdata.com/jp/blog/salesforce-oauth-postman#Web-%E3%82%B5%E3%83%BC%E3%83%90%E3%83%95%E3%83%AD%E3%83%BC)
 
 <hr>
 
