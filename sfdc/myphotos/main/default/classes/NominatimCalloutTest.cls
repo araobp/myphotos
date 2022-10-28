@@ -2,7 +2,7 @@
 public class NominatimCalloutTest {
 
     @isTest
-    static void nominatimCalloutTest(){
+    static void geolocationToAddressTest(){
 
         Test.setMock(HttpCalloutMock.class, new NominatimCalloutMockImpl());
         String body = NominatimCallout.geolocationToAddress(

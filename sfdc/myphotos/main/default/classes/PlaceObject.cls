@@ -1,6 +1,6 @@
 public with sharing class PlaceObject {
 
-    global static Decimal VICINITY_RADIUS = 0.1;  // 100m
+    public static Decimal VICINITY_RADIUS = 0.1;  // 100m
 
     @AuraEnabled
     public static Boolean addPlace(Id recordId) {
@@ -46,7 +46,7 @@ public with sharing class PlaceObject {
     }
 
     @AuraEnabled(cacheable=true)
-    global static String findPlace(){
+    public static String findPlace(){
         String name = '';
         try {
             List<Place__c> place = [
