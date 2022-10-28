@@ -1,7 +1,7 @@
-global with sharing class PlaceCheck {
+public with sharing class PlaceCheck {
 
     @AuraEnabled
-    global static Boolean isAlreadyRegistered(Id recordId){
+    public static Boolean isAlreadyRegistered(Id recordId){
         try {
             Record__c r = [
                 SELECT Name, Address__c, Geolocation__Latitude__s, Geolocation__Longitude__s, Place__c

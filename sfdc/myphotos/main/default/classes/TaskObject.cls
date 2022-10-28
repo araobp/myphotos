@@ -1,7 +1,7 @@
-global with sharing class TaskObject {
+public with sharing class TaskObject {
     
     @AuraEnabled
-    global static List<Task> findTasksNearby(Id recordId) {
+    public static List<Task> findTasksNearby(Id recordId) {
         try {
             Place__c place = [
                 SELECT Id, Name
@@ -20,7 +20,7 @@ global with sharing class TaskObject {
     }
 
     @AuraEnabled
-    global static void makeTasksCompleted(List<Id> recordIds) {
+    public static void makeTasksCompleted(List<Id> recordIds) {
         try {
             List<Task> tasks = new List<Task>();
             for (Id recordId : recordIds) {

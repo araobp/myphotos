@@ -1,7 +1,7 @@
-global with sharing class RecordObject {
+public with sharing class RecordObject {
     
     @AuraEnabled(cacheable=false)
-    global static Id createRecord(String name, String memo, String address, String timestampGmt, String uuid, Decimal latitude, Decimal longitude, String base64) {
+    public static Id createRecord(String name, String memo, String address, String timestampGmt, String uuid, Decimal latitude, Decimal longitude, String base64) {
         try {
             Record__c r = new Record__c();
             r.Name = name;
@@ -24,7 +24,7 @@ global with sharing class RecordObject {
     }
 
     @AuraEnabled
-    global static Boolean deleteRecord(Id recordId){
+    public static Boolean deleteRecord(Id recordId){
         try {
             Boolean success = FileUploader.deleteFile(recordId);
             if (success) {
@@ -42,7 +42,7 @@ global with sharing class RecordObject {
     }
 
     @AuraEnabled(cacheable=true)
-    global static List<Record__c> selectRecordsByDistance(Decimal latitude, Decimal longitude, Decimal radius) {
+    public static List<Record__c> selectRecordsByDistance(Decimal latitude, Decimal longitude, Decimal radius) {
         return [
             SELECT Id, uuid__c, Name, Memo__c, Timestamp__c, Geolocation__Latitude__s, Geolocation__Longitude__s, Image__c, ImageURL__c
             FROM Record__c

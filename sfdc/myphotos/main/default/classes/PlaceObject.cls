@@ -1,9 +1,9 @@
-global with sharing class PlaceObject {
+public with sharing class PlaceObject {
 
     global static Decimal VICINITY_RADIUS = 0.1;  // 100m
 
     @AuraEnabled
-    global static Boolean addPlace(Id recordId) {
+    public static Boolean addPlace(Id recordId) {
         Boolean success = false;
         try {
             Record__c r = [
