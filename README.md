@@ -41,7 +41,7 @@ $ sfdc_oauth2_openweb.sh <authorization code>
 ```
 $ http-server -p 8080 --cors --ssl --key server.key --cert server.cert 
 ```
-SalesforceのConnected appへredirect uri(https://localhost:8080)の登録をして、このローカルhttpsサーバへリダイレクトさせる。
+SalesforceのConnected appへredirect uri(https://localhost:8080/myphotos.html)の登録をして、このローカルhttpsサーバへリダイレクトさせる。
 
 ## Salesforce Platformでアプリを作ってみた感想
 
