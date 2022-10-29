@@ -11,7 +11,13 @@
 - 私は、このアプリを、私の週末の活動、買い物、散歩やサイクリングで利用しています。スマホへSalesforceアプリ(Salesforce for Android/iOS)を入れておき、その上で、このアプリを利用しています。
 - 基本的には写真記録アプリなのですが、Salesforce的な要素を取り入れております。例えば、「次にあのスーパーへ行ったら、これを買おう」みたいなタスクを登録しておき、そのスーパーへ行った時にこのアプリを起動すると、タスク一覧が表示されます。
 
-## 未管理パッケージとして公開
+## 動作環境
+
+- IEを除く主要ブラウザ
+- [Salesforce for Android](https://play.google.com/store/apps/details?id=com.salesforce.chatter&hl=ja&gl=US)
+- [Salesforce for iOS](https://apps.apple.com/jp/app/salesforce/id404249815)
+
+## 未管理パッケージとして配布
 
 本プロジェクトの成果はSalesforceへ未管理パッケージとしてupload済み (2022/10/29 ver1.2)
 
