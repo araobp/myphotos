@@ -22,7 +22,7 @@
 - [概要設計書　Release 1.0](https://docs.google.com/presentation/d/e/2PACX-1vThFeg9FeNg4kEuNcWNcRyY2i67ijAPIiIBs82b_zYlq_BmLSSwvneXUAh5Sk-sQN7y7K5qXxb4oewN/pub?start=false&loop=false&delayms=3000) ... 作成中
 - [マニュアル Release 1.0] ... 作成中
 
-## スクリーンショット
+## スクリーンショット　（Desktop)
 
 #### Mapタブ
 
@@ -43,6 +43,10 @@
 #### Placeタブ
 
 <img src="./images/Place.jpg" width=500>
+
+## スクリーンショット　（Smart phone)
+
+(...)
 
 ## 参考
 
