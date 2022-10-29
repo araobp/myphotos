@@ -1,5 +1,7 @@
 # My Photos
 
+<img src="./images/Map.jpg" width=500>
+
 ## セールスフォース開発者エディション(無償)でつくる写真アプリ
 
 当プロジェクトでは、Salesforce Platformによるアプリ開発を勉強するため、Salesforce開発者エディション（無償）上で写真アプリをつくります。位置情報と紐づけたメモ付き写真記録を行えるところが、ここで開発する写真アプリの特徴です。また、このアプリをスマホからも利用出来る様にします。
@@ -19,6 +21,18 @@
 
 - [概要設計書　Release 1.0](https://docs.google.com/presentation/d/e/2PACX-1vThFeg9FeNg4kEuNcWNcRyY2i67ijAPIiIBs82b_zYlq_BmLSSwvneXUAh5Sk-sQN7y7K5qXxb4oewN/pub?start=false&loop=false&delayms=3000) ... 作成中
 - [マニュアル Release 1.0] ... 作成中
+
+## スクリーンショット
+
+<img src="./images/Map.jpg" width=500>
+
+<img src="./images/Record.jpg" width=500>
+
+<img src="./images/Record_Modal.jpg" width=500>
+
+<img src="./images/Record_Location_Update.jpg" width=500>
+
+<img src="./images/Place.jpg" width=500>
 
 ## 参考
 
