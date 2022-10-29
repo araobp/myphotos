@@ -24,13 +24,23 @@
 
 ## スクリーンショット
 
+#### Mapタブ
+
 <img src="./images/Map.jpg" width=500>
+
+#### Recordタブ
 
 <img src="./images/Record.jpg" width=500>
 
+#### Recordタブで写真拡大表示
+
 <img src="./images/Record_Modal.jpg" width=500>
 
+#### Recordタブの地図上でマーカー位置を微調整
+
 <img src="./images/Record_Location_Update.jpg" width=500>
+
+#### Placeタブ
 
 <img src="./images/Place.jpg" width=500>
 
