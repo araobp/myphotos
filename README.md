@@ -17,7 +17,7 @@
 - [Salesforce for Android](https://play.google.com/store/apps/details?id=com.salesforce.chatter&hl=ja&gl=US)
 - [Salesforce for iOS](https://apps.apple.com/jp/app/salesforce/id404249815)
 
-## 未管理パッケージとして配布
+## 未管理パッケージとしてアプリ配布
 
 本プロジェクトの成果はSalesforceへ未管理パッケージとしてupload済み (2022/10/29 ver1.2)
 
