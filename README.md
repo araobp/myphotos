@@ -26,7 +26,7 @@
 ## ドキュメント
 
 - [概要設計書 Version 1.2](https://docs.google.com/presentation/d/e/2PACX-1vThFeg9FeNg4kEuNcWNcRyY2i67ijAPIiIBs82b_zYlq_BmLSSwvneXUAh5Sk-sQN7y7K5qXxb4oewN/pub?start=false&loop=false&delayms=3000)
-- [マニュアル Version 1.2](https://docs.google.com/presentation/d/e/2PACX-1vRNwhvAk96R3S2uTnIcaJVKwjwNRoVct1j8sBk_C1bhSxcIQo_2y30YyBoz2ChGJHIPT8knqO7hthz9/pub?start=false&loop=false&delayms=3000)
+- [操作説明書 Version 1.2](https://docs.google.com/presentation/d/e/2PACX-1vRNwhvAk96R3S2uTnIcaJVKwjwNRoVct1j8sBk_C1bhSxcIQo_2y30YyBoz2ChGJHIPT8knqO7hthz9/pub?start=false&loop=false&delayms=3000)
 
 ## スクリーンショット（Desktop)
 
