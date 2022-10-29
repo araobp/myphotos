@@ -54,6 +54,10 @@
 
 (...)
 
+## 今後の開発計画
+
+- Version 2: Experience Cloudで写真記録の一部を外部公開
+
 ## 参考
 
 - [Using Leaflet to show maps in your LWC components](https://sonneiltech.com/2021/01/using-leaflet-to-show-maps-in-your-lwc-components/)
