@@ -6,7 +6,7 @@ public with sharing class PlaceCheckTest {
         Place__c place = new Place__c(
             Name='Apita Yokohama Tsunashima test place 123',
             Geolocation__Latitude__s=35.54258299,
-            Geolocation__Longitude__s=139.64165440
+            Geolocation__Longitude__s=139.64165449
         );
         insert place;
 
