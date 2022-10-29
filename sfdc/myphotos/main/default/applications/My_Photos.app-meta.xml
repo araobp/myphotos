@@ -425,7 +425,6 @@
     <tabs>Record__c</tabs>
     <tabs>Place__c</tabs>
     <tabs>standard-Task</tabs>
-    <tabs>standard-report</tabs>
     <uiType>Lightning</uiType>
     <utilityBar>My_Photos_UtilityBar</utilityBar>
 </CustomApplication>

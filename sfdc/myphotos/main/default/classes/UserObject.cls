@@ -7,4 +7,17 @@ public with sharing class UserObject {
         user.Geolocation__Longitude__s = longitude;       
         update user;
     }
+
+    @AuraEnabled
+    public static void setGeolocationToDefault(){
+        Decimal latitude = 35.54258299219887;
+        Decimal longitude = 139.64165440712304;
+    
+        try {
+            Id userId = UserInfo.getUserId();
+            updateGeolocation(userId, latitude, longitude);
+        } catch (Exception e) {
+            throw new AuraHandledException(e.getMessage());
+        }
+    }
 }
