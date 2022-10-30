@@ -1,10 +1,10 @@
 # My Photos
 
-## セールスフォース開発者エディション(無償)でつくる写真アプリ
+## セールスフォース開発者エディション(無償)でつくる写真記録アプリ
 
 <img src="./images/Map.jpg" width=500>
 
-当プロジェクトでは、Salesforce Platformによるアプリ開発を勉強するため、Salesforce開発者エディション（無償）上で写真アプリをつくります。位置情報と紐づけたメモ付き写真記録を行えるところが、ここで開発する写真アプリの特徴です。また、このアプリをスマホからも利用出来る様にします。
+当プロジェクトでは、Salesforce Platformによるアプリ開発を勉強するため、Salesforce開発者エディション（無償）で写真記録アプリをつくります。位置情報と紐づけたメモ付き写真記録を行えるところが、ここで開発する写真アプリの特徴です。また、このアプリをスマホからも利用出来る様にします。
 
 以下、簡単に、このアプリの用途を述べます：
 
@@ -26,7 +26,7 @@
 ## ドキュメント
 
 - [概要設計書 Version 1.2](https://docs.google.com/presentation/d/e/2PACX-1vThFeg9FeNg4kEuNcWNcRyY2i67ijAPIiIBs82b_zYlq_BmLSSwvneXUAh5Sk-sQN7y7K5qXxb4oewN/pub?start=false&loop=false&delayms=3000)
-- [マニュアル Version 1.2] ... 作成中
+- [操作説明書 Version 1.2](https://docs.google.com/presentation/d/e/2PACX-1vRNwhvAk96R3S2uTnIcaJVKwjwNRoVct1j8sBk_C1bhSxcIQo_2y30YyBoz2ChGJHIPT8knqO7hthz9/pub?start=false&loop=false&delayms=3000)
 
 ## スクリーンショット（Desktop)
 
@@ -53,6 +53,10 @@
 ## スクリーンショット（Smart phone)
 
 (...)
+
+## 今後の開発計画
+
+- Version 2: Experience Cloudで写真記録の一部を外部公開 (2023年開発予定)
 
 ## 参考
 
