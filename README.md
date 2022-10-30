@@ -52,7 +52,9 @@
 
 ## スクリーンショット（Smart phone)
 
-(...)
+#### Cameraタブ
+
+<img src="./images/Android_Camera.jpg" width=160>
 
 ## 今後の開発計画
 
