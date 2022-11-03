@@ -76,9 +76,9 @@
 
 <img src="./images/Android_Task_2.jpg" width=160>
 
-## 今後の開発計画
+## 今後の開発計画予定
 
-- ARを活用した屋内測位技術と写真記録 (Unity)
+- ARを活用した屋内測位技術と写真記録 (Unity)：　屋内ではGPS測位が出来ずARマーカを基準点としたAR活用測位を適用する
 - 写真記録の一部を外部公開 (Experience Cloud)
 
 ## 参考
