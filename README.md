@@ -78,7 +78,8 @@
 
 ## 今後の開発計画
 
-- Version 2: Experience Cloudで写真記録の一部を外部公開 (2023年開発予定)
+- ARを活用した屋内測位技術と写真記録 (Unity)
+- 写真記録の一部を外部公開 (Experience Cloud)
 
 ## 参考
 
